@@ -47,6 +47,7 @@ import { CloudData, CloudOptions } from './cloud.interfaces';
       color: #09f;
       overflow: hidden;
       position: relative;
+      display: block;
     }
     :host /deep/ span { padding: 0; }
   `]
@@ -79,13 +80,11 @@ export class TagCloudComponent implements OnInit {
         x: (this.width / 2.0),
         y: (this.height / 2.0)
       },
-      removeOverflow: this.removeOverflow,
-      position: 'fixed'
+      removeOverflow: this.removeOverflow
     }
 
     this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width+'px');
     this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height+'px');
-    this.renderer.setElementStyle(this.el.nativeElement, 'position', this.options.position);
     this.drawWordCloud();
   }
 

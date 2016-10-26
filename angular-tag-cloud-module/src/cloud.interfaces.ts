@@ -16,5 +16,4 @@ export interface CloudOptions {
     y: number;
   };
   removeOverflow: boolean;
-  position: string;
 }
