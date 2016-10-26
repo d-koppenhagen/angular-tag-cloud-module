@@ -1,0 +1,82 @@
+A TagCloud for Angular
+[![NPM version][npm-image]][npm-url]
+This is a module for Angular (>=Version 2.X.X) applications.
+The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
+
+# Install
+
+To install the module just run `npm i angular-tag-cloud-module` on your CLI.
+
+# Example
+
+1.) Import the module into your Angular-NgModule:
+
+```js
+// app.module.ts
+import { TagCloudModule } from 'angular-tag-cloud-module';
+
+@NgModule({
+  imports: [
+    TagCloudModule
+  ]
+})
+export class AppModule { }
+```
+
+2.) Append the component to your template:
+
+```html
+<!-- app.component.html -->
+<angular-tag-cloud
+  [width]="800"
+  [height]="400"
+  [data]="cloudData"
+  [removeOverflow]="true">
+</angular-tag-cloud>
+```
+
+3.) Insert an Data-Array:
+
+```js
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  cloudData [
+    // very high weight with external colored link
+    {text: 'Weight-9', weight: 9, link: 'https://domain.com', external: true, color: '#ffaaee'},
+    // high weight with colored link (internal)
+    {text: 'Weight-7', weight: 7, link: 'https://domain.com', color: 'green'},
+    // high weight with external link (default color)
+    {text: 'Weight-7', weight: 7, link: 'https://domain.com', external: true},
+    // normal text red-colored text
+    {text: 'Weight-5', weight: 5, color: 'black'},
+    // very small normal text
+    {text: 'Weight-1', weight: 1}
+  ]
+}
+```
+
+# Options
+ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
+
+| Input          | Type               | default value  | mandatory
+| -------------- | ------------------ | -------------- | ---------
+| data           | Array of cloudData |                | yes
+| width          | number             | 500            | no
+| height         | number             | 300            | no
+| removeOverflow | boolean            | false          | no
+
+`data`-Array elements can/must have the following attributes:
+
+| name     | Type            | default value                              | mandatory
+| -------- | --------------- | ------------------------------------------ | ---------
+| text     | string | null   |                                            | yes
+| weight   | number          | 5                                          | no
+| link     | string          |                                            | no
+| external | boolean         | false (only has relevance if link was set) | no
+| color    | valid CSS color | (a shade of blue, depends on the weight)   | no

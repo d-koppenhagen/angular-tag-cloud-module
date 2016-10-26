@@ -1,0 +1,26 @@
+{
+  "version": "2.0.3",
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "src/tag-cloud.component.ts",
+    "src/tag-cloud.component.spec.ts",
+    "src/tag-cloud.module.ts",
+    "src/cloud.interfaces.ts",
+    "src/index.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "compiled"
+  }
+}
