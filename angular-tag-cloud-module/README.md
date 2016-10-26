@@ -1,4 +1,4 @@
-# A TagCloud for Angular
+# A Tag Cloud Module For Angular (>2.X.X)
 [![NPM version][npm-image]][npm-url]
 
 This is a module for Angular (>=Version 2.X.X) applications.
@@ -8,11 +8,11 @@ The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angu
 
 # Install
 
-To install the module just run `npm i angular-tag-cloud-module` on your CLI.
+To install the module just run `npm i angular-tag-cloud-module` on your CLI (or if you use yarn: `yarn add angular-tag-cloud-module`).
 
 # Example
 
-1.) Import the module into your Angular-NgModule:
+1. Import the module into your Angular-NgModule:
 
 ```js
 // app.module.ts
@@ -26,7 +26,7 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
 export class AppModule { }
 ```
 
-2.) Append the component to your template:
+2. Append the component to your template:
 
 ```html
 <!-- app.component.html -->
@@ -38,7 +38,7 @@ export class AppModule { }
 </angular-tag-cloud>
 ```
 
-3.) Insert an Data-Array:
+3. Insert an Data-Array:
 
 ```js
 // app.component.ts
@@ -67,22 +67,22 @@ export class AppComponent {
 # Options
  The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
-| Input          | Type               | default value  | mandatory
-| -------------- | ------------------ | -------------- | ---------
-| data           | Array of cloudData |                | yes
-| width          | number             | 500            | no
-| height         | number             | 300            | no
-| removeOverflow | boolean            | false          | no
+| Input            | Type               | default value  | mandatory
+| ---------------- | ------------------ | -------------- | ---------
+| `data`           | Array of cloudData |                | yes
+| `width`          | number             | 500            | no
+| `height`         | number             | 300            | no
+| `removeOverflow` | boolean            | false          | no
 
 `data`-Array elements can/must have the following attributes:
 
-| name     | Type            | default value                              | mandatory
-| -------- | --------------- | ------------------------------------------ | ---------
-| text     | string | null   |                                            | yes
-| weight   | number          | 5                                          | no
-| link     | string          |                                            | no
-| external | boolean         | false (only has relevance if link was set) | no
-| color    | valid CSS color | (a shade of blue, depends on the weight)   | no
+| name       | Type            | default value                              | mandatory
+| ---------- | --------------- | ------------------------------------------ | ---------
+| `text`     | string | null   |                                            | yes
+| `weight`   | number          | 5                                          | no
+| `link`     | string          |                                            | no
+| `external` | boolean         | false (only has relevance if link was set) | no
+| `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
 
 
 
