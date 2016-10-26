@@ -1,7 +1,10 @@
-A TagCloud for Angular
+# A TagCloud for Angular
 [![NPM version][npm-image]][npm-url]
+
 This is a module for Angular (>=Version 2.X.X) applications.
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
+
+![alt text][logo]
 
 # Install
 
@@ -80,3 +83,9 @@ export class AppComponent {
 | link     | string          |                                            | no
 | external | boolean         | false (only has relevance if link was set) | no
 | color    | valid CSS color | (a shade of blue, depends on the weight)   | no
+
+
+
+[logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"
+[npm-url]: https://npmjs.org/package/angular-tag-cloud-module
+[npm-image]: https://badge.fury.io/js/angular-tag-cloud-module.svg
