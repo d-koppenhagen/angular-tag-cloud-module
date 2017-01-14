@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "build": "ngc",
-    "test": "tslint src/*.ts --exclude=src/*.d.ts && ngc && karma start",
+    "test": "tslint src/*.ts --exclude=src/*.d.ts && ngc",
     "prepublish": "ngc && copyfiles -f src/*.js src/*.js.map src/*.d.ts src/*.metadata.json .",
     "postpublish": "rimraf tag-cloud.* index.* cloud.interfaces.* compiled src/*.js src/*.js.map src/*.d.ts src/*.metadata.json"
   },
