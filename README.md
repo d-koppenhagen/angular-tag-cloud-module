@@ -8,7 +8,17 @@ The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angu
 
 # Install
 
-To install the module just run `npm i angular-tag-cloud-module` on your CLI (or if you use yarn: `yarn add angular-tag-cloud-module`).
+To install the module just run the following command on your CLI:
+
+```
+npm install --save angular-tag-cloud-module
+```
+
+Or if you use yarn:
+
+```
+yarn add angular-tag-cloud-module
+```
 
 # Example
 
@@ -49,7 +59,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  cloudData [
+  cloudData = [
     // very high weight with external colored link
     {text: 'Weight-9', weight: 9, link: 'https://domain.com', external: true, color: '#ffaaee'},
     // high weight with colored link (internal)
