@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An Angular module that contains a component for generating a tag cloud",
   "main": "index.js",
   "typings": "./index.d.ts",
