@@ -43,7 +43,8 @@ export class AppModule { }
 <angular-tag-cloud
   [width]="'800'"
   [height]="'400'"
-  [data]="cloudData">
+  [data]="cloudData"
+  [removeOverflow]="'true'">
 </angular-tag-cloud>
 ```
 

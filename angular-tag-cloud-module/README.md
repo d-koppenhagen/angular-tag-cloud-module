@@ -31,10 +31,10 @@ export class AppModule { }
 ```html
 <!-- app.component.html -->
 <angular-tag-cloud
-  [width]="800"
-  [height]="400"
+  [width]="'800'"
+  [height]="'400'"
   [data]="cloudData"
-  [removeOverflow]="true">
+  [removeOverflow]="'true'">
 </angular-tag-cloud>
 ```
 
