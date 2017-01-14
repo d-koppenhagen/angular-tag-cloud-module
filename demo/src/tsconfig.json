@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,7 +12,7 @@
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
-      "../node_modules/@types"
+      "<%= relativeRootPath %>/node_modules/@types"
     ]
   }
 }
