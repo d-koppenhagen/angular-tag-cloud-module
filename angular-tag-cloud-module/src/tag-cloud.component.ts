@@ -54,9 +54,9 @@ import { CloudData, CloudOptions } from './cloud.interfaces';
 })
 export class TagCloudComponent implements OnInit {
   @Input() data: [CloudData];
-  @Input() width?: number = 500;
-  @Input() height?: number = 300;
-  @Input() removeOverflow?: boolean = false;
+  @Input() width: number = 500;
+  @Input() height: number = 300;
+  @Input() removeOverflow: boolean = false;
 
 
   alreadyPlacedWords: any[] = [];
@@ -76,15 +76,15 @@ export class TagCloudComponent implements OnInit {
       aspectRatio : (this.width / this.height),
       width: this.width,
       height: this.height,
-      center : {
+      center: {
         x: (this.width / 2.0),
         y: (this.height / 2.0)
       },
       removeOverflow: this.removeOverflow
-    }
+    };
 
-    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width+'px');
-    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height+'px');
+    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     this.drawWordCloud();
   }
 
@@ -119,7 +119,7 @@ export class TagCloudComponent implements OnInit {
   overlapping(a: any, b: any) {
     return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
             Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
-    ? true : false
+    ? true : false;
   };
 
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
@@ -148,12 +148,12 @@ export class TagCloudComponent implements OnInit {
       let wordLink = this.renderer.createElement(this.el.nativeElement, 'a');
       wordLink.href = word.link;
 
-      if(word.external !== undefined && word.external) {
+      if (word.external !== undefined && word.external) {
         wordLink.target = '_blank';
       }
 
       wordLink.appendChild(node);
-      node = wordLink
+      node = wordLink;
     }
 
     if (word.color !== undefined && word.color !== '') {
@@ -172,8 +172,8 @@ export class TagCloudComponent implements OnInit {
     wordStyle.position = 'absolute';
 
     // place the first word
-    wordStyle.left = left+'px';
-    wordStyle.top = top+'px';
+    wordStyle.left = left + 'px';
+    wordStyle.top = top + 'px';
 
     while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
       radius += this.options.step;
@@ -182,12 +182,16 @@ export class TagCloudComponent implements OnInit {
       left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
       top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
 
-      wordStyle.left = left+'px';
-      wordStyle.top = top+'px';
+      wordStyle.left = left + 'px';
+      wordStyle.top = top + 'px';
     }
 
     // Don't render word if part of it would be outside the container
-    if (this.options.removeOverflow && (left < 0 || top < 0 || (left + width) > this.options.width || (top + height) > this.options.height)) {
+    if (
+      this.options.removeOverflow &&
+      (left < 0 || top < 0 || (left + width) > this.options.width ||
+      (top + height) > this.options.height)
+    ) {
       wordSpan.remove();
       return;
     }

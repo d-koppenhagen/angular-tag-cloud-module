@@ -11,7 +11,7 @@ export interface CloudOptions {
   aspectRatio: number;
   width: number;
   height: number;
-  center : {
+  center: {
     x: number;
     y: number;
   };
