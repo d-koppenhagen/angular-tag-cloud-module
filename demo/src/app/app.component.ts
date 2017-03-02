@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  template: `
+    <angular-tag-cloud
+      [data]="cloudConfig.data"
+      [width]="cloudConfig.width"
+      [height]="cloudConfig.height"
+      [removeOverflow]="cloudConfig.removeOverflow">
+    </angular-tag-cloud>
+  `
 })
 export class AppComponent {
   cloudConfig = {
