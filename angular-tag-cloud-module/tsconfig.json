@@ -17,7 +17,7 @@
     "src/tag-cloud.component.ts",
     "src/tag-cloud.component.spec.ts",
     "src/tag-cloud.module.ts",
-    "src/cloud.interfaces.ts",
+    "src/tag-cloud.interfaces.ts",
     "src/index.ts"
   ],
   "angularCompilerOptions": {

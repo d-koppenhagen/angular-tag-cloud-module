@@ -7,13 +7,13 @@ export interface CloudData {
 }
 
 export interface CloudOptions {
-  step: number;
-  aspectRatio: number;
-  width: number;
-  height: number;
-  center: {
+  step?: number;
+  aspectRatio?: number;
+  width?: number;
+  height?: number;
+  center?: {
     x: number;
     y: number;
   };
-  removeOverflow: boolean;
+  overflow?: boolean;
 }

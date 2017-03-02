@@ -15,9 +15,9 @@ index.js
 index.js.map
 index.d.ts
 
-cloud.interfaces.js
-cloud.interfaces.js.map
-cloud.interfaces.d.ts
+tag-cloud.interfaces.js
+tag-cloud.interfaces.js.map
+tag-cloud.interfaces.d.ts
 
 *.spec.js
 *.spec.js.map

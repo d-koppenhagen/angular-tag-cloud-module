@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, Renderer } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CloudData, CloudOptions } from './cloud.interfaces';
+import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
 @Component({
   selector: 'angular-tag-cloud',
@@ -54,16 +54,19 @@ import { CloudData, CloudOptions } from './cloud.interfaces';
 })
 export class TagCloudComponent implements OnInit {
   @Input() data: [CloudData];
-  @Input() width: number = 500;
-  @Input() height: number = 300;
-  @Input() removeOverflow: boolean = false;
-
+  @Input() width: number;
+  @Input() height: number;
+  @Input() overflow: boolean;
 
   alreadyPlacedWords: any[] = [];
 
   options: CloudOptions;
 
-  constructor(private el: ElementRef, private renderer: Renderer, private sanitizer: DomSanitizer) { }
+  constructor(private el: ElementRef, private renderer: Renderer, private sanitizer: DomSanitizer) {
+    if(!this.width) this.width = 500;
+    if(!this.height) this.height = 300;
+    if(!this.overflow) this.overflow = true;
+  }
 
   ngOnInit() {
     if (!this.data) {
@@ -80,7 +83,7 @@ export class TagCloudComponent implements OnInit {
         x: (this.width / 2.0),
         y: (this.height / 2.0)
       },
-      removeOverflow: this.removeOverflow
+      overflow: this.overflow
     };
 
     this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
@@ -188,7 +191,7 @@ export class TagCloudComponent implements OnInit {
 
     // Don't render word if part of it would be outside the container
     if (
-      this.options.removeOverflow &&
+      !this.options.overflow &&
       (left < 0 || top < 0 || (left + width) > this.options.width ||
       (top + height) > this.options.height)
     ) {

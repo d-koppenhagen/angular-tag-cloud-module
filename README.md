@@ -36,42 +36,34 @@ import { TagCloudModule } from 'angular-tag-cloud-module';
 export class AppModule { }
 ```
 
-2. Append the component to your template:
+2. Setup the cloud:
 
-```html
-<!-- app.component.html -->
-
-```
-
-3. Insert an Data-Array:
-
-```js
-// app.component.ts
+```ts
 import { Component } from '@angular/core';
+import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-component',
   template: `
     <angular-tag-cloud
-      [width]="800"
-      [height]="400"
-      [data]="cloudData"
-      [removeOverflow]="true">
+      [data]="data"
+      [width]="options.width"
+      [height]="options.height"
+      [overflow]="options.overflow">
     </angular-tag-cloud>
   `
 })
 export class AppComponent {
-  cloudData = [
-    // very high weight with external colored link
-    {text: 'Weight-9', weight: 9, link: 'https://domain.com', external: true, color: '#ffaaee'},
-    // high weight with colored link (internal)
-    {text: 'Weight-7', weight: 7, link: 'https://domain.com', color: 'green'},
-    // high weight with external link (default color)
-    {text: 'Weight-7', weight: 7, link: 'https://domain.com', external: true},
-    // normal text red-colored text
-    {text: 'Weight-5', weight: 5, color: 'black'},
-    // very small normal text
-    {text: 'Weight-1', weight: 1}
+  options: CloudOptions = {
+    width : 1000,
+    height : 400,
+    overflow: false,
+  }
+
+  data: Array<CloudData> = [
+    {text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee'},
+    {text: 'Weight-10-link', weight: 10, link: 'https://google.com'},
+    // ...
   ]
 }
 ```
@@ -84,7 +76,7 @@ export class AppComponent {
 | `data`           | Array of cloudData |                | yes
 | `width`          | number             | 500            | no
 | `height`         | number             | 300            | no
-| `removeOverflow` | boolean            | false          | no
+| `overflow`       | boolean            | true           | no
 
 `data`-Array elements can/must have the following attributes:
 
