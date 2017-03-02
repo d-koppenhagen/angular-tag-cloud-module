@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   cloudConfig = {
       width : 1000,
-      heigth : 400,
+      height : 400,
       removeOverflow: true,
       data: [
         {text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee'},
