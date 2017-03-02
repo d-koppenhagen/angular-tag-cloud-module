@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TagCloudPage {
+export class TagCloudDemoPage {
   navigateTo() {
     return browser.get('/');
   }

@@ -40,12 +40,7 @@ export class AppModule { }
 
 ```html
 <!-- app.component.html -->
-<angular-tag-cloud
-  [width]="'800'"
-  [height]="'400'"
-  [data]="cloudData"
-  [removeOverflow]="'true'">
-</angular-tag-cloud>
+
 ```
 
 3. Insert an Data-Array:
@@ -56,7 +51,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  template: `
+    <angular-tag-cloud
+      [width]="800"
+      [height]="400"
+      [data]="cloudData"
+      [removeOverflow]="true">
+    </angular-tag-cloud>
+  `
 })
 export class AppComponent {
   cloudData = [

@@ -1,10 +1,10 @@
-import { TagCloudPage } from './app.po';
+import { TagCloudDemoPage } from './app.po';
 
-describe('tag-cloud App', function() {
-  let page: TagCloudPage;
+describe('tag-cloud-demo App', () => {
+  let page: TagCloudDemoPage;
 
   beforeEach(() => {
-    page = new TagCloudPage();
+    page = new TagCloudDemoPage();
   });
 
   it('should display message saying app works', () => {

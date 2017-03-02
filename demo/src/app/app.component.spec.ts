@@ -1,16 +1,15 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
+
 import { AppComponent } from './app.component';
 
-describe('App: TagCloud', () => {
-  beforeEach(() => {
+describe('AppComponent', () => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-    });
-  });
+    }).compileComponents();
+  }));
 
   it('should create the app', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
