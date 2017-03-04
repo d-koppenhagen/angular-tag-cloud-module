@@ -103,8 +103,36 @@ export class AppComponent {
 }
 ```
 
+## Example: Detect the clicked item
+Angular-Tag-Cloud emits an event as soon as an item is clicked.
+
+```js
+import { Component } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data" 
+                       (clicked)="logClicked($event)">
+    </angular-tag-cloud>
+  `
+})
+export class AppComponent {
+
+  data: Array<CloudData> = [
+    { text: 'Initial Data weight-10', weight: 10 }
+    // ...
+  ]
+
+  logClicked(clicked: CloudData){
+    console.log(clicked);
+  }
+}
+```
+
 # Options
- The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
+The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
 | Input            | Type               | default value  | mandatory
 | ---------------- | ------------------ | -------------- | ---------
@@ -123,6 +151,11 @@ export class AppComponent {
 | `external` | boolean         | false (only has relevance if link was set) | no
 | `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
 
+ Also the element can have the following output:
+
+| Input      | Event Return Type  | default value  | mandatory | Description
+| ---------- | ------------------ | -------------- | ----------| ------------
+| `clicked`  | `CloudData`        | -              | no        | Returns the clicked `CloudData`-Object
 
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"

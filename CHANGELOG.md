@@ -1,3 +1,10 @@
+## 1.2.0
+## Fixes
+* Setting a color without providing a link
+
+## Features
+* adds an event which returns the clicked tag-cloud-item, related to [#5]
+
 ## 1.1.1
 ## Fixes
 * updates version, fixes package.json

@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, ElementRef, Renderer, OnChanges, SimpleChanges } from '@angular/core';
+import { Component,
+         OnChanges,
+         OnInit,
+         Input,
+         Output,
+         EventEmitter,
+         ElementRef,
+         Renderer,
+         SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
@@ -57,8 +65,9 @@ export class TagCloudComponent implements OnInit, OnChanges {
   @Input() width: number;
   @Input() height: number;
   @Input() overflow: boolean;
+  @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
 
-  dataArr: [CloudData];
+  dataArr: Array<CloudData>;
   alreadyPlacedWords: any[] = [];
 
   options: CloudOptions;
@@ -118,7 +127,6 @@ export class TagCloudComponent implements OnInit, OnChanges {
         return 0;
       }
     });
-
     this.dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
@@ -159,10 +167,20 @@ export class TagCloudComponent implements OnInit, OnChanges {
     wordSpan = this.renderer.createElement(this.el.nativeElement, 'span');
     wordSpan.className = 'w' + weight;
 
+    const thatClicked = this.clicked;
+    wordSpan.onclick = () => {
+      thatClicked.emit(word);
+    };
+
     let node = this.renderer.createText(this.el.nativeElement, word.text);
 
+    // set color
+    if (word.color) {
+      this.renderer.setElementStyle(wordSpan, 'color', word.color);
+    }
+
     // Append href if there's a link alongwith the tag
-    if (word.link !== undefined && word.link !== '') {
+    if (word.link) {
       let wordLink = this.renderer.createElement(this.el.nativeElement, 'a');
       wordLink.href = word.link;
 
@@ -172,10 +190,6 @@ export class TagCloudComponent implements OnInit, OnChanges {
 
       wordLink.appendChild(node);
       node = wordLink;
-    }
-
-    if (word.color !== undefined && word.color !== '') {
-      this.renderer.setElementStyle(node, 'color', word.color);
     }
 
     wordSpan.appendChild(node);

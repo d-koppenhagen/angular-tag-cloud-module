@@ -10,7 +10,8 @@ import 'rxjs/add/observable/of';
       [data]="data"
       [width]="options.width"
       [height]="options.height"
-      [overflow]="options.overflow">
+      [overflow]="options.overflow"
+      (clicked)="logClicked($event)">
     </angular-tag-cloud>
 
     <button (click)="newDateFromObservable()">Get new Data from Observable</button>
@@ -63,5 +64,9 @@ export class AppComponent {
       { text: 'Weight-1', weight: 1 }
     ]);
     changedData$.subscribe(res => this.data = res);
+  }
+
+  logClicked(clicked: CloudData){
+    console.log(clicked);
   }
 }
