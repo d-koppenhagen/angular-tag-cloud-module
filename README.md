@@ -98,7 +98,7 @@ export class AppComponent {
       { text: 'Weight-3', weight: 3 },
       // ...
     ]);
-    changedData$.subscribe(res => this.data);
+    changedData$.subscribe(res => this.data = res);
   }
 }
 ```
