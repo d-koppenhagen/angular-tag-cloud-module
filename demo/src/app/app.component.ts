@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';

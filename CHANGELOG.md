@@ -1,3 +1,7 @@
+## 1.1.1
+## Fixes
+* updates version, fixes package.json
+
 ## 1.1.0
 ## Features
 * Uses `ngOnChanges`-Lifecycle Hook to refresh data when new `Array<CloudData>` is passed into component, closes [#4]
