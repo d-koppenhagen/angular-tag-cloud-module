@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Renderer, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
@@ -52,28 +52,35 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
     :host /deep/ span { padding: 0; }
   `]
 })
-export class TagCloudComponent implements OnInit {
+export class TagCloudComponent implements OnInit, OnChanges {
   @Input() data: [CloudData];
   @Input() width: number;
   @Input() height: number;
   @Input() overflow: boolean;
 
+  dataArr: [CloudData];
   alreadyPlacedWords: any[] = [];
 
   options: CloudOptions;
 
-  constructor(private el: ElementRef, private renderer: Renderer, private sanitizer: DomSanitizer) {
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer,
+    private sanitizer: DomSanitizer
+  ) {
     if(!this.width) this.width = 500;
     if(!this.height) this.height = 300;
     if(!this.overflow) this.overflow = true;
   }
 
-  ngOnInit() {
-    if (!this.data) {
-      console.error('angular-tag-cloud: No data passed. Please pass tags data as json');
-      return;
-    }
+  ngOnChanges(changes: SimpleChanges) {
+    // values changed, reset cloud
+    this.el.nativeElement.innerHTML = '';
 
+    // set value changes
+    this.dataArr = changes['data'].currentValue;
+
+    // set options
     this.options = {
       step : 2.0,
       aspectRatio : (this.width / this.height),
@@ -86,15 +93,23 @@ export class TagCloudComponent implements OnInit {
       overflow: this.overflow
     };
 
-    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
-    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+    // draw the cloud
     this.drawWordCloud();
   }
 
+  ngOnInit() {
+    if (!this.data) {
+      console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
+      return;
+    }
+
+    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+  }
 
   drawWordCloud () {
-    // Sort this.data from the word with the highest weight to the one with the lowest
-    this.data.sort((a, b) => {
+    // Sort this.dataArr from the word with the highest weight to the one with the lowest
+    this.dataArr.sort((a, b) => {
       if (a.weight < b.weight) {
         return 1;
       } else if (a.weight > b.weight) {
@@ -104,7 +119,7 @@ export class TagCloudComponent implements OnInit {
       }
     });
 
-    this.data.forEach((elem, index) => {
+    this.dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
   }
@@ -134,10 +149,10 @@ export class TagCloudComponent implements OnInit {
         wordSpan: any;
 
     // Check if min(weight) > max(weight) otherwise use default
-    if (this.data[0].weight > this.data[this.data.length - 1].weight) {
+    if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
       // Linearly map the original weight to a discrete scale from 1 to 10
-      weight = Math.round((word.weight - this.data[this.data.length - 1].weight) /
-                  (this.data[0].weight - this.data[this.data.length - 1].weight) * 9.0) + 1;
+      weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
+                  (this.dataArr[0].weight - this.dataArr[this.dataArr.length - 1].weight) * 9.0) + 1;
     }
 
     // Create a new span and insert node.

@@ -1,3 +1,7 @@
+## 1.1.0
+## Features
+* Uses `ngOnChanges`-Lifecycle Hook to refresh data when new `Array<CloudData>` is passed into component, closes [#4]
+
 ## 1.0.0
 ## Features
 * Exports `CloudOptions` and `CloudData` interfaces
@@ -23,7 +27,6 @@ After:
     [overflow]="false">
 </angular-tag-cloud>
 ```
-
 
 ## 0.0.1 - 0.0.4
 * initial versions

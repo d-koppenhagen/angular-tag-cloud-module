@@ -20,7 +20,7 @@ Or if you use yarn:
 yarn add angular-tag-cloud-module
 ```
 
-# Example
+# Usage
 
 1. Import the module into your Angular-NgModule:
 
@@ -38,7 +38,7 @@ export class AppModule { }
 
 2. Setup the cloud:
 
-```ts
+```js
 import { Component } from '@angular/core';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 
@@ -65,6 +65,41 @@ export class AppComponent {
     {text: 'Weight-10-link', weight: 10, link: 'https://google.com'},
     // ...
   ]
+}
+```
+
+Check out the `demo`-Folder for a complete example
+
+## Example: Changing Data after initializing
+If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `Array<CloudData>` into the component so that it can detect the changes:
+
+```js
+import { Component } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data"></angular-tag-cloud>
+    <button (click)="newData()">Get new Data from Observable</button>
+  `
+})
+export class AppComponent {
+
+  data: Array<CloudData> = [
+    { text: 'Initial Data weight-10', weight: 10 }
+    // ...
+  ]
+
+  newData(){
+    const changedData$: Observable<Array<CloudData>> = Observable.of([
+      { text: 'Weight-3', weight: 3 },
+      // ...
+    ]);
+    changedData$.subscribe(res => this.data);
+  }
 }
 ```
 
