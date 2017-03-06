@@ -86,21 +86,30 @@ export class TagCloudComponent implements OnInit, OnChanges {
     // values changed, reset cloud
     this.el.nativeElement.innerHTML = '';
 
-    // set value changes
+    // set value changes8
     this.dataArr = changes['data'].currentValue;
+
+    let width = this.width;
+    if(this.el.nativeElement.parentNode.offsetWidth > 0
+      && width <= 1
+      && width > 0
+    ) {
+      width = this.el.nativeElement.parentNode.offsetWidth * width;
+    }
 
     // set options
     this.options = {
       step : 2.0,
-      aspectRatio : (this.width / this.height),
-      width: this.width,
+      aspectRatio : (width / this.height),
+      width: width,
       height: this.height,
       center: {
-        x: (this.width / 2.0),
+        x: (width / 2.0),
         y: (this.height / 2.0)
       },
       overflow: this.overflow
     };
+
 
     // draw the cloud
     this.drawWordCloud();

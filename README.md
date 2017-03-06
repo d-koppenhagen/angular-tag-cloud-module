@@ -45,16 +45,19 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 @Component({
   selector: 'my-component',
   template: `
-    <angular-tag-cloud
-      [data]="data"
-      [width]="options.width"
-      [height]="options.height"
-      [overflow]="options.overflow">
-    </angular-tag-cloud>
+    <div>
+      <angular-tag-cloud
+        [data]="data"
+        [width]="options.width"
+        [height]="options.height"
+        [overflow]="options.overflow">
+      </angular-tag-cloud>
+    </div>
   `
 })
 export class AppComponent {
   options: CloudOptions = {
+    // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
     width : 1000,
     height : 400,
     overflow: false,
@@ -113,8 +116,9 @@ import { CloudData } from 'angular-tag-cloud-module';
 @Component({
   selector: 'my-component',
   template: `
-    <angular-tag-cloud [data]="data" 
-                       (clicked)="logClicked($event)">
+    <angular-tag-cloud 
+      [data]="data" 
+      (clicked)="logClicked($event)">
     </angular-tag-cloud>
   `
 })
@@ -137,9 +141,11 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | Input            | Type               | default value  | mandatory
 | ---------------- | ------------------ | -------------- | ---------
 | `data`           | Array of cloudData |                | yes
-| `width`          | number             | 500            | no
+| `width`          | number (*)         | 500            | no
 | `height`         | number             | 300            | no
 | `overflow`       | boolean            | true           | no
+
+(*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 
 `data`-Array elements can/must have the following attributes:
 

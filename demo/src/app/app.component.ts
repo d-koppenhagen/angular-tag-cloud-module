@@ -6,20 +6,22 @@ import 'rxjs/add/observable/of';
 @Component({
   selector: 'app-root',
   template: `
-    <angular-tag-cloud
-      [data]="data"
-      [width]="options.width"
-      [height]="options.height"
-      [overflow]="options.overflow"
-      (clicked)="logClicked($event)">
-    </angular-tag-cloud>
+    <div>
+      <angular-tag-cloud
+        [data]="data"
+        [width]="options.width"
+        [height]="options.height"
+        [overflow]="options.overflow"
+        (clicked)="logClicked($event)">
+      </angular-tag-cloud>
+    </div>
 
     <button (click)="newDateFromObservable()">Get new Data from Observable</button>
   `
 })
 export class AppComponent {
   options: CloudOptions = {
-    width : 1000,
+    width : 1,
     height : 400,
     overflow: false,
   }
