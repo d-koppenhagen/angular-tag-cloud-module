@@ -1,3 +1,43 @@
+## 1.3.0
+## Fixes
+* Adds events `afterInit` and `afterChecked`, fixes [#7]
+* Adds a link to a wiki page which explains how to change the stlyesheet, fixes [#6]
+* Supports now a relative width to the parents element, fixes [#1]:
+
+__Fixed width (in px):__
+
+The width of the cloud in this example will be 1000px.
+```js
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud
+      [data]="data"
+      [width]="1000px">
+    </angular-tag-cloud>
+  `
+})
+// ...
+```
+
+__Example usage of relative width:__
+
+If the parent container is e.g. `1000px` wide, the width of the cloud in this example will be `1000px * 0.8 = 800px`.
+```js
+@Component({
+  selector: 'my-component',
+  template: `
+    <div>
+      <angular-tag-cloud
+        [data]="data"
+        [width]="0.8">
+      </angular-tag-cloud>
+    </div>
+  `
+})
+// ...
+```
+
 ## 1.2.0
 ## Fixes
 * Setting a color without providing a link
