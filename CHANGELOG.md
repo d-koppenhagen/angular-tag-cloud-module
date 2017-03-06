@@ -1,4 +1,4 @@
-## 1.3.0
+## 1.3.1
 ## Fixes
 * Adds events `afterInit` and `afterChecked`, fixes [#7]
 * Adds a link to a wiki page which explains how to change the stlyesheet, fixes [#6]

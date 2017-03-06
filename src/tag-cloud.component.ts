@@ -1,6 +1,8 @@
 import { Component,
          OnChanges,
          OnInit,
+         AfterContentInit,
+         AfterContentChecked,
          Input,
          Output,
          EventEmitter,
@@ -65,7 +67,10 @@ export class TagCloudComponent implements OnInit, OnChanges {
   @Input() width: number;
   @Input() height: number;
   @Input() overflow: boolean;
+
   @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
+  @Output() afterInit: EventEmitter<any> = new EventEmitter();
+  @Output() afterChecked: EventEmitter<any> = new EventEmitter();
 
   dataArr: Array<CloudData>;
   alreadyPlacedWords: any[] = [];
@@ -123,6 +128,14 @@ export class TagCloudComponent implements OnInit, OnChanges {
 
     this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
     this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+  }
+
+  ngAfterContentInit() {
+    this.afterInit.emit();
+  }
+
+  ngAfterContentChecked() {
+    this.afterChecked.emit();
   }
 
   drawWordCloud () {
