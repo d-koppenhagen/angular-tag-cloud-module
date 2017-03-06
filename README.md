@@ -159,9 +159,11 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
  Also the element can have the following output:
 
-| Input      | Event Return Type  | default value  | mandatory | Description
-| ---------- | ------------------ | -------------- | ----------| ------------
-| `clicked`  | `CloudData`        | -              | no        | Returns the clicked `CloudData`-Object
+| Input           | Event Return Type  | default value  | mandatory | Description
+| --------------- | ------------------ | -------------- | ----------| ------------
+| `clicked`       | `CloudData`        | -              | no        | Returns the clicked `CloudData`-Object
+| `afterInit`     | -                  | -              | no        | Fires after the View was initilized
+| `afterChecked`  | -                  | -              | no        | Fires after the View was checked
 
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"

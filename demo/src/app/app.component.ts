@@ -12,7 +12,9 @@ import 'rxjs/add/observable/of';
         [width]="options.width"
         [height]="options.height"
         [overflow]="options.overflow"
-        (clicked)="logClicked($event)">
+        (clicked)="log('clicked', $event)"
+        (afterInit)="log('After Init', $event)"
+        (afterChecked)="log('After Checked', $event)">
       </angular-tag-cloud>
     </div>
 
@@ -68,7 +70,7 @@ export class AppComponent {
     changedData$.subscribe(res => this.data = res);
   }
 
-  logClicked(clicked: CloudData){
-    console.log(clicked);
+  log(eventType: string, e?: CloudData){
+    console.log(eventType, e);
   }
 }
