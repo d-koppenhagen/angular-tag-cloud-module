@@ -135,6 +135,9 @@ export class AppComponent {
 }
 ```
 
+## Using a custom Stylesheet
+You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
+
 # Options
 The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
