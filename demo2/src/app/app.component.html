@@ -1,0 +1,11 @@
+<div>
+  <angular-tag-cloud
+    [data]="data"
+    [width]="options.width"
+    [height]="options.height"
+    [overflow]="options.overflow"
+    (clicked)="log('clicked', $event)"
+    (afterInit)="log('After Init', $event)"
+    (afterChecked)="log('After Checked', $event)">
+  </angular-tag-cloud>
+</div>
