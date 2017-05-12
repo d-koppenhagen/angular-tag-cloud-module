@@ -1,3 +1,7 @@
+## 1.3.2
+## Fixes
+* Null pointer error when options change but data does not, ([63066f7](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/c54a9b8f8732b508ef88da714af63b81570e57ec)), fixes [#13]
+
 ## 1.3.1
 ## Fixes
 * Adds events `afterInit` and `afterChecked`, fixes [#7]
