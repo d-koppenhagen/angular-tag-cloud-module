@@ -92,7 +92,9 @@ export class TagCloudComponent implements OnInit, OnChanges {
     this.el.nativeElement.innerHTML = '';
 
     // set value changes8
-    this.dataArr = changes['data'].currentValue;
+    if(changes['data']) {
+    	this.dataArr = changes['data'].currentValue;
+    }
 
     let width = this.width;
     if(this.el.nativeElement.parentNode.offsetWidth > 0
