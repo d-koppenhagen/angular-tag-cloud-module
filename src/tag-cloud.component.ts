@@ -142,15 +142,8 @@ export class TagCloudComponent implements OnInit, OnChanges {
 
   drawWordCloud () {
     // Sort this.dataArr from the word with the highest weight to the one with the lowest
-    this.dataArr.sort((a, b) => {
-      if (a.weight < b.weight) {
-        return 1;
-      } else if (a.weight > b.weight) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    this.dataArr.sort((a, b) => b.weight - a.weight);
+
     this.dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
