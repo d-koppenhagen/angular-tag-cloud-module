@@ -117,7 +117,8 @@ export class TagCloudComponent implements OnInit, OnChanges {
       overflow: this.overflow
     };
 
-
+    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
   }
