@@ -11,14 +11,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "outDir": "dist"
   },
-  "files": [
-    "src/tag-cloud.component.ts",
-    "src/tag-cloud.component.spec.ts",
-    "src/tag-cloud.module.ts",
-    "src/tag-cloud.interfaces.ts",
-    "src/index.ts"
+  "include": [
+    "src/**/*"
   ],
   "angularCompilerOptions": {
     "genDir": "compiled"

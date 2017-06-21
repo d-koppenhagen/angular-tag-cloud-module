@@ -1,3 +1,10 @@
+## 1.4.0
+## Fixes
+* Simplify the Sorting Algorithm ([d788ab0](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/d788ab0934d6bce4c931f7e88a0b25ee2e7804f2)), fixes [#15]
+
+## Features
+* Adding changes to update the DOM ([436ce82](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/d788ab0934d6bce4c931f7e88a0b25ee2e7804f2)), fixes [#16]
+
 ## 1.3.2
 ## Fixes
 * Null pointer error when options change but data does not, ([63066f7](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/c54a9b8f8732b508ef88da714af63b81570e57ec)), fixes [#13]
