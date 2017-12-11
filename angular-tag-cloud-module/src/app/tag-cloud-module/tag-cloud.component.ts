@@ -8,6 +8,7 @@ import { Component,
          EventEmitter,
          ElementRef,
          Renderer,
+         Renderer2,
          SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
@@ -80,6 +81,7 @@ export class TagCloudComponent implements OnInit, OnChanges {
   constructor(
     private el: ElementRef,
     private renderer: Renderer,
+    private r2: Renderer2,
     private sanitizer: DomSanitizer
   ) {
     if(!this.width) this.width = 500;
@@ -117,8 +119,8 @@ export class TagCloudComponent implements OnInit, OnChanges {
       overflow: this.overflow
     };
 
-    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
-    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
   }
@@ -129,8 +131,8 @@ export class TagCloudComponent implements OnInit, OnChanges {
       return;
     }
 
-    this.renderer.setElementStyle(this.el.nativeElement, 'width', this.options.width + 'px');
-    this.renderer.setElementStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
   }
 
   ngAfterContentInit() {
@@ -182,7 +184,7 @@ export class TagCloudComponent implements OnInit, OnChanges {
     }
 
     // Create a new span and insert node.
-    wordSpan = this.renderer.createElement(this.el.nativeElement, 'span');
+    wordSpan = this.r2.createElement('span');
     wordSpan.className = 'w' + weight;
 
     const thatClicked = this.clicked;
@@ -190,16 +192,16 @@ export class TagCloudComponent implements OnInit, OnChanges {
       thatClicked.emit(word);
     };
 
-    let node = this.renderer.createText(this.el.nativeElement, word.text);
+    let node = this.r2.createText(word.text);
 
     // set color
     if (word.color) {
-      this.renderer.setElementStyle(wordSpan, 'color', word.color);
+      this.r2.setStyle(wordSpan, 'color', word.color);
     }
 
     // Append href if there's a link alongwith the tag
     if (word.link) {
-      let wordLink = this.renderer.createElement(this.el.nativeElement, 'a');
+      let wordLink = this.r2.createElement('a');
       wordLink.href = word.link;
 
       if (word.external !== undefined && word.external) {
@@ -211,6 +213,7 @@ export class TagCloudComponent implements OnInit, OnChanges {
     }
 
     wordSpan.appendChild(node);
+    this.r2.appendChild(this.el.nativeElement, wordSpan);
 
     let width = wordSpan.offsetWidth,
         height = wordSpan.offsetHeight,
@@ -224,6 +227,8 @@ export class TagCloudComponent implements OnInit, OnChanges {
     // place the first word
     wordStyle.left = left + 'px';
     wordStyle.top = top + 'px';
+
+
 
     while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
       radius += this.options.step;

@@ -47,7 +47,7 @@ export class AppComponent {
     { text: 'HTML', weight: 8 },
   ];
 
-  newDateFromObservable(){
+  newDateFromObservable() {
     const changedData$: Observable<Array<CloudData>> = Observable.of([
       { text: 'Weight-3', weight: 3 },
       { text: 'Weight-2', weight: 2 },
@@ -56,7 +56,7 @@ export class AppComponent {
     changedData$.subscribe(res => this.data = res);
   }
 
-  log(eventType: string, e?: CloudData){
+  log(eventType: string, e?: CloudData) {
     console.log(eventType, e);
   }
 }

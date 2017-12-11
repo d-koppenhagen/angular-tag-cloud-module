@@ -1,3 +1,8 @@
+## 2.0.0
+## Features
+* Upgrade to Angular 5, fixes [#18]
+* Package application using [ng-packagr](https://www.npmjs.com/package/ng-packagr)
+
 ## 1.4.0
 ## Fixes
 * Simplify the Sorting Algorithm ([d788ab0](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/d788ab0934d6bce4c931f7e88a0b25ee2e7804f2)), fixes [#15]

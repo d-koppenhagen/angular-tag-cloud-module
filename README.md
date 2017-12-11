@@ -1,7 +1,8 @@
-# A Tag Cloud Module For Angular (>2.X.X)
+# A Tag Cloud Module For Angular (>=5.0.0)
 [![NPM version][npm-image]][npm-url]
 
-This is a module for Angular (>=Version 2.X.X) applications.
+This angular module contains a component which generates tag clouds.
+he module requires a peer dependency to angular/core >= Version 5.0.0.
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
 
 ![alt text][logo]
@@ -168,6 +169,8 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `afterInit`     | -                  | -              | no        | Fires after the View was initilized
 | `afterChecked`  | -                  | -              | no        | Fires after the View was checked
 
+# Development
+for development see [a relative link](https://github.com/angular/angular/tree/master/angular-tag-cloud-module/README.dev.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"
 [npm-url]: https://npmjs.org/package/angular-tag-cloud-module
