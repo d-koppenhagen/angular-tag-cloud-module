@@ -1,3 +1,7 @@
+## 2.0.1
+## Features
+* fixes README.md
+
 ## 2.0.0
 ## Features
 * Upgrade to Angular 5, fixes [ #18 ]
