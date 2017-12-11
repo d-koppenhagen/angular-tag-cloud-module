@@ -170,7 +170,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `afterChecked`  | -                  | -              | no        | Fires after the View was checked
 
 # Development
-for development see [a relative link](https://github.com/angular/angular/tree/master/angular-tag-cloud-module/README.dev.md)
+For development see [angular-tag-cloud-module/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/angular-tag-cloud-module/README.dev.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"
 [npm-url]: https://npmjs.org/package/angular-tag-cloud-module
