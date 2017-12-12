@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
     "e2e": "ng e2e",
     "rmreadme": "rimraf README.md",
     "copyreadme": "copyfiles -f ../README.md .",
-    "packagr": "npm run copyreadme && ng-packagr -p ng-package.json && npm run rmreadme"
+    "packagr": "npm run copyreadme && ng-packagr -p ng-package.json",
+    "postpublish": "npm run rmreadme"
   },
   "private": false,
   "dependencies": {

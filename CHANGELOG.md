@@ -1,5 +1,9 @@
+## 2.0.2
+## Fixes
+* fixes README.md
+
 ## 2.0.1
-## Features
+## Fixes
 * fixes README.md
 
 ## 2.0.0
