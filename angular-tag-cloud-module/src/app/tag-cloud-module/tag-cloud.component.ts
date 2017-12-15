@@ -63,7 +63,7 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
     :host /deep/ span { padding: 0; }
   `]
 })
-export class TagCloudComponent implements OnInit, OnChanges {
+export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: [CloudData];
   @Input() width: number;
   @Input() height: number;
@@ -84,9 +84,9 @@ export class TagCloudComponent implements OnInit, OnChanges {
     private r2: Renderer2,
     private sanitizer: DomSanitizer
   ) {
-    if(!this.width) this.width = 500;
-    if(!this.height) this.height = 300;
-    if(!this.overflow) this.overflow = true;
+    if (!this.width) { this.width = 500; }
+    if (!this.height) { this.height = 300; }
+    if (!this.overflow) { this.overflow = true; }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -94,12 +94,12 @@ export class TagCloudComponent implements OnInit, OnChanges {
     this.el.nativeElement.innerHTML = '';
 
     // set value changes8
-    if(changes['data']) {
-    	this.dataArr = changes['data'].currentValue;
+    if (changes['data']) {
+      this.dataArr = changes['data'].currentValue;
     }
 
     let width = this.width;
-    if(this.el.nativeElement.parentNode.offsetWidth > 0
+    if (this.el.nativeElement.parentNode.offsetWidth > 0
       && width <= 1
       && width > 0
     ) {
@@ -166,7 +166,7 @@ export class TagCloudComponent implements OnInit, OnChanges {
     return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
             Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
     ? true : false;
-  };
+  }
 
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
   drawWord (index: any, word: any) {
@@ -201,7 +201,7 @@ export class TagCloudComponent implements OnInit, OnChanges {
 
     // Append href if there's a link alongwith the tag
     if (word.link) {
-      let wordLink = this.r2.createElement('a');
+      const wordLink = this.r2.createElement('a');
       wordLink.href = word.link;
 
       if (word.external !== undefined && word.external) {
@@ -215,13 +215,13 @@ export class TagCloudComponent implements OnInit, OnChanges {
     wordSpan.appendChild(node);
     this.r2.appendChild(this.el.nativeElement, wordSpan);
 
-    let width = wordSpan.offsetWidth,
-        height = wordSpan.offsetHeight,
-        left = this.options.center.x,
-        top = this.options.center.y;
+    const width = wordSpan.offsetWidth;
+    const height = wordSpan.offsetHeight;
+    let left = this.options.center.x;
+    let top = this.options.center.y;
 
     // Save a reference to the style property, for better performance
-    let wordStyle = wordSpan.style;
+    const wordStyle = wordSpan.style;
     wordStyle.position = 'absolute';
 
     // place the first word
@@ -252,6 +252,6 @@ export class TagCloudComponent implements OnInit, OnChanges {
     }
 
     this.alreadyPlacedWords.push(wordSpan);
-  };
+  }
 
 }
