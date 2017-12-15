@@ -83,7 +83,7 @@ If the parent container is e.g. `1000px` wide, the width of the cloud in this ex
 
 ## 1.1.0
 ## Features
-* Uses `ngOnChanges`-Lifecycle Hook to refresh data when new `Array<CloudData>` is passed into component, closes [ #4 ]
+* Uses `ngOnChanges`-Lifecycle Hook to refresh data when new `CloudData[]` is passed into component, closes [ #4 ]
 
 ## 1.0.0
 ## Features

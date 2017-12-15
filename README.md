@@ -64,7 +64,7 @@ export class AppComponent {
     overflow: false,
   }
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     {text: 'Weight-8-link-color', weight: 8, link: 'https://google.com', color: '#ffaaee'},
     {text: 'Weight-10-link', weight: 10, link: 'https://google.com'},
     // ...
@@ -80,7 +80,7 @@ export class AppComponent {
 Check out the `demo`-Folder for a complete example
 
 ## Example: Changing Data after initializing
-If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `Array<CloudData>` into the component so that it can detect the changes:
+If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `CloudData[]` into the component so that it can detect the changes:
 
 ```js
 import { Component } from '@angular/core';
