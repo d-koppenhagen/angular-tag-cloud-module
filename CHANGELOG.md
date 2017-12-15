@@ -1,3 +1,7 @@
+## 2.1.0
+## Features
+* Adds strict mode for setting static weights ([0938798](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/093879808ba5e4ba0c81656ffc971e0195043c00)), fixes [ #18 ]
+
 ## 2.0.2
 ## Fixes
 * fixes README.md
