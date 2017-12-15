@@ -65,12 +65,16 @@ export class AppComponent {
   }
 
   data: Array<CloudData> = [
-    {text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee'},
+    {text: 'Weight-8-link-color', weight: 8, link: 'https://google.com', color: '#ffaaee'},
     {text: 'Weight-10-link', weight: 10, link: 'https://google.com'},
     // ...
   ]
 }
 ```
+
+> Please keep this in mind, that the `weight` property defines the relative importance of the word (such as the number of occurrencies, etc.). The range of values is arbitrary, and they will be linearly mapped to a discrete scale from 1 to 10.
+> In fact passing just one word to the array has the effect that this is relative to other elements. As there aren't any other elements in that case it's result is that the element becomes a container with the class `w5` - right in the middle of the discret scale.
+> So the given value for `weight` is not directly mapped to the CSS-class. For example you can use also a value like `123` or `34` - it will always be mapped to a scale from 1 to 10 relativly to the other array elements.
 
 Check out the `demo`-Folder for a complete example
 
