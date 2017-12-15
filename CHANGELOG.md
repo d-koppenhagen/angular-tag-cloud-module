@@ -1,3 +1,8 @@
+## 2.1.2
+## Fixes
+* updates peerDependencies
+* removes unnecessary dependencies
+
 ## 2.1.1
 ## Fixes
 * fixes Package

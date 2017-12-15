@@ -40,3 +40,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# ignore copied files
+README.md
+CHANGELOG.md
