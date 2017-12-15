@@ -13,9 +13,10 @@ export class AppComponent {
     width : 1,
     height : 700,
     overflow: false,
+    strictMode: true
   };
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     { text: 'TagCloudModule', weight: 10, color: '#65CA27' },
     { text: 'Angular', weight: 9 },
     { text: 'NodeJS', weight: 9 },
@@ -48,7 +49,7 @@ export class AppComponent {
   ];
 
   newDateFromObservable() {
-    const changedData$: Observable<Array<CloudData>> = Observable.of([
+    const changedData$: Observable<CloudData[]> = Observable.of([
       { text: 'Weight-3', weight: 3 },
       { text: 'Weight-2', weight: 2 },
       { text: 'Weight-1', weight: 1 }

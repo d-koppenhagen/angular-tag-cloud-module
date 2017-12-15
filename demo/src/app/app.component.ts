@@ -28,7 +28,7 @@ export class AppComponent {
     overflow: false,
   };
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     { text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee' },
     { text: 'Weight-10-link', weight: 10, link: 'https://google.com' },
     { text: 'Weight-10', weight: 10 },
@@ -62,7 +62,7 @@ export class AppComponent {
   ];
 
   newDateFromObservable() {
-    const changedData$: Observable<Array<CloudData>> = Observable.of([
+    const changedData$: Observable<CloudData[]> = Observable.of([
       { text: 'Weight-3', weight: 3 },
       { text: 'Weight-2', weight: 2 },
       { text: 'Weight-1', weight: 1 }

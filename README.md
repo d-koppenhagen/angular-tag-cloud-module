@@ -75,6 +75,7 @@ export class AppComponent {
 > Please keep this in mind, that the `weight` property defines the relative importance of the word (such as the number of occurrencies, etc.). The range of values is arbitrary, and they will be linearly mapped to a discrete scale from 1 to 10.
 > In fact passing just one word to the array has the effect that this is relative to other elements. As there aren't any other elements in that case it's result is that the element becomes a container with the class `w5` - right in the middle of the discret scale.
 > So the given value for `weight` is not directly mapped to the CSS-class. For example you can use also a value like `123` or `34` - it will always be mapped to a scale from 1 to 10 relativly to the other array elements.
+> If you don't want that the tag cloud is calculating the values manually, set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
 
 Check out the `demo`-Folder for a complete example
 
@@ -96,13 +97,13 @@ import 'rxjs/add/observable/of';
 })
 export class AppComponent {
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     { text: 'Initial Data weight-10', weight: 10 }
     // ...
-  ]
+  ];
 
   newData(){
-    const changedData$: Observable<Array<CloudData>> = Observable.of([
+    const changedData$: Observable<CloudData[]> = Observable.of([
       { text: 'Weight-3', weight: 3 },
       // ...
     ]);
@@ -129,14 +130,47 @@ import { CloudData } from 'angular-tag-cloud-module';
 })
 export class AppComponent {
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     { text: 'Initial Data weight-10', weight: 10 }
     // ...
-  ]
+  ];
 
   logClicked(clicked: CloudData){
     console.log(clicked);
   }
+}
+```
+
+## Example: Using fixed weight values / strict binding of weigth through HTML class
+The `weight` property defines by default the relative importance of the word (such as the number of occurrencies, etc.). The range of values is arbitrary, and they will be linearly mapped to a discrete scale from 1 to 10.
+This cuases that e.g. passing just one word to the array has the effect that this is relative to other elements. As there aren't any other elements in that case it's result is that the element becomes a container with the class `w5` - right in the middle of the discret scale.
+If you don't want that the tag cloud is calculating the values manually, set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
+
+```js
+import { Component } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data" [strict]="true"></angular-tag-cloud>
+  `
+})
+export class AppComponent {
+
+  data: CloudData[] = [
+    // HTML-Element will have class 8:
+    { text: 'Weight-8', weight: 8 },
+    // HTML-Element will have class 10 as 10 is the max. value in strict mode:
+    { text: 'Weight-12 -> Weight-10', weight: 12 },
+    // HTML-Element will have class 1 as 1 is the min. value in strict mode:
+    { text: 'Weight-0 -> Weight-1', weight: 0 },
+    // HTML-Element will have class 4 as floats are rounded to an int in strict mode:
+    { text: 'Weight-4.3 -> Weight-4', weight: 4.3 },
+    // ...
+  ];
 }
 ```
 

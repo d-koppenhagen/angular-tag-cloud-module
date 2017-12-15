@@ -15,7 +15,7 @@ export class AppComponent {
     overflow: false,
   };
 
-  data: Array<CloudData> = [
+  data: CloudData[] = [
     { text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee' },
     { text: 'Weight-10-link', weight: 10, link: 'https://google.com' },
     { text: 'Weight-10', weight: 10 },
@@ -30,7 +30,7 @@ export class AppComponent {
     { text: 'Weight-7', weight: 7 },
     { text: 'Weight-6-link-color', weight: 6, link: 'https://google.com', color: '#ddd' },
     { text: 'Weight-6-link', weight: 6, link: 'https://google.com' },
-    { text: 'Weight-6', weight: 6 },
+    { text: 'Weight-6', weight: 6.4 },
     { text: 'Weight-5-link-color', weight: 5, link: 'https://google.com', color: 'yellow' },
     { text: 'Weight-5-link', weight: 5, link: 'https://google.com' },
     { text: 'Weight-5', weight: 5 },
@@ -48,11 +48,14 @@ export class AppComponent {
     { text: 'Weight-1', weight: 1 }
   ];
 
+  dataStrict: CloudData[] = [
+    { text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee' }
+  ];
+
   newDateFromObservable() {
-    const changedData$: Observable<Array<CloudData>> = Observable.of([
-      { text: 'Weight-3', weight: 3 },
-      { text: 'Weight-2', weight: 2 },
-      { text: 'Weight-1', weight: 1 }
+    const changedData$: Observable<CloudData[]> = Observable.of([
+      { text: 'Weight-10-link-color', weight: 8, link: 'https://google.com', color: '#ffaaee' },
+      { text: 'Weight-10-link', weight: 10, link: 'https://google.com' }
     ]);
     changedData$.subscribe(res => this.data = res);
   }

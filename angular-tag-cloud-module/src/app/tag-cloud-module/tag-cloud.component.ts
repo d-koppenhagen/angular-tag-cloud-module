@@ -64,17 +64,18 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
   `]
 })
 export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked {
-  @Input() data: [CloudData];
+  @Input() data: CloudData[];
   @Input() width: number;
   @Input() height: number;
   @Input() overflow: boolean;
+  @Input() strict: boolean;
 
   @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
   @Output() afterInit: EventEmitter<any> = new EventEmitter();
   @Output() afterChecked: EventEmitter<any> = new EventEmitter();
 
   dataArr: Array<CloudData>;
-  alreadyPlacedWords: any[] = [];
+  alreadyPlacedWords: HTMLElement[] = [];
 
   options: CloudOptions;
 
@@ -83,11 +84,7 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
     private renderer: Renderer,
     private r2: Renderer2,
     private sanitizer: DomSanitizer
-  ) {
-    if (!this.width) { this.width = 500; }
-    if (!this.height) { this.height = 300; }
-    if (!this.overflow) { this.overflow = true; }
-  }
+  ) { }
 
   ngOnChanges(changes: SimpleChanges) {
     // values changed, reset cloud
@@ -130,6 +127,11 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
       console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
       return;
     }
+
+    if (!this.width) { this.width = 500; }
+    if (!this.height) { this.height = 300; }
+    if (!this.overflow) { this.overflow = true; }
+    if (!this.strict) { this.strict = false; }
 
     this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
     this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
@@ -178,9 +180,26 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
 
     // Check if min(weight) > max(weight) otherwise use default
     if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
-      // Linearly map the original weight to a discrete scale from 1 to 10
-      weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
+      // check if strict mode is active
+      if (!this.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
+        weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
                   (this.dataArr[0].weight - this.dataArr[this.dataArr.length - 1].weight) * 9.0) + 1;
+      } else { // use given value for weigth directly
+        // fallback to 10
+        if (word.weight > 10) {
+          weight = 10;
+          console.log(`[TagCloud strict] Weight property ${word.weight} > 10. Fallback to 10 as you are using strict mode`, word);
+        } else if (word.weight < 1) { // fallback to 1
+          weight = 1;
+          console.log(`[TagCloud strict] Given weight property ${word.weight} < 1. Fallback to 1 as you are using strict mode`, word);
+        } else if (word.weight % 1 !== 0) { // round if given value is not an integer
+          weight = Math.round(word.weight);
+          console.log(`[TagCloud strict] Given weight property ${word.weight} is not an integer. Rounded value to ${weight}`, word);
+        } else {
+          weight = word.weight;
+        }
+
+      }
     }
 
     // Create a new span and insert node.
