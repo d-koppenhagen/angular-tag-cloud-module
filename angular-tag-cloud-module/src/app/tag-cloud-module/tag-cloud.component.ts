@@ -71,10 +71,10 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
   @Input() strict: boolean;
 
   @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
-  @Output() afterInit: EventEmitter<any> = new EventEmitter();
-  @Output() afterChecked: EventEmitter<any> = new EventEmitter();
+  @Output() afterInit: EventEmitter<void> = new EventEmitter();
+  @Output() afterChecked: EventEmitter<void> = new EventEmitter();
 
-  dataArr: Array<CloudData>;
+  dataArr: CloudData[];
   alreadyPlacedWords: HTMLElement[] = [];
 
   options: CloudOptions;
@@ -155,7 +155,7 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
   }
 
   // Helper function to test if an element overlaps others
-  hitTest(currentEl: any, otherEl: any[]) {
+  hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]) {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
     for (let i = 0; i < otherEl.length; i++) {
       if (this.overlapping(currentEl, otherEl[i])) { return true; }
@@ -164,19 +164,19 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
   }
 
   // Pairwise overlap detection
-  overlapping(a: any, b: any) {
+  overlapping(a: HTMLElement, b: HTMLElement) {
     return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
             Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
     ? true : false;
   }
 
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
-  drawWord (index: any, word: any) {
+  drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
     let angle = 6.28 * Math.random(),
         radius = 0.0,
         weight = 5,
-        wordSpan: any;
+        wordSpan: HTMLElement;
 
     // Check if min(weight) > max(weight) otherwise use default
     if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
