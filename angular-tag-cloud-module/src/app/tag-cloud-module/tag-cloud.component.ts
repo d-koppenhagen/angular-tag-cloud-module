@@ -14,7 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
 @Component({
-  selector: 'angular-tag-cloud',
+  selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
   styles: [`
     /* fonts */
