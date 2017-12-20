@@ -1,0 +1,28 @@
+<div>
+  <angular-tag-cloud
+    [data]="data1"
+    [width]="options.width"
+    [height]="options.height"
+    [overflow]="options.overflow"
+    (clicked)="log('clicked', $event)"
+    (afterInit)="log('After Init', $event)"
+    (afterChecked)="log('After Checked', $event)">
+  </angular-tag-cloud>
+</div>
+
+<hr/>
+
+<div>
+  <angular-tag-cloud
+    class="custom-css"
+    [data]="data2"
+    [width]="options.width"
+    [height]="options.height"
+    [overflow]="options.overflow"
+    (clicked)="log('clicked', $event)"
+    (afterInit)="log('After Init', $event)"
+    (afterChecked)="log('After Checked', $event)">
+  </angular-tag-cloud>
+
+  <button (click)="newDateFromObservable()">Get new Data from Observable</button>
+</div>

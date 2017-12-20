@@ -1,0 +1,40 @@
+/* General Layout */
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
+
+angular-tag-cloud.custom-css {
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: 20px;
+  background: #2C2C2C url("../assets/blackboard.jpg") no-repeat;
+  background-size: 100% auto;
+}
+
+/* no decoration for links */
+angular-tag-cloud.custom-css > span > a {
+  text-decoration: none;
+}
+ /* font sizes */
+angular-tag-cloud.custom-css > span.w10 { font-size: 550%; }
+angular-tag-cloud.custom-css > span.w9 { font-size: 500%; }
+angular-tag-cloud.custom-css > span.w8 { font-size: 450%; }
+angular-tag-cloud.custom-css > span.w7 { font-size: 400%; }
+angular-tag-cloud.custom-css > span.w6 { font-size: 350%; }
+angular-tag-cloud.custom-css > span.w5 { font-size: 300%; }
+angular-tag-cloud.custom-css > span.w4 { font-size: 250%; }
+angular-tag-cloud.custom-css > span.w3 { font-size: 200%; }
+angular-tag-cloud.custom-css > span.w2 { font-size: 150%; }
+angular-tag-cloud.custom-css > span.w1 { font-size: 100%; }
+
+/* colors */
+angular-tag-cloud.custom-css > a { color: inherit; }
+angular-tag-cloud.custom-css > a:hover { color: #0df; }
+angular-tag-cloud.custom-css > a:hover { color: #0cf; }
+angular-tag-cloud.custom-css > span.w10 { color: #0cf; }
+angular-tag-cloud.custom-css > span.w9 { color: #fff; }
+angular-tag-cloud.custom-css > span.w8 { color: #0cf; }
+angular-tag-cloud.custom-css > span.w7 { color: #39d; }
+angular-tag-cloud.custom-css > span.w6 { color: #90c5f0; }
+angular-tag-cloud.custom-css > span.w5 { color: #90a0dd; }
+angular-tag-cloud.custom-css > span.w4 { color: #90c5f0; }
+angular-tag-cloud.custom-css > span.w3 { color: #a0ddff; }
+angular-tag-cloud.custom-css > span.w2 { color: #99ccee; }
+angular-tag-cloud.custom-css > span.w1 { color: #aab5f0; }

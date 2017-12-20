@@ -5,30 +5,17 @@ import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div>
-      <angular-tag-cloud
-        [data]="data"
-        [width]="options.width"
-        [height]="options.height"
-        [overflow]="options.overflow"
-        (clicked)="log('clicked', $event)"
-        (afterInit)="log('After Init', $event)"
-        (afterChecked)="log('After Checked', $event)">
-      </angular-tag-cloud>
-    </div>
-
-    <button (click)="newDateFromObservable()">Get new Data from Observable</button>
-  `
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   options: CloudOptions = {
     width : 1,
-    height : 400,
-    overflow: false,
+    height : 700,
+    overflow: false
   };
 
-  data: CloudData[] = [
+  data1: CloudData[] = [
     { text: 'Weight-10-link-color', weight: 10, link: 'https://google.com', color: '#ffaaee' },
     { text: 'Weight-10-link', weight: 10, link: 'https://google.com' },
     { text: 'Weight-10', weight: 10 },
@@ -61,13 +48,45 @@ export class AppComponent {
     { text: 'Weight-1', weight: 1 }
   ];
 
+  data2: CloudData[] = [
+    { text: 'TagCloudModule', weight: 10, color: '#65CA27' },
+    { text: 'Angular', weight: 9 },
+    { text: 'NodeJS', weight: 9 },
+    { text: 'Mongo DB', weight: 5 },
+    { text: 'MySQL', weight: 4 },
+    { text: 'JavaScript', weight: 8 },
+    { text: 'TypeScript', weight: 9 },
+    { text: 'REST Services', weight: 8 },
+    { text: 'WebRTC', weight: 6 },
+    { text: 'Webpack', weight: 4 },
+    { text: 'Gulp', weight: 4 },
+    { text: 'Monitoring', weight: 6 },
+    { text: 'LaTeX', weight: 7 },
+    { text: 'PHP', weight: 4 },
+    { text: 'Shell Scripting', weight: 4 },
+    { text: 'RxJS', weight: 7 },
+    { text: 'Wireshark', weight: 7 },
+    { text: 'Customizing', weight: 6 },
+    { text: 'CSS', weight: 7 },
+    { text: 'jQuery', weight: 4 },
+    { text: 'Apple', weight: 7 },
+    { text: 'Microsoft', weight: 5 },
+    { text: 'Ubuntu', weight: 7 },
+    { text: 'Debian', weight: 6 },
+    { text: 'Linux', weight: 7 },
+    { text: 'Minifizierung', weight: 5 },
+    { text: 'Netzwerkmanagement', weight: 6 },
+    { text: 'Lua', weight: 4 },
+    { text: 'HTML', weight: 8 },
+  ];
+
   newDateFromObservable() {
     const changedData$: Observable<CloudData[]> = Observable.of([
       { text: 'Weight-3', weight: 3 },
       { text: 'Weight-2', weight: 2 },
       { text: 'Weight-1', weight: 1 }
     ]);
-    changedData$.subscribe(res => this.data = res);
+    changedData$.subscribe(res => this.data2 = res);
   }
 
   log(eventType: string, e?: CloudData) {

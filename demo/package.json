@@ -1,5 +1,5 @@
 {
-  "name": "tag-cloud-demo",
+  "name": "tag-cloud-demo2",
   "version": "2.1.0",
   "license": "MIT",
   "scripts": {
@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
     "@angular/router": "^5.1.0",
-    "angular-tag-cloud-module": "^2.1.1",
+    "angular-tag-cloud-module": "^2.1.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

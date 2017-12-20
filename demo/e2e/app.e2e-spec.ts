@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('tag-cloud-demo App', () => {
+describe('tag-cloud-demo2 App', () => {
   let page: AppPage;
 
   beforeEach(() => {
