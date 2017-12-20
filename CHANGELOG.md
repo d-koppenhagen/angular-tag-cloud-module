@@ -1,3 +1,7 @@
+## 2.1.4
+## Fixes
+* fixes deployed version [ #20 ]
+
 ## 2.1.2
 ## Fixes
 * updates peerDependencies
