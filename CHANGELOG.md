@@ -1,4 +1,6 @@
-## 2.1.4
+## 2.1.5-prod-fix.1
+* updates `ng-packagr` (related to [ #21 ])
+
 ## Fixes
 * fixes deployed version [ #20 ]
 

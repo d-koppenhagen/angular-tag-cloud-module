@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TagCloudModule } from './tag-cloud-module';
-
+import { TagCloudModule } from './tag-cloud-module/tag-cloud.module';
 
 @NgModule({
   declarations: [

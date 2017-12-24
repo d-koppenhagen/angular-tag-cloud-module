@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CloudData, CloudOptions } from './tag-cloud-module';
+import { CloudData, CloudOptions } from './tag-cloud-module/tag-cloud.interfaces';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
