@@ -1,6 +1,6 @@
 <h1>AngularTagCloudModule - Demopage</h1>
 
-<mat-accordion>
+<mat-accordion class="headers-align">
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -15,15 +15,38 @@
     This exaple passes TagCludData into the [data]-property. [width] and [height] are set to a value which is interpreted as pixel size in this case.
     <angular-tag-cloud
       [data]="data1"
-      [width]="600"
+      [width]="800"
       [height]="350">
     </angular-tag-cloud>
 
-    [data] has  to be an Array of CloudData (interface is exported by the module). CloudData must contain the attribute 'text' which has to be a string. It may contain the following attributes:
-    weight - seting the value for weight which is relative to other elements on a discret scale from 1 to 10<br/>
-    link - setting an URL string which is the target of the link<br/>
-    color - setting a CSS color string<br/>
-    external - Open a link in a new Tab (property link has to be set)<br/>
+    <p>
+      [data] has  to be an Array of CloudData (interface is exported by the module). CloudData must contain the attribute 'text' which has to be a string. It may contain the following attributes:
+    </p>
+
+    <table style="width:100%">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>weight</td>
+        <td>seting the value for weight which is relative to other elements on a discret scale from 1 to 10</td>
+      </tr>
+      <tr>
+        <td>link</td>
+        <td>setting an URL string which is the target of the link</td>
+      </tr>
+      <tr>
+        <td>external</td>
+        <td>Open a link in a new Tab (property link has to be set)</td>
+      </tr>
+      <tr>
+        <td>color</td>
+        <td>setting a CSS color string</td>
+      </tr>
+    </table>
+
+
   </mat-expansion-panel>
 
   <mat-expansion-panel>

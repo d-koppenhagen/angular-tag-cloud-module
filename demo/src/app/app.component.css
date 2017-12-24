@@ -38,3 +38,19 @@ angular-tag-cloud.custom-css > span.w4 { color: #90c5f0; }
 angular-tag-cloud.custom-css > span.w3 { color: #a0ddff; }
 angular-tag-cloud.custom-css > span.w2 { color: #99ccee; }
 angular-tag-cloud.custom-css > span.w1 { color: #aab5f0; }
+
+
+
+
+
+
+/* Angular Material Style */
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
