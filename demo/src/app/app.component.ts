@@ -11,7 +11,7 @@ import 'rxjs/add/observable/of';
 export class AppComponent {
   options: CloudOptions = {
     width : 1,
-    height : 700,
+    height : 300,
     overflow: false
   };
 

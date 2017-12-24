@@ -1,28 +1,132 @@
-<div>
-  <angular-tag-cloud
-    [data]="data1"
-    [width]="options.width"
-    [height]="options.height"
-    [overflow]="options.overflow"
-    (clicked)="log('clicked', $event)"
-    (afterInit)="log('After Init', $event)"
-    (afterChecked)="log('After Checked', $event)">
-  </angular-tag-cloud>
-</div>
+<h1>AngularTagCloudModule - Demopage</h1>
 
-<hr/>
+<mat-accordion>
 
-<div>
-  <angular-tag-cloud
-    class="custom-css"
-    [data]="data2"
-    [width]="options.width"
-    [height]="options.height"
-    [overflow]="options.overflow"
-    (clicked)="log('clicked', $event)"
-    (afterInit)="log('After Init', $event)"
-    (afterChecked)="log('After Checked', $event)">
-  </angular-tag-cloud>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Simple Example
+      </mat-panel-title>
+      <mat-panel-description>
+        Setting up the TagCloud with minimum propertys
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-  <button (click)="newDateFromObservable()">Get new Data from Observable</button>
-</div>
+    This exaple passes TagCludData into the [data]-property. [width] and [height] are set to a value which is interpreted as pixel size in this case.
+    <angular-tag-cloud
+      [data]="data1"
+      [width]="600"
+      [height]="350">
+    </angular-tag-cloud>
+
+    [data] has  to be an Array of CloudData (interface is exported by the module). CloudData must contain the attribute 'text' which has to be a string. It may contain the following attributes:
+    weight - seting the value for weight which is relative to other elements on a discret scale from 1 to 10<br/>
+    link - setting an URL string which is the target of the link<br/>
+    color - setting a CSS color string<br/>
+    external - Open a link in a new Tab (property link has to be set)<br/>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Using relative width
+      </mat-panel-title>
+      <mat-panel-description>
+        Value <= 1 for [width] causes the usage of relative width
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    Setting the [width] to a value which is less or equal to 1 causes the usage of relative with for the TagCloud. E.g. 0.8 means a cloud width of 80%.
+    <angular-tag-cloud
+      [data]="data1"
+      [width]="0.8"
+      [height]="350">
+    </angular-tag-cloud>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Show Overflow
+      </mat-panel-title>
+      <mat-panel-description>
+        Setting [overflow] to 'true'.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    Setting the [overflow] to 'true' causes that if words are shown party even if they don't fit into the container.
+    <angular-tag-cloud
+      [data]="data1"
+      [width]="600"
+      [overflow]="true"
+      [height]="200">
+    </angular-tag-cloud>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Catch &amp; handle events
+      </mat-panel-title>
+      <mat-panel-description>
+        Use (clicked), (afterInit) and (afterChecked)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    You can catch and handle (clicked), (afterInit) and (afterChecked) events which are fired by the TagCloudComponent.
+    The (clicked) event returns the element of type CloudData that you clicked on.
+    <angular-tag-cloud
+      [data]="data1"
+      [width]="options.width"
+      [height]="options.height"
+      (clicked)="log('clicked', $event)"
+      (afterInit)="log('After Init', $event)"
+      (afterChecked)="log('After Checked', $event)">
+    </angular-tag-cloud>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Use Custome CSS
+      </mat-panel-title>
+      <mat-panel-description>
+        Use a custom Stylesheet
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <angular-tag-cloud
+      class="custom-css"
+      [data]="data2"
+      [width]="options.width"
+      [height]="options.height"
+      [overflow]="options.overflow">
+    </angular-tag-cloud>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Update Data from Observable
+      </mat-panel-title>
+      <mat-panel-description>
+        Update the CloudData
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <angular-tag-cloud
+      [data]="data2"
+      [width]="options.width"
+      [height]="options.height">
+    </angular-tag-cloud>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="newDateFromObservable()">
+        Get new Data from Observable
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
