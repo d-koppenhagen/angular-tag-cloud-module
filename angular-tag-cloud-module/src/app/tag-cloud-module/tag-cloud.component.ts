@@ -1,6 +1,5 @@
 import { Component,
          OnChanges,
-         OnInit,
          AfterContentInit,
          AfterContentChecked,
          Input,
@@ -63,7 +62,7 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
     :host /deep/ span { padding: 0; }
   `]
 })
-export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked {
+export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
   @Input() width = 500;
   @Input() height = 300;
@@ -87,6 +86,16 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    // check if data is not null or empty
+    if (!this.data) {
+      console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
+      return;
+    }
+    if (this.data.length === 0) {
+      console.log('angular-tag-cloud: Empty dataset');
+      return;
+    }
+
     // values changed, reset cloud
     this.el.nativeElement.innerHTML = '';
 
@@ -120,16 +129,6 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
     this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
-  }
-
-  ngOnInit() {
-    if (!this.data) {
-      console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
-      return;
-    }
-
-    this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
-    this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
   }
 
   ngAfterContentInit() {
