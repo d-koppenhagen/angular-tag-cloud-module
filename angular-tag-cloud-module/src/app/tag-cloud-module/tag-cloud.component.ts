@@ -65,10 +65,10 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 })
 export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
-  @Input() width: number;
-  @Input() height: number;
-  @Input() overflow: boolean;
-  @Input() strict: boolean;
+  @Input() width = 500;
+  @Input() height = 300;
+  @Input() overflow = true;
+  @Input() strict = false;
 
   @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
   @Output() afterInit: EventEmitter<void> = new EventEmitter();
@@ -127,11 +127,6 @@ export class TagCloudComponent implements OnInit, OnChanges, AfterContentInit, A
       console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
       return;
     }
-
-    if (!this.width) { this.width = 500; }
-    if (!this.height) { this.height = 300; }
-    if (!this.overflow) { this.overflow = true; }
-    if (!this.strict) { this.strict = false; }
 
     this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
     this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
