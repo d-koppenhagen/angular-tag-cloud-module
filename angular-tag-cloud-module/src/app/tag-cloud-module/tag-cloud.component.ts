@@ -10,7 +10,7 @@ import { Component,
          Renderer2,
          SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CloudData, CloudOptions } from './tag-cloud.interfaces';
+import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
 @Component({
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
@@ -64,14 +64,15 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 })
 export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
-  @Input() width = 500;
-  @Input() height = 300;
-  @Input() overflow = true;
-  @Input() strict = false;
+  @Input() width? = 500;
+  @Input() height? = 300;
+  @Input() overflow? = true;
+  @Input() strict? = false;
+  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1 };
 
-  @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
-  @Output() afterInit: EventEmitter<void> = new EventEmitter();
-  @Output() afterChecked: EventEmitter<void> = new EventEmitter();
+  @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
+  @Output() afterInit?: EventEmitter<void> = new EventEmitter();
+  @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
 
   dataArr: CloudData[];
   alreadyPlacedWords: HTMLElement[] = [];
@@ -122,7 +123,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
         x: (width / 2.0),
         y: (this.height / 2.0)
       },
-      overflow: this.overflow
+      overflow: this.overflow,
+      zoomOnHover: this.zoomOnHover
     };
 
     this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
@@ -212,9 +214,24 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.r2.setStyle(wordSpan, 'color', word.color);
     }
 
+    // set zoomOption
+    if (this.zoomOnHover) {
+      if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
+      if (!this.zoomOnHover.scale) { this.zoomOnHover.scale = 1; }
+
+      wordSpan.onmouseover = () => {
+        this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
+        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale})`);
+      };
+
+      wordSpan.onmouseout = () => {
+        this.r2.setStyle(wordSpan, 'transform', `scale(1)`);
+      };
+    }
+
     // set color
     if (word.rotate) {
-      this.r2.setStyle(wordSpan, 'transform', `rotate(${word.rotate}deg)`);
+      this.r2.setStyle(wordSpan, 'transform:hover', `rotate(${word.rotate}deg)`);
     }
 
     // Append href if there's a link alongwith the tag

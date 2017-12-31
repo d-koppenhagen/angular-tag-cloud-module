@@ -114,6 +114,36 @@ export class AppComponent {
 }
 ```
 
+## Example: Zoom elements on hover
+You can specify the `zoomOnHover` property with an object that defines the zoom level (`scale`) and optionally a time for the transition (`transitionTime`):
+
+```js
+import { Component } from '@angular/core';
+import { CloudData, ZoomOnHoverOptions } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data" [zoomOnHover]="zoomOnHoverOptions"></angular-tag-cloud>
+  `
+})
+export class AppComponent {
+  zoomOnHoverOptions: ZoomOnHoverOptions = {
+    scale: 1.3 // Elements will become 130 % of current zize on hover
+    transitionTime: 1.2 // it will take 1.2 seconds until the zoom level defined in scale property has been reached
+  };
+
+  data: CloudData[] = [
+    { text: 'weight-5', weight: 5 }
+    { text: 'weight-7', weight: 7 }
+    { text: 'weight-9', weight: 9 }
+    // ...
+  ];
+}
+```
+
 ## Example: Changing Data after initializing
 If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `CloudData[]` into the component so that it can detect the changes:
 
@@ -223,6 +253,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `height`         | number             | 300            | no
 | `overflow`       | boolean            | true           | no
 | `strict`         | boolean            | false          | no
+| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0 }` | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 
@@ -235,6 +266,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `link`     | string          |                                            | no
 | `external` | boolean         | false (only has relevance if link was set) | no
 | `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
+| `rotate`   | number          | 0                                          | no
 
  Also the element can have the following output:
 

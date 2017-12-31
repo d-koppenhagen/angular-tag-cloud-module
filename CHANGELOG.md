@@ -1,3 +1,7 @@
+## 2.3.0
+### Features
+* Adds a feature for zoom CloudData elements on hover [ #10 ]
+
 ## 2.2.0
 ### Features
 * Add attribute for rotating CloudData elements [ #11 ]

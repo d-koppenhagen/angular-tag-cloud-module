@@ -12,7 +12,11 @@ export class AppComponent {
   options: CloudOptions = {
     width : 0.8,
     height : 400,
-    overflow: false
+    overflow: false,
+    zoomOnHover: {
+      scale: 1.3,
+      transitionTime: 1.2
+    }
   };
 
   data1: CloudData[] = this._randomData(30);

@@ -17,4 +17,10 @@ export interface CloudOptions {
     y: number;
   };
   overflow?: boolean;
+  zoomOnHover?: ZoomOnHoverOptions;
+}
+
+export interface ZoomOnHoverOptions {
+  scale: number;
+  transitionTime?: number;
 }

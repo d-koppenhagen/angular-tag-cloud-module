@@ -130,6 +130,26 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
+        Zoom words on hover
+      </mat-panel-title>
+      <mat-panel-description>
+        Set the attribute 'zoomOnHover' of type `ZoomOnHoverOptions` zoom elements on hover.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    You can set the attribute '[zoomOnHover]' with an Object of type 'ZoomOnHoverOptions'.
+    <angular-tag-cloud
+      [data]="dataRotate"
+      [width]="options.width"
+      [height]="options.height"
+      [zoomOnHover]="options.zoomOnHover"
+      [overflow]="false">
+    </angular-tag-cloud>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
         Use Custome CSS
       </mat-panel-title>
       <mat-panel-description>

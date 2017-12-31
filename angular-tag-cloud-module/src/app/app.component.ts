@@ -13,6 +13,10 @@ export class AppComponent {
     width : 1,
     height : 400,
     overflow: false,
+    zoomOnHover: {
+      scale: 1.2,
+      transitionTime: 0.3
+    }
   };
 
   data: CloudData[] = this._randomData(50);
