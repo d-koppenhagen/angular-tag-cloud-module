@@ -17,6 +17,7 @@ export class AppComponent {
 
   data1: CloudData[] = this._randomData(30);
   data2: CloudData[] = this._randomData(40);
+  dataRotate: CloudData[] = this._randomData(20, true);
 
   newDateFromObservable() {
     const changedData$: Observable<CloudData[]> = Observable.of(this._randomData());
@@ -27,7 +28,7 @@ export class AppComponent {
     console.log(eventType, e);
   }
 
-  private _randomData(cnt?: number): CloudData[] {
+  private _randomData(cnt?: number, rotate?: boolean): CloudData[] {
     if (!cnt) { cnt = 20; }
 
     const cd: CloudData[] = [];
@@ -38,6 +39,7 @@ export class AppComponent {
       let external: boolean;
       let weight = 5;
       let text = '';
+      let r = 0;
 
       // randomly set link attribute and external
       if (Math.random() >= 0.5) {
@@ -48,6 +50,12 @@ export class AppComponent {
       // randomly set color attribute
       if (Math.random() >= 0.5) {
         color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      }
+
+      // randomly rotate some elements (less probability)
+      if ((Math.random() >= 0.7) && rotate) {
+        const plusMinus = Math.random() >= 0.5 ? '' : '-';
+        r = Math.floor(Math.random() * Number(`${plusMinus}20`) + 1);
       }
 
       // set random weight
@@ -63,7 +71,8 @@ export class AppComponent {
         weight: weight,
         color: color,
         link: link,
-        external: external
+        external: external,
+        rotate: r
       };
 
       cd.push(el);

@@ -4,6 +4,7 @@ export interface CloudData {
   link?: string;
   external?: boolean;
   color?: string;
+  rotate?: number;
 }
 
 export interface CloudOptions {

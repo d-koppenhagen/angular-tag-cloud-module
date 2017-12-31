@@ -41,11 +41,18 @@ export class AppComponent {
       let external: boolean;
       let weight = 5;
       let text = '';
+      let rotate = 0;
 
       // randomly set link attribute and external
       if (Math.random() >= 0.5) {
         link = 'http://example.org';
         if (Math.random() >= 0.5) { external = true; }
+      }
+
+      // randomly rotate some elements (less probability)
+      if (Math.random() >= 0.8) {
+        const plusMinus = Math.random() >= 0.5 ? '' : '-';
+        rotate = Math.floor(Math.random() * Number(`${plusMinus}20`) + 1);
       }
 
       // randomly set color attribute
@@ -66,7 +73,8 @@ export class AppComponent {
         weight: weight,
         color: color,
         link: link,
-        external: external
+        external: external,
+        rotate: rotate
       };
 
       cd.push(el);

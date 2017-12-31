@@ -111,6 +111,25 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
+        Rotate some words
+      </mat-panel-title>
+      <mat-panel-description>
+        Set the attribute 'rotate' for an CloudData element to a deg value for rotation
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    You can set the attribute 'rotate' for an CloudData element to a deg value for rotation to rotate an element by the given deg value.
+    <angular-tag-cloud
+      [data]="dataRotate"
+      [width]="options.width"
+      [height]="options.height"
+      [overflow]="false">
+    </angular-tag-cloud>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
         Use Custome CSS
       </mat-panel-title>
       <mat-panel-description>

@@ -88,6 +88,32 @@ export class AppComponent {
 
 Check out the `demo`-Folder for a complete example
 
+## Example: Rotate some elements
+If you want to rotate some CloudData elements, you can specify a numeric value for rotation within the `rotate`-Attribute:
+
+```js
+import { Component } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data"></angular-tag-cloud>
+  `
+})
+export class AppComponent {
+
+  data: CloudData[] = [
+    { text: 'weight-5-rotate(+10)', weight: 5, rotate: 10 }
+    { text: 'weight-7-rotate(-20)', weight: 7, rotate: -20 }
+    { text: 'weight-9-rotate(+35)', weight: 9, rotate: 35 }
+    // ...
+  ];
+}
+```
+
 ## Example: Changing Data after initializing
 If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `CloudData[]` into the component so that it can detect the changes:
 
