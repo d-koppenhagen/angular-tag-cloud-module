@@ -1,6 +1,7 @@
-# A Tag Cloud Module For Angular (>=5.0.0)
+# angular-tag-cloud-module
 [![npm](https://img.shields.io/npm/v/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/l/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
+[![npm](https://img.shields.io/badge/Required%20Angular%20Version-%3E%3D5.0.0-blue.svg)](https://github.com/angular/angular/releases/tag/5.0.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
