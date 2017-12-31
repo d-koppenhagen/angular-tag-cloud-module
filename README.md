@@ -1,5 +1,8 @@
 # A Tag Cloud Module For Angular (>=5.0.0)
-[![NPM version][npm-image]][npm-url]
+[![NPM version](https://badge.fury.io/js/angular-tag-cloud-module.svg)](https://npmjs.org/package/angular-tag-cloud-module)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 This angular module contains a component which generates tag clouds.
 he module requires a peer dependency to angular/core >= Version 5.0.0.
@@ -212,5 +215,3 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 For development see [angular-tag-cloud-module/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/angular-tag-cloud-module/README.dev.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"
-[npm-url]: https://npmjs.org/package/angular-tag-cloud-module
-[npm-image]: https://badge.fury.io/js/angular-tag-cloud-module.svg
