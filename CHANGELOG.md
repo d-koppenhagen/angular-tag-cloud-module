@@ -1,3 +1,7 @@
+## 2.1.6
+## Fixes
+* fixes bug within default values ([a5aac48](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/a5aac4858b6bd4770c9b99073d0018b4418430b8))
+
 ## 2.1.5-prod-fix.1
 * updates `ng-packagr` (related to [ #21 ])
 

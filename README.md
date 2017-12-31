@@ -13,7 +13,7 @@ This angular module contains a component which generates tag clouds.
 he module requires a peer dependency to angular/core >= Version 5.0.0.
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
 
-![alt text][logo]
+![TagCloud][logo]
 
 # Install
 
@@ -184,6 +184,7 @@ export class AppComponent {
 
 ## Using a custom Stylesheet
 You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
+![TagCloud][logo]
 
 # Options
 The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
@@ -219,4 +220,5 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 # Development
 For development see [angular-tag-cloud-module/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/angular-tag-cloud-module/README.dev.md)
 
-[logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "Tag Cloud Preview"
+[logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "TagCloud"
+[logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud2.png "TagCloud with custom Style"

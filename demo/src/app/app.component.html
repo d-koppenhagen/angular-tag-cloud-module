@@ -70,19 +70,19 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Show Overflow
+        No overflow
       </mat-panel-title>
       <mat-panel-description>
-        Setting [overflow] to 'true'.
+        Setting [overflow] to 'false'.
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    Setting the [overflow] to 'true' causes that if words are shown party even if they don't fit into the container.
+    Setting the [overflow] to 'false' causes that if words are just show if they fit into the container.
     <angular-tag-cloud
       [data]="data1"
-      [width]="600"
-      [overflow]="true"
-      [height]="200">
+      [width]="1100"
+      [overflow]="false"
+      [height]="350">
     </angular-tag-cloud>
   </mat-expansion-panel>
 
