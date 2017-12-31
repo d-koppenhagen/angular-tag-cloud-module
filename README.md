@@ -1,8 +1,13 @@
 # A Tag Cloud Module For Angular (>=5.0.0)
-[![NPM version](https://badge.fury.io/js/angular-tag-cloud-module.svg)](https://npmjs.org/package/angular-tag-cloud-module)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![npm](https://img.shields.io/npm/v/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
+[![npm](https://img.shields.io/npm/l/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+
+[![npm](https://img.shields.io/npm/dw/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
+[![npm](https://img.shields.io/npm/dm/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
+[![npm](https://img.shields.io/npm/dy/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
+[![npm](https://img.shields.io/npm/dt/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 
 This angular module contains a component which generates tag clouds.
 he module requires a peer dependency to angular/core >= Version 5.0.0.
