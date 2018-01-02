@@ -214,6 +214,14 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.r2.setStyle(wordSpan, 'color', word.color);
     }
 
+    let transformString = '';
+
+    // set color
+    if (word.rotate) {
+      transformString = `rotate(${word.rotate}deg)`;
+      this.r2.setStyle(wordSpan, 'transform', transformString);
+    }
+
     // set zoomOption
     if (this.zoomOnHover && this.zoomOnHover.scale !== 1) {
       if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
@@ -221,17 +229,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
       wordSpan.onmouseover = () => {
         this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
-        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale})`);
+        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale}) ${transformString}`);
       };
 
       wordSpan.onmouseout = () => {
-        this.r2.setStyle(wordSpan, 'transform', `scale(1)`);
+        this.r2.setStyle(wordSpan, 'transform', `scale(1) ${transformString}`);
       };
-    }
-
-    // set color
-    if (word.rotate) {
-      this.r2.setStyle(wordSpan, 'transform', `rotate(${word.rotate}deg)`);
     }
 
     // Append href if there's a link alongwith the tag
