@@ -1,4 +1,7 @@
-## 2.3.2
+## 2.4.0
+### Features
+* Adds the option to zoom with a delay
+
 ### Fixes
 * keep word rotation if set and zoom is activated
 
