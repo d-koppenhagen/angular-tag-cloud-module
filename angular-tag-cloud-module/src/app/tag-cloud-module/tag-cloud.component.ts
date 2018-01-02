@@ -151,7 +151,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // Helper function to test if an element overlaps others
-  hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]) {
+  hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
     for (let i = 0; i < otherEl.length; i++) {
       if (this.overlapping(currentEl, otherEl[i])) { return true; }
@@ -160,7 +160,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // Pairwise overlap detection
-  overlapping(a: HTMLElement, b: HTMLElement) {
+  overlapping(a: HTMLElement, b: HTMLElement): boolean {
     return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
             Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
     ? true : false;
