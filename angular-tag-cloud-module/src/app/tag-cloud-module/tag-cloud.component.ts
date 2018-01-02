@@ -215,7 +215,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     }
 
     // set zoomOption
-    if (this.zoomOnHover) {
+    if (this.zoomOnHover && this.zoomOnHover.scale !== 1) {
       if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
       if (!this.zoomOnHover.scale) { this.zoomOnHover.scale = 1; }
 
