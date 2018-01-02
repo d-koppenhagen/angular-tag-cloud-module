@@ -1,6 +1,7 @@
 ## 2.4.0
 ### Features
 * Adds the option to zoom with a delay
+* New Event `dataChanges`
 
 ### Fixes
 * keep word rotation if set and zoom is activated

@@ -26,6 +26,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
+  @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
   @Output() afterInit?: EventEmitter<void> = new EventEmitter();
   @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
 
@@ -42,6 +43,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.dataChanges.emit(changes);
+
     // check if data is not null or empty
     if (!this.data) {
       console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
@@ -55,7 +58,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // values changed, reset cloud
     this.el.nativeElement.innerHTML = '';
 
-    // set value changes8
+    // set value changes
     if (changes['data']) {
       this.dataArr = changes['data'].currentValue;
     }

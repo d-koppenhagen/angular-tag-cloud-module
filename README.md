@@ -274,6 +274,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | Input           | Event Return Type  | default value  | mandatory | Description
 | --------------- | ------------------ | -------------- | ----------| ------------
 | `clicked`       | `CloudData`        | -              | no        | Returns the clicked `CloudData`-Object
+| `dataChanges`   | `SimpleChanges` from `@angular/common`  | -              | no        | Returns an `SimpleChanges`-Object which gives you access to the previous and current values
 | `afterInit`     | -                  | -              | no        | Fires after the View was initilized
 | `afterChecked`  | -                  | -              | no        | Fires after the View was checked
 

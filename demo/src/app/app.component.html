@@ -96,13 +96,15 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    You can catch and handle (clicked), (afterInit) and (afterChecked) events which are fired by the TagCloudComponent.
+    You can catch and handle (clicked), (dataChanges), (afterInit) and (afterChecked) events which are fired by the TagCloudComponent.
     The (clicked) event returns the element of type CloudData that you clicked on.
+    The (dataChanges) object returns an object of type SimpleChanges (interface provided by @angular/core). You have access to the previous and current values.
     <angular-tag-cloud
       [data]="data1"
       [width]="options.width"
       [height]="options.height"
       (clicked)="log('clicked', $event)"
+      (dataChanges)="log('dataChanges', $event)"
       (afterInit)="log('After Init', $event)"
       (afterChecked)="log('After Checked', $event)">
     </angular-tag-cloud>

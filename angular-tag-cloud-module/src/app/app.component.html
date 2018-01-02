@@ -6,6 +6,7 @@
     [overflow]="options.overflow"
     [zoomOnHover]="options.zoomOnHover"
     (clicked)="log('clicked', $event)"
+    (dataChanges)="log('dataChanges', $event)"
     (afterInit)="log('After Init', $event)"
     (afterChecked)="log('After Checked', $event)">
   </angular-tag-cloud>
