@@ -1,3 +1,7 @@
+## 2.3.2
+### Fixes
+* keep word rotation if set and zoom is activated
+
 ## 2.3.1
 ### Fixes
 * rotate words not just on hover
