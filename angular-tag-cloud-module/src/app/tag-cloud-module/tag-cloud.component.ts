@@ -15,52 +15,7 @@ import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfa
 @Component({
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
-  styles: [`
-    /* fonts */
-    :host {
-      font-family: "Helvetica", "Arial", sans-serif;
-      font-size: 10px;
-      line-height: normal;
-    }
-    :host /deep/ a:host {
-      font-size: inherit;
-      text-decoration: none;
-    }
-    :host /deep/ span.w10 { font-size: 550%; }
-    :host /deep/ span.w9 { font-size: 500%; }
-    :host /deep/ span.w8 { font-size: 450%; }
-    :host /deep/ span.w7 { font-size: 400%; }
-    :host /deep/ span.w6 { font-size: 350%; }
-    :host /deep/ span.w5 { font-size: 300%; }
-    :host /deep/ span.w4 { font-size: 250%; }
-    :host /deep/ span.w3 { font-size: 200%; }
-    :host /deep/ span.w2 { font-size: 150%; }
-    :host /deep/ span.w1 { font-size: 100%; }
-
-    /* colors */
-    :host /deep/ a { color: inherit; }
-    :host /deep/ a:hover { color: #0df; }
-    :host /deep/ a:hover { color: #0cf; }
-    :host /deep/ span.w10 { color: #0cf; }
-    :host /deep/ span.w9 { color: #0cf; }
-    :host /deep/ span.w8 { color: #0cf; }
-    :host /deep/ span.w7 { color: #39d; }
-    :host /deep/ span.w6 { color: #90c5f0; }
-    :host /deep/ span.w5 { color: #90a0dd; }
-    :host /deep/ span.w4 { color: #90c5f0; }
-    :host /deep/ span.w3 { color: #a0ddff; }
-    :host /deep/ span.w2 { color: #99ccee; }
-    :host /deep/ span.w1 { color: #aab5f0; }
-
-    /* layout */
-    :host {
-      color: #09f;
-      overflow: hidden;
-      position: relative;
-      display: block;
-    }
-    :host /deep/ span { padding: 0; }
-  `]
+  styleUrls: ['./tag-cloud.component.css']
 })
 export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
