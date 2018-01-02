@@ -15,7 +15,8 @@ export class AppComponent {
     overflow: false,
     zoomOnHover: {
       scale: 1.2,
-      transitionTime: 0.3
+      transitionTime: 0.3,
+      delay: .3
     }
   };
 

@@ -23,4 +23,5 @@ export interface CloudOptions {
 export interface ZoomOnHoverOptions {
   scale: number;
   transitionTime?: number;
+  delay?: number;
 }

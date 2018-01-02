@@ -131,8 +131,9 @@ import 'rxjs/add/observable/of';
 })
 export class AppComponent {
   zoomOnHoverOptions: ZoomOnHoverOptions = {
-    scale: 1.3 // Elements will become 130 % of current zize on hover
-    transitionTime: 1.2 // it will take 1.2 seconds until the zoom level defined in scale property has been reached
+    scale: 1.3, // Elements will become 130 % of current zize on hover
+    transitionTime: 1.2, // it will take 1.2 seconds until the zoom level defined in scale property has been reached
+    delay: 0.8 // Zoom will take affect after 0.8 seconds
   };
 
   data: CloudData[] = [
@@ -253,7 +254,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `height`         | number             | 300            | no
 | `overflow`       | boolean            | true           | no
 | `strict`         | boolean            | false          | no
-| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0 }` | no
+| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0 }` | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 

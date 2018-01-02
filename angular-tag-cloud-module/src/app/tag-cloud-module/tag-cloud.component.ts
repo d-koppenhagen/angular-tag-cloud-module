@@ -68,7 +68,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() height? = 300;
   @Input() overflow? = true;
   @Input() strict? = false;
-  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1 };
+  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() afterInit?: EventEmitter<void> = new EventEmitter();
@@ -230,6 +230,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordSpan.onmouseover = () => {
         this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
         this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale}) ${transformString}`);
+        this.r2.setStyle(wordSpan, 'transition-delay', `${this.zoomOnHover.delay}s`);
       };
 
       wordSpan.onmouseout = () => {
