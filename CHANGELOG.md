@@ -1,3 +1,7 @@
+## 2.3.1
+### Fixes
+* rotate words not just on hover
+
 ## 2.3.0
 ### Features
 * Adds a feature for zoom CloudData elements on hover [ #10 ]

@@ -231,7 +231,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     // set color
     if (word.rotate) {
-      this.r2.setStyle(wordSpan, 'transform:hover', `rotate(${word.rotate}deg)`);
+      this.r2.setStyle(wordSpan, 'transform', `rotate(${word.rotate}deg)`);
     }
 
     // Append href if there's a link alongwith the tag
