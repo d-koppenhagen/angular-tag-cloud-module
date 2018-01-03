@@ -6,10 +6,8 @@ import { Component,
          Output,
          EventEmitter,
          ElementRef,
-         Renderer,
          Renderer2,
          SimpleChanges } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
 @Component({
@@ -37,9 +35,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer,
-    private r2: Renderer2,
-    private sanitizer: DomSanitizer
+    private r2: Renderer2
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
