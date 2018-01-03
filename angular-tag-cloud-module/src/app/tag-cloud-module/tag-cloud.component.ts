@@ -21,7 +21,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() height? = 300;
   @Input() overflow? = true;
   @Input() strict? = false;
-  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
+  @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
