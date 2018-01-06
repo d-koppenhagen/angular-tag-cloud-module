@@ -10,17 +10,13 @@ import { Component,
          SimpleChanges } from '@angular/core';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
-interface CloudOptionsInternal {
+interface CloudOptionsInternal extends CloudOptions {
   step: number;
   aspectRatio: number;
-  width: number;
-  height: number;
   center: {
     x: number;
     y: number;
   };
-  overflow: boolean;
-  zoomOnHover: ZoomOnHoverOptions;
 }
 
 @Component({
