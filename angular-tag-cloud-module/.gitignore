@@ -44,3 +44,6 @@ Thumbs.db
 # ignore copied files
 README.md
 CHANGELOG.md
+
+# Documentation
+documentation/**/*

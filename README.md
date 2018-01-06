@@ -30,6 +30,9 @@ Or if you use yarn:
 yarn add angular-tag-cloud-module
 ```
 
+# Full Documentation
+For having a look at the full documentation navigate in the directory `angular-tag-cloud-module` and run `npm run doc` via console (probably you have to install the nodejs dependencies before: `npm install`).
+
 # Usage
 
 1. Import the module into your Angular-NgModule:
