@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/app/tag-cloud-module/*"
+  ],
+  "exclude": [
+    "./*"
+  ]
+}

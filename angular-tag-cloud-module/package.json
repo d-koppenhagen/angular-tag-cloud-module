@@ -16,7 +16,7 @@
     "rmreadme": "rimraf README.md && rimraf CHANGELOG.md",
     "copyreadme": "copyfiles -f ../README.md . && copyfiles -f ../CHANGELOG.md .",
     "packagr": "npm run copyreadme && ng-packagr -p ng-package.json && npm run rmreadme",
-    "compodoc": "compodoc -p src/tsconfig.tagCloud.json",
+    "compodoc": "compodoc -p tsconfig.compodoc.json",
     "doc": "npm run compodoc && compodoc -s"
   },
   "private": false,
