@@ -6,7 +6,11 @@
     "module": "es2015",
     "types": []
   },
+  "include": [
+    "app/tag-cloud-module/*"
+  ],
   "exclude": [
-    "app/app.*"
+    "../*",
+    "./*"
   ]
 }
