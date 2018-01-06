@@ -39,21 +39,42 @@ export interface CloudData {
   rotate?: number;
 }
 
+/**
+ * Specify options for the whole TagCloud
+ */
 export interface CloudOptions {
-  step?: number;
-  aspectRatio?: number;
+  /**
+   * Defines the width of the TacCloud container
+   */
   width?: number;
+  /**
+   * Defines the height of the TacCloud container
+   */
   height?: number;
-  center?: {
-    x: number;
-    y: number;
-  };
+  /**
+   * Defines weather elements that does not fit in the container should be hidden or just cutted at the container borders
+   */
   overflow?: boolean;
+  /**
+   * Define Option which will take effect when hovering with the cursor over the elements
+   */
   zoomOnHover?: ZoomOnHoverOptions;
 }
 
+/**
+ * Specify Options for elements that will be hovered by the cursor
+ */
 export interface ZoomOnHoverOptions {
+  /**
+   * Set the scale for the zoom
+   */
   scale: number;
+  /**
+   * Set optionally a time value for the transition from the current element size to this one defines in `scale`.
+   */
   transitionTime?: number;
+  /**
+   * Set optionally a delay (in seconds). Setting this e.g. to `2` will have the effect that the zoom will appear with 2s delay time.
+   */
   delay?: number;
 }

@@ -10,6 +10,19 @@ import { Component,
          SimpleChanges } from '@angular/core';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
+interface CloudOptionsInternal {
+  step: number;
+  aspectRatio: number;
+  width: number;
+  height: number;
+  center: {
+    x: number;
+    y: number;
+  };
+  overflow: boolean;
+  zoomOnHover: ZoomOnHoverOptions;
+}
+
 @Component({
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
@@ -31,7 +44,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   dataArr: CloudData[];
   alreadyPlacedWords: HTMLElement[] = [];
 
-  options: CloudOptions;
+  options: CloudOptionsInternal;
 
   constructor(
     private el: ElementRef,
@@ -69,8 +82,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     // set options
     this.options = {
-      step : 2.0,
-      aspectRatio : (width / this.height),
+      step: 2.0,
+      aspectRatio: (width / this.height),
       width: width,
       height: this.height,
       center: {
