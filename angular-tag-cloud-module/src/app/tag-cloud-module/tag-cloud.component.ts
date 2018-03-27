@@ -12,6 +12,10 @@ import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfa
 
 interface CloudOptionsInternal extends CloudOptions {
   step: number;
+
+  /**
+   * setting the aspect ratio. This value is calculated by the given width and height
+   */
   aspectRatio: number;
   center: {
     x: number;
