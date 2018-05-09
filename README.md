@@ -248,6 +248,36 @@ export class AppComponent {
 }
 ```
 
+## Example: Redraw the cloud
+You can trigger the tag cloud to be redrawn by running the method `reDraw()`.
+This can be useful if e.g. the boundaries of the upper container are changing and you wanna re-order the words to fit into the container.
+
+```js
+import { Component, ViewChild } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+import { TagCloudComponent } from './tag-cloud-module/tag-cloud.component';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data"></angular-tag-cloud>
+    <button (click)="reDraw()">Re-draw</button>
+  `
+})
+export class AppComponent {
+  @ViewChild(TagCloudComponent) tagCloudComponent: TagCloudComponent;
+
+  data: CloudData[] = [
+    { text: 'Weight-8', weight: 8 },
+    // ...
+  ];
+
+  reDraw() {
+    this.tagCloudComponent.reDraw();
+  }
+}
+```
+
 ## Using a custom Stylesheet
 You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
 ![TagCloud with custom stylesheet][logo2]
@@ -285,6 +315,8 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `dataChanges`   | `SimpleChanges` from `@angular/common`  | -              | no        | Returns an `SimpleChanges`-Object which gives you access to the previous and current values
 | `afterInit`     | -                  | -              | no        | Fires after the View was initilized
 | `afterChecked`  | -                  | -              | no        | Fires after the View was checked
+
+You can also call the method `reDraw()` to force the cloud data to be re-drawn (`@ViewChild(TagCloudComponent) child: TagCloudComponent; child.redraw()`).
 
 # Development
 For development see [angular-tag-cloud-module/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/angular-tag-cloud-module/README.dev.md)

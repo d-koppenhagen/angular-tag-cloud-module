@@ -192,5 +192,28 @@
     </mat-action-row>
   </mat-expansion-panel>
 
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Re-draw the cloud
+      </mat-panel-title>
+      <mat-panel-description>
+        Trigger the `reDraw` method in order to force the cloud to initialize new
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <angular-tag-cloud
+      [data]="data2"
+      [width]="options.width"
+      [height]="options.height">
+    </angular-tag-cloud>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="reDraw()">
+        Re-draw the cloud
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
 </mat-accordion>
 

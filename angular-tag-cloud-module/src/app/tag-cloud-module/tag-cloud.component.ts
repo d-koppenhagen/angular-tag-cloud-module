@@ -41,10 +41,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Output() afterInit?: EventEmitter<void> = new EventEmitter();
   @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
 
-  dataArr: CloudData[];
-  alreadyPlacedWords: HTMLElement[] = [];
+  private _dataArr: CloudData[];
+  private _alreadyPlacedWords: HTMLElement[] = [];
 
-  options: CloudOptionsInternal;
+  private _options: CloudOptionsInternal;
 
   constructor(
     private el: ElementRef,
@@ -52,8 +52,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.reDraw(changes);
+  }
+
+  reDraw(changes?: SimpleChanges) {
     this.dataChanges.emit(changes);
-    this.alreadyPlacedWords = [];
+    this._alreadyPlacedWords = [];
 
 
     // check if data is not null or empty
@@ -70,8 +74,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.el.nativeElement.innerHTML = '';
 
     // set value changes
-    if (changes['data']) {
-      this.dataArr = changes['data'].currentValue;
+    if (changes && changes['data']) {
+      this._dataArr = changes['data'].currentValue;
     }
 
     let width = this.width;
@@ -83,7 +87,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     }
 
     // set options
-    this.options = {
+    this._options = {
       step: 2.0,
       aspectRatio: (width / this.height),
       width: width,
@@ -96,11 +100,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       zoomOnHover: this.zoomOnHover
     };
 
-    this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
-    this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'width', this._options.width + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'height', this._options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
   }
+
 
   ngAfterContentInit() {
     this.afterInit.emit();
@@ -111,10 +116,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   drawWordCloud () {
-    // Sort this.dataArr from the word with the highest weight to the one with the lowest
-    this.dataArr.sort((a, b) => b.weight - a.weight);
+    // Sort this._dataArr from the word with the highest weight to the one with the lowest
+    this._dataArr.sort((a, b) => b.weight - a.weight);
 
-    this.dataArr.forEach((elem, index) => {
+    this._dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
   }
@@ -144,11 +149,11 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
         wordSpan: HTMLElement;
 
     // Check if min(weight) > max(weight) otherwise use default
-    if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
+    if (this._dataArr[0].weight > this._dataArr[this._dataArr.length - 1].weight) {
       // check if strict mode is active
       if (!this.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
-        weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
-                  (this.dataArr[0].weight - this.dataArr[this.dataArr.length - 1].weight) * 9.0) + 1;
+        weight = Math.round((word.weight - this._dataArr[this._dataArr.length - 1].weight) /
+                  (this._dataArr[0].weight - this._dataArr[this._dataArr.length - 1].weight) * 9.0) + 1;
       } else { // use given value for weigth directly
         // fallback to 10
         if (word.weight > 10) {
@@ -225,8 +230,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     const width = wordSpan.offsetWidth;
     const height = wordSpan.offsetHeight;
-    let left = this.options.center.x;
-    let top = this.options.center.y;
+    let left = this._options.center.x;
+    let top = this._options.center.y;
 
     // Save a reference to the style property, for better performance
     const wordStyle = wordSpan.style;
@@ -238,12 +243,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
 
 
-    while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
-      radius += this.options.step;
-      angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
+    while (this.hitTest(wordSpan, this._alreadyPlacedWords)) {
+      radius += this._options.step;
+      angle += (index % 2 === 0 ? 1 : -1) * this._options.step;
 
-      left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
-      top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
+      left = this._options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this._options.aspectRatio;
+      top = this._options.center.y + radius * Math.sin(angle) - (height / 2.0);
 
       wordStyle.left = left + 'px';
       wordStyle.top = top + 'px';
@@ -251,15 +256,15 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     // Don't render word if part of it would be outside the container
     if (
-      !this.options.overflow &&
-      (left < 0 || top < 0 || (left + width) > this.options.width ||
-      (top + height) > this.options.height)
+      !this._options.overflow &&
+      (left < 0 || top < 0 || (left + width) > this._options.width ||
+      (top + height) > this._options.height)
     ) {
       wordSpan.remove();
       return;
     }
 
-    this.alreadyPlacedWords.push(wordSpan);
+    this._alreadyPlacedWords.push(wordSpan);
   }
 
 }

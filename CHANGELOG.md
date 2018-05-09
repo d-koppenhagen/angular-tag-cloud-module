@@ -1,3 +1,10 @@
+## 2.5.0
+### Features
+* Adds the option to zoom with a delay
+* New Method `reDraw` (related to [ #26 ])
+### Fixes
+* The browser lags after several data updates (related to [ #28 ])
+
 ## 2.4.0
 ### Features
 * Adds the option to zoom with a delay

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CloudData, CloudOptions } from './tag-cloud-module/tag-cloud.interfaces';
+import { TagCloudComponent } from './tag-cloud-module/tag-cloud.component';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -9,6 +10,8 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild(TagCloudComponent) child: TagCloudComponent;
+
   options: CloudOptions = {
     width : 1,
     height : 400,
@@ -33,6 +36,10 @@ export class AppComponent {
 
   log(eventType: string, e?: CloudData) {
     console.log(eventType, e);
+  }
+
+  reDraw() {
+    this.child.reDraw();
   }
 
   private _randomData(cnt?: number): CloudData[] {
