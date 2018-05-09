@@ -49,6 +49,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataChanges.emit(changes);
+    this.alreadyPlacedWords = [];
+
 
     // check if data is not null or empty
     if (!this.data) {
