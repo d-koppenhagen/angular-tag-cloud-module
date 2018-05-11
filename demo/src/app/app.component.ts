@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { CloudData, CloudOptions, TagCloudComponent } from 'angular-tag-cloud-module';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,7 @@ export class AppComponent {
   dataRotate: CloudData[] = this._randomData(20, true);
 
   newDateFromObservable() {
-    const changedData$: Observable<CloudData[]> = Observable.of(this._randomData());
+    const changedData$: Observable<CloudData[]> = of(this._randomData());
     changedData$.subscribe(res => this.data2 = res);
   }
 
