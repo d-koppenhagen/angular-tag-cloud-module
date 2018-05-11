@@ -59,6 +59,10 @@ export interface CloudOptions {
    * Define Option which will take effect when hovering with the cursor over the elements
    */
   zoomOnHover?: ZoomOnHoverOptions;
+  /**
+   * Enable or disable automatic resize if boundaries are changing
+   */
+  realignOnResize?: boolean;
 }
 
 /**

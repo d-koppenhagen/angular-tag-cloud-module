@@ -20,7 +20,8 @@ export class AppComponent {
       scale: 1.2,
       transitionTime: 0.3,
       delay: .3
-    }
+    },
+    realignOnResize: true
   };
 
   data: CloudData[] = this._randomData(50);

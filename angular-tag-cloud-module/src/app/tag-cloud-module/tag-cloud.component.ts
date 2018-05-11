@@ -7,7 +7,8 @@ import { Component,
          EventEmitter,
          ElementRef,
          Renderer2,
-         SimpleChanges } from '@angular/core';
+         SimpleChanges,
+         HostListener } from '@angular/core';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
 interface CloudOptionsInternal extends CloudOptions {
@@ -35,6 +36,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() overflow? = true;
   @Input() strict? = false;
   @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
+  @Input() realignOnResize? = false;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
@@ -45,11 +47,22 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   private _alreadyPlacedWords: HTMLElement[] = [];
 
   private _options: CloudOptionsInternal;
+  private _timeoutId;
 
   constructor(
     private el: ElementRef,
     private r2: Renderer2
   ) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    window.clearTimeout(this._timeoutId);
+    this._timeoutId = window.setTimeout(() => {
+      if (this.realignOnResize) {
+        this.reDraw();
+      }
+    }, 200);
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     this.reDraw(changes);
@@ -58,7 +71,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   reDraw(changes?: SimpleChanges) {
     this.dataChanges.emit(changes);
     this._alreadyPlacedWords = [];
-
 
     // check if data is not null or empty
     if (!this.data) {

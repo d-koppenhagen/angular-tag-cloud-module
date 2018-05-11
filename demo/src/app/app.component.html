@@ -215,5 +215,24 @@
     </mat-action-row>
   </mat-expansion-panel>
 
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Automatically realign on resize
+      </mat-panel-title>
+      <mat-panel-description>
+        Trigger the `realignOnResize` method automatically when the boundaries of the tag cloud are changing
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <angular-tag-cloud
+      [data]="data2"
+      [width]="options.width"
+      [height]="options.height"
+      [realignOnResize]="true">
+    </angular-tag-cloud>
+
+  </mat-expansion-panel>
+
 </mat-accordion>
 

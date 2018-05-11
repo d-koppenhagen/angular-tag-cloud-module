@@ -293,6 +293,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `overflow`       | boolean            | true           | no
 | `strict`         | boolean            | false          | no
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0 }` | no
+| `realignOnResize`| boolean            | false          | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 

@@ -1,3 +1,7 @@
+## 2.6.0
+### Features
+* auto realign words on resize (`realignOnResize` property)  (related to [ #26 ])
+
 ## 2.5.0
 ### Features
 * Adds the option to zoom with a delay
