@@ -11,7 +11,9 @@
 [![npm](https://img.shields.io/npm/dt/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 
 This angular module contains a component which generates tag clouds.
-he module requires a peer dependency to angular/core >= Version 5.0.0.
+he module requires a peer dependency to angular/core >= Version 6.0.0.
+For working with Angular 5, please use version 2.6.0 by installing via `npm i angular-tag-cloud-module@2.6.0`.
+
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
 
 ![TagCloud][logo]

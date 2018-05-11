@@ -1,3 +1,7 @@
+## 3.0.0
+### Features
+* TagCloudModule is now ready for usage with Angular6 :tada:
+
 ## 2.6.0
 ### Features
 * auto realign words on resize (`realignOnResize` property)  (related to [ #26 ])
