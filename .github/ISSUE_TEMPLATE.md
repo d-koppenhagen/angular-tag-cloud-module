@@ -12,7 +12,8 @@
 <!-- Describe what the behavior would be without the bug. -->
 
 **Reproduction of the problem**
-<!-- If the current behavior is a bug or you can illustrate your feature request better with an example, please provide the steps to reproduce and if possible a minimal demo of the problem via https://plnkr.co or similar. -->
+<!-- If the current behavior is a bug or you can illustrate your feature request better with an example, please provide the steps to reproduce and if possible a minimal demo of the problem via https://stackblitz.com or similar. -->
+You can for this template which already includes some example code: https://stackblitz.com/edit/angular-sjqdjc
 
 **What is the motivation / use case for changing the behavior?**
 <!-- Describe the motivation or the concrete use case -->
