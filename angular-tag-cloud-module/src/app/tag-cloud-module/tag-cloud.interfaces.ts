@@ -63,6 +63,10 @@ export interface CloudOptions {
    * Enable or disable automatic resize if boundaries are changing
    */
   realignOnResize?: boolean;
+  /**
+   * Enable or disable randomly determining an angle when it is not explicitly set
+   */
+  randomizeAngle?: boolean;
 }
 
 /**
