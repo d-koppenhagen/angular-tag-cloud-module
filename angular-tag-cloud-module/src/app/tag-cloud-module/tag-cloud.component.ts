@@ -265,8 +265,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     let left = this._options.center.x;
     let top = this._options.center.y;
 
-//    console.log('before hit test', word.text, 'left', left, 'top', top);
-
     // Save a reference to the style property, for better performance
     const wordStyle = wordSpan.style;
     wordStyle.position = 'absolute';
@@ -287,9 +285,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordStyle.left = left + 'px';
       wordStyle.top = top + 'px';
     }
-
-//    console.log('after hit test', word.text, 'left', left, 'top', top);
-
 
     // Don't render word if part of it would be outside the container
     if (
