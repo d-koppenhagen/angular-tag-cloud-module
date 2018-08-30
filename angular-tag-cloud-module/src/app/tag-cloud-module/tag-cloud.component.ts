@@ -37,6 +37,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() strict? = false;
   @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
   @Input() realignOnResize? = false;
+  @Input() randomizeAngle? = false;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
@@ -127,10 +128,29 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.afterChecked.emit();
   }
 
+  // helper to generate a descriptive string for an entry to use when sorting alphabetically
+  descriptiveEntry(entry: CloudData): string {
+    let description = entry.text;
+    if (entry.color) {
+      description += '-' + entry.color;
+    }
+    if (entry.external) {
+      description += '-' + entry.external;
+    }
+    if (entry.link) {
+      description += '-' + entry.link;
+    }
+    if (entry.rotate) {
+      description += '-' + entry.rotate;
+    }
+    return description;
+  }
+
   drawWordCloud () {
+    // Sort alphabetically to ensure that, all things being equal, words are placed uniformly
+    this._dataArr.sort( (a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
     // Sort this._dataArr from the word with the highest weight to the one with the lowest
     this._dataArr.sort((a, b) => b.weight - a.weight);
-
     this._dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
@@ -155,7 +175,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
   drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
-    let angle = 6.28 * Math.random(),
+    let angle = this.randomizeAngle ? 6.28 * Math.random() : 0,
         radius = 0.0,
         weight = 5,
         wordSpan: HTMLElement;

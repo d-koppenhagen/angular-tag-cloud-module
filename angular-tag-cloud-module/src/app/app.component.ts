@@ -20,6 +20,7 @@ export class AppComponent {
       transitionTime: 0.3,
       delay: .3
     },
+    randomizeAngle: false,
     realignOnResize: true
   };
 

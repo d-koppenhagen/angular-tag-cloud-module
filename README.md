@@ -95,6 +95,7 @@ You can use one of the following HTML-Tags for the tag cloud in your template:
 > In fact passing just one word to the array has the effect that this is relative to other elements. As there aren't any other elements in that case it's result is that the element becomes a container with the class `w5` - right in the middle of the discret scale.
 > So the given value for `weight` is not directly mapped to the CSS-class. For example you can use also a value like `123` or `34` - it will always be mapped to a scale from 1 to 10 relativly to the other array elements.
 > If you don't want that the tag cloud is calculating the values manually, set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
+> If you want the tag cloud to randomly generate an angle for each entry (when it is undefined), set `randomizeAngle` property to `true`.
 
 Check out the `demo`-Folder for a complete example
 
@@ -296,6 +297,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `strict`         | boolean            | false          | no
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0 }` | no
 | `realignOnResize`| boolean            | false          | no
+| `randomizeAngle` | boolean            | false          | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 
