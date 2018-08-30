@@ -78,10 +78,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       console.error('angular-tag-cloud: No data passed. Please pass an Array of CloudData');
       return;
     }
-    if (this.data.length === 0) {
-      console.log('angular-tag-cloud: Empty dataset');
-      return;
-    }
 
     // values changed, reset cloud
     this.el.nativeElement.innerHTML = '';
