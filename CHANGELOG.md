@@ -1,3 +1,10 @@
+## 3.1.0
+### Features
+* Tooltips can be added now. (related to [ #23 ])
+* Support for non radomization of angles when undefined in cloud data entries and added an alphabetical sort of data before sorting by weight to allow for uniform placement of words in the cloud. This can ensure that if a word cloud is updated with the same data the placement of words will not change. Previously, because only sorting by weight, there was some randomness to the word ordering when rendering. (related to [ #31 ]). Thanks @afm497!
+### Fixes
+* Removed check for empty data array that would exit out of drawing tag cloud. (related to [ #36 ]). Thanks @afm497!
+
 ## 3.0.0
 ### Features
 * TagCloudModule is now ready for usage with Angular6 :tada:
