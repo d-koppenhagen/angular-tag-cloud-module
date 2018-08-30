@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^6.1.6",
     "@angular/platform-browser-dynamic": "^6.1.6",
     "@angular/router": "^6.1.6",
-    "angular-tag-cloud-module": ">=3.0.0",
+    "angular-tag-cloud-module": ">=3.1.0",
     "core-js": "^2.5.7",
     "rxjs": "^6.3.0",
     "zone.js": "^0.8.14"

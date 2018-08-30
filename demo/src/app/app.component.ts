@@ -82,7 +82,8 @@ export class AppComponent {
         color: color,
         link: link,
         external: external,
-        rotate: r
+        rotate: r,
+        tooltip: 'tooltip'
       };
 
       cd.push(el);
