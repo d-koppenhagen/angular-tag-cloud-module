@@ -37,6 +37,10 @@ export interface CloudData {
    * Set a value between 1 and 360 degrees to let the word appear rotated
    */
   rotate?: number;
+  /**
+   * Define a tooltip text
+   */
+  tooltip?: string;
 }
 
 /**

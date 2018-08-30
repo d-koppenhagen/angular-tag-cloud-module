@@ -273,7 +273,15 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     wordStyle.left = left + 'px';
     wordStyle.top = top + 'px';
 
-
+    // add tooltip if provided
+    if (word.tooltip) {
+      this.r2.addClass(wordSpan, 'tooltip');
+      const tooltipSpan = this.r2.createElement('span');
+      tooltipSpan.className = 'tooltiptext';
+      const text = this.r2.createText(word.tooltip);
+      tooltipSpan.appendChild(text);
+      wordSpan.appendChild(tooltipSpan);
+    }
 
     while (this.hitTest(wordSpan, this._alreadyPlacedWords)) {
       radius += this._options.step;

@@ -76,13 +76,13 @@ export class AppComponent {
     width : 1000,
     height : 400,
     overflow: false,
-  }
+  };
 
   data: CloudData[] = [
     {text: 'Weight-8-link-color', weight: 8, link: 'https://google.com', color: '#ffaaee'},
-    {text: 'Weight-10-link', weight: 10, link: 'https://google.com'},
+    {text: 'Weight-10-link', weight: 10, link: 'https://google.com', tooltip: 'display a tooltip'},
     // ...
-  ]
+  ];
 }
 ```
 
@@ -311,6 +311,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `external` | boolean         | false (only has relevance if link was set) | no
 | `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
 | `rotate`   | number          | 0                                          | no
+| `tooltip`  | string          |                                            | no
 
  Also the element can have the following output:
 

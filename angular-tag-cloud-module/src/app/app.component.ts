@@ -55,6 +55,7 @@ export class AppComponent {
       let weight = 5;
       let text = '';
       let rotate = 0;
+      let tooltip = '';
 
       // randomly set link attribute and external
       if (Math.random() >= 0.5) {
@@ -81,13 +82,17 @@ export class AppComponent {
       if (link) { text += '-link'; }
       if (external) { text += '-external'; }
 
+      // add a tooltip
+      tooltip = `tooltip`;
+
       const el: CloudData = {
         text: text,
         weight: weight,
         color: color,
         link: link,
         external: external,
-        rotate: rotate
+        rotate: rotate,
+        tooltip: tooltip
       };
 
       cd.push(el);
