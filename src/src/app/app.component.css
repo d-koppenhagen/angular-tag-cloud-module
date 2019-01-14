@@ -1,0 +1,32 @@
+/* General Layout */
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+/* no decoration for links */
+angular-tag-cloud.custom-css ::ng-deep span > a {
+  text-decoration: none;
+}
+ /* font sizes */
+angular-tag-cloud.custom-css ::ng-deep span.w10 { font-size: 550%; }
+angular-tag-cloud.custom-css ::ng-deep span.w9  { font-size: 500%; }
+angular-tag-cloud.custom-css ::ng-deep span.w8  { font-size: 450%; }
+angular-tag-cloud.custom-css ::ng-deep span.w7  { font-size: 400%; }
+angular-tag-cloud.custom-css ::ng-deep span.w6  { font-size: 350%; }
+angular-tag-cloud.custom-css ::ng-deep span.w5  { font-size: 300%; }
+angular-tag-cloud.custom-css ::ng-deep span.w4  { font-size: 250%; }
+angular-tag-cloud.custom-css ::ng-deep span.w3  { font-size: 200%; }
+angular-tag-cloud.custom-css ::ng-deep span.w2  { font-size: 150%; }
+angular-tag-cloud.custom-css ::ng-deep span.w1  { font-size: 100%; }
+
+/* colors */
+angular-tag-cloud.custom-css ::ng-deep a        { color: inherit; }
+angular-tag-cloud.custom-css ::ng-deep a:hover  { color: rgb(255, 255, 255); }
+angular-tag-cloud.custom-css ::ng-deep span.w10 { color: #0cf; }
+angular-tag-cloud.custom-css ::ng-deep span.w9  { color: #fff; }
+angular-tag-cloud.custom-css ::ng-deep span.w8  { color: rgb(255, 0, 195); }
+angular-tag-cloud.custom-css ::ng-deep span.w7  { color: rgb(36, 154, 116); }
+angular-tag-cloud.custom-css ::ng-deep span.w6  { color: #e8f090; }
+angular-tag-cloud.custom-css ::ng-deep span.w5  { color: #c3dd90; }
+angular-tag-cloud.custom-css ::ng-deep span.w4  { color: #f09090; }
+angular-tag-cloud.custom-css ::ng-deep span.w3  { color: #f2ea10; }
+angular-tag-cloud.custom-css ::ng-deep span.w2  { color: #ee99e7; }
+angular-tag-cloud.custom-css ::ng-deep span.w1  { color: #18cb42; }
