@@ -33,7 +33,7 @@ yarn add angular-tag-cloud-module
 ```
 
 # Full Documentation
-For having a look at the full documentation navigate in the directory `angular-tag-cloud-module` and run `npm run doc` via console (probably you have to install the nodejs dependencies before: `npm install`).
+For having a look at the full documentation navigate in the directory `src` and run `npm run doc` via console (probably you have to install the nodejs dependencies before: `npm install`).
 
 # Usage
 
@@ -325,7 +325,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 You can also call the method `reDraw()` to force the cloud data to be re-drawn (`@ViewChild(TagCloudComponent) child: TagCloudComponent; child.redraw()`).
 
 # Development
-For development see [angular-tag-cloud-module/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/angular-tag-cloud-module/README.dev.md)
+For development see [src/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/src/README.dev.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "TagCloud"
 [logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud2.png "TagCloud with custom Style"
