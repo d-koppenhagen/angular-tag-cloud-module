@@ -3,8 +3,9 @@
 
 /* no decoration for links */
 angular-tag-cloud.custom-css ::ng-deep span > a {
-  text-decoration: none;
+  text-decoration: underline;
 }
+
  /* font sizes */
 angular-tag-cloud.custom-css ::ng-deep span.w10 { font-size: 550%; }
 angular-tag-cloud.custom-css ::ng-deep span.w9  { font-size: 500%; }

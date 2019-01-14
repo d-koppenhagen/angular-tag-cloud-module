@@ -18,7 +18,8 @@ export class AppComponent {
     zoomOnHover: {
       scale: 1.2,
       transitionTime: 0.3,
-      delay: .3
+      delay: .3,
+      color: '#aaaaaa'
     },
     randomizeAngle: false,
     realignOnResize: true

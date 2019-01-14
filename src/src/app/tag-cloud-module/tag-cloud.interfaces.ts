@@ -30,7 +30,8 @@ export interface CloudData {
    */
   external?: boolean;
   /**
-   * Specifies a valid CSS color string for colorizing the element
+   * Specifies a valid CSS color string for colorizing the element.
+   * This will override probably your CSS setttings
    */
   color?: string;
   /**
@@ -89,4 +90,9 @@ export interface ZoomOnHoverOptions {
    * Set optionally a delay (in seconds). Setting this e.g. to `2` will have the effect that the zoom will appear with 2s delay time.
    */
   delay?: number;
+  /**
+   * Define a color which will replace the current color when hovering over the item.
+   * This will override probably your CSS setttings
+   */
+  color?: string;
 }

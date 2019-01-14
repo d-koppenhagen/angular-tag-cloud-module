@@ -295,7 +295,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `height`         | number             | 300            | no
 | `overflow`       | boolean            | true           | no
 | `strict`         | boolean            | false          | no
-| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0 }` | no
+| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no
 | `realignOnResize`| boolean            | false          | no
 | `randomizeAngle` | boolean            | false          | no
 

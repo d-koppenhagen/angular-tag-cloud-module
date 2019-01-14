@@ -35,7 +35,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() height? = 300;
   @Input() overflow? = true;
   @Input() strict? = false;
-  @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0 };
+  @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0, color: null };
   @Input() realignOnResize? = false;
   @Input() randomizeAngle? = false;
 
@@ -224,22 +224,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.r2.setStyle(wordSpan, 'transform', transformString);
     }
 
-    // set zoomOption
-    if (this.zoomOnHover && this.zoomOnHover.scale !== 1) {
-      if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
-      if (!this.zoomOnHover.scale) { this.zoomOnHover.scale = 1; }
-
-      wordSpan.onmouseover = () => {
-        this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
-        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale}) ${transformString}`);
-        this.r2.setStyle(wordSpan, 'transition-delay', `${this.zoomOnHover.delay}s`);
-      };
-
-      wordSpan.onmouseout = () => {
-        this.r2.setStyle(wordSpan, 'transform', `scale(1) ${transformString}`);
-      };
-    }
-
     // Append href if there's a link alongwith the tag
     if (word.link) {
       const wordLink = this.r2.createElement('a');
@@ -251,6 +235,30 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
       wordLink.appendChild(node);
       node = wordLink;
+    }
+
+    // set zoomOption
+    if (this.zoomOnHover && this.zoomOnHover.scale !== 1) {
+      if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
+      if (!this.zoomOnHover.scale) { this.zoomOnHover.scale = 1; }
+
+      wordSpan.onmouseover = () => {
+        this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
+        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale}) ${transformString}`);
+        this.r2.setStyle(wordSpan, 'transition-delay', `${this.zoomOnHover.delay}s`);
+        if (this.zoomOnHover.color) {
+          word.link
+            ? this.r2.setStyle(node, 'color', this.zoomOnHover.color)
+            : this.r2.setStyle(wordSpan, 'color', this.zoomOnHover.color);
+        }
+      };
+
+      wordSpan.onmouseout = () => {
+        this.r2.setStyle(wordSpan, 'transform', `scale(1) ${transformString}`);
+        word.link
+          ? this.r2.removeStyle(node, 'color')
+          : this.r2.removeStyle(wordSpan, 'color');
+      };
     }
 
     wordSpan.appendChild(node);
