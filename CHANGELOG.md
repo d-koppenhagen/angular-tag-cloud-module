@@ -1,5 +1,9 @@
 ## 3.2.0
 ### Features
+* Adds support for color change within ZoomOnHoverOptions (related to [ #32 ])
+
+## 3.2.0
+### Features
 * Adds support for Angular 7 (related to [ #38 ])
 
 ## 3.1.0
