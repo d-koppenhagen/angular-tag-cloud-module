@@ -19,9 +19,9 @@ angular-tag-cloud.custom-css ::ng-deep span.w1  { font-size: 100%; }
 
 /* colors */
 angular-tag-cloud.custom-css ::ng-deep a        { color: inherit; }
-angular-tag-cloud.custom-css ::ng-deep a:hover  { color: rgb(255, 255, 255); }
+angular-tag-cloud.custom-css ::ng-deep a:hover  { color: rgb(150, 12, 12); }
 angular-tag-cloud.custom-css ::ng-deep span.w10 { color: #0cf; }
-angular-tag-cloud.custom-css ::ng-deep span.w9  { color: #fff; }
+angular-tag-cloud.custom-css ::ng-deep span.w9  { color: rgb(76, 192, 72); }
 angular-tag-cloud.custom-css ::ng-deep span.w8  { color: rgb(255, 0, 195); }
 angular-tag-cloud.custom-css ::ng-deep span.w7  { color: rgb(36, 154, 116); }
 angular-tag-cloud.custom-css ::ng-deep span.w6  { color: #e8f090; }
