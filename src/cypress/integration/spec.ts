@@ -1,19 +1,43 @@
-// cypress/integration/spec.ts
-it('loads', () => {
-  cy.visit('http://localhost:4200');
-  cy.get('angular-tag-cloud').contains('weight-8');
-});
+describe('AngularTagCloudModule', () => {
 
-it('retreives static example data', () => {
-  cy.get('#staticDataBtn').click();
-  cy.get('angular-tag-cloud').contains('example-1');
-  cy.get('angular-tag-cloud').contains('example-2');
-  cy.get('angular-tag-cloud').contains('example-3');
-  cy.get('angular-tag-cloud').contains('example-4');
-  cy.get('angular-tag-cloud').contains('example-5');
-  cy.get('angular-tag-cloud').contains('example-6');
-  cy.get('angular-tag-cloud').contains('example-7');
-  cy.get('angular-tag-cloud').contains('example-8');
-  cy.get('angular-tag-cloud').contains('example-9');
-  cy.get('angular-tag-cloud').contains('example-10');
+  beforeEach(() => {
+    cy.visit('http://localhost:4200');
+    cy.get('#staticDataBtn').click();
+  });
+
+  it('retreives static example data', () => {
+    cy.get('angular-tag-cloud').contains('example-1');
+    cy.get('angular-tag-cloud').contains('example-2');
+    cy.get('angular-tag-cloud').contains('example-3');
+    cy.get('angular-tag-cloud').contains('example-4');
+    cy.get('angular-tag-cloud').contains('example-5');
+    cy.get('angular-tag-cloud').contains('example-6');
+    cy.get('angular-tag-cloud').contains('example-7');
+    cy.get('angular-tag-cloud').contains('example-8');
+    cy.get('angular-tag-cloud').contains('example-9');
+    cy.get('angular-tag-cloud').contains('example-10');
+  });
+
+  it('find elements with tooltip class', () => {
+    cy.get('angular-tag-cloud').find('span.tooltip').should(el => {
+      expect(el).to.have.length(4);
+      expect(el).to.contain('tooltip-');
+    });
+  });
+
+  it('modify colors when property has been set', () => {
+    cy.get('angular-tag-cloud').find('span.w1').should(el => {
+      expect(el).to.have.css('color', 'rgb(170, 170, 170)'); // equals red
+    });
+    cy.get('angular-tag-cloud').find('span.w4').should(el => {
+      expect(el).to.have.css('color', 'rgb(255, 0, 0)'); // equals red
+    });
+    cy.get('angular-tag-cloud').find('span.w5').should(el => {
+      expect(el).to.have.css('color', 'rgb(110, 63, 131)'); // equals #6e3f83
+    });
+    cy.get('angular-tag-cloud').find('span.w6').should(el => {
+      expect(el).to.have.css('color', 'rgb(187, 187, 187)'); // equals red
+    });
+  });
+
 });
