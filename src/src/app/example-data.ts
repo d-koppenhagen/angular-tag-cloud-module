@@ -62,7 +62,7 @@ export const staticExampleData: CloudData[] = [
   {
     'text': 'example-1',
     'weight': 1,
-    'color': '#aaaaaa',
+    'color': '#bbbbbb',
     'link': 'http://example.org',
     'external': true,
     'rotate': 2,

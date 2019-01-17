@@ -27,7 +27,7 @@ describe('AngularTagCloudModule', () => {
 
   it('modify colors when property has been set', () => {
     cy.get('angular-tag-cloud').find('span.w1').should(el => {
-      expect(el).to.have.css('color', 'rgb(170, 170, 170)'); // equals red
+      expect(el).to.have.css('color', 'rgb(187, 187, 187)'); // equals #bbbbbb
     });
     cy.get('angular-tag-cloud').find('span.w4').should(el => {
       expect(el).to.have.css('color', 'rgb(255, 0, 0)'); // equals red
@@ -36,7 +36,17 @@ describe('AngularTagCloudModule', () => {
       expect(el).to.have.css('color', 'rgb(110, 63, 131)'); // equals #6e3f83
     });
     cy.get('angular-tag-cloud').find('span.w6').should(el => {
-      expect(el).to.have.css('color', 'rgb(187, 187, 187)'); // equals red
+      expect(el).to.have.css('color', 'rgb(187, 187, 187)'); // equals #bbbbbb
+    });
+  });
+
+  it('zoom an elements on hover', () => {
+    cy.get('angular-tag-cloud>span').each(el => {
+      expect(el.trigger('mouseover')).css('transform').match(/matrix/);
+      if (!el.children('a')) {
+        expect(el.trigger('mouseover')).css('color', 'rgb(170, 170, 170)');
+      }
+      expect(el.trigger('mouseout')).not.css('color', 'rgb(170, 170, 170)');
     });
   });
 
