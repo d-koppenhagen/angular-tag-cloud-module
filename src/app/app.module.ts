@@ -6,7 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
-import { TagCloudModule } from 'projects//angular-tag-cloud-module/src/public-api';
+import { TagCloudModule } from 'projects/angular-tag-cloud-module/src/public-api';
+// import { TagCloudModule } from 'angular-tag-cloud-module';
 
 @NgModule({
   declarations: [

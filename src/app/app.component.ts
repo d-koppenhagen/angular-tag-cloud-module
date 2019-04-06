@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { CloudData, CloudOptions, TagCloudComponent } from 'projects//angular-tag-cloud-module/src/public-api';
+import { CloudData, CloudOptions, TagCloudComponent } from 'projects/angular-tag-cloud-module/src/public-api';
+// import { CloudData, CloudOptions, TagCloudComponent } from 'angular-tag-cloud-module';
 import { Observable, of } from 'rxjs';
 
 @Component({

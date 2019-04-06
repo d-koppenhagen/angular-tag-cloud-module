@@ -11,8 +11,8 @@
     "compodoc": "compodoc -p tsconfig.compodoc.json",
     "doc": "npm run compodoc && compodoc -s",
     "build-prod": "ng build angular-tag-cloud-module",
-    "copyreadme": "copyfiles -f README.md dist/angular-tag-cloud-module  && copyfiles -f CHANGELOG.md dist/angular-tag-cloud-module",
-    "package": "npm run build-prod && npm run copyreadme"
+    "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
+    "package": "npm run build-prod && npm run copy"
   },
   "private": true,
   "dependencies": {
