@@ -1,0 +1,8 @@
+{
+  "name": "angular-tag-cloud-module",
+  "version": "3.4.0-alpha.0",
+  "peerDependencies": {
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0"
+  }
+}

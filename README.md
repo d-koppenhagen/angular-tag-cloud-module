@@ -199,8 +199,8 @@ import { CloudData } from 'angular-tag-cloud-module';
 @Component({
   selector: 'my-component',
   template: `
-    <angular-tag-cloud 
-      [data]="data" 
+    <angular-tag-cloud
+      [data]="data"
       (clicked)="logClicked($event)">
     </angular-tag-cloud>
   `
@@ -325,7 +325,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 You can also call the method `reDraw()` to force the cloud data to be re-drawn (`@ViewChild(TagCloudComponent) child: TagCloudComponent; child.redraw()`).
 
 # Development
-For development see [src/README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/src/README.dev.md)
+For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/README.dev.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "TagCloud"
 [logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud2.png "TagCloud with custom Style"
