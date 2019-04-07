@@ -12,7 +12,8 @@
     "doc": "npm run compodoc && compodoc -s",
     "build-prod": "ng build angular-tag-cloud-module",
     "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
-    "package": "npm run build-prod && npm run copy"
+    "package": "npm run build-prod && npm run copy",
+    "publish-gh-pages": "ngh --dir=dist/angular-tag-cloud-module-demo"
   },
   "private": true,
   "dependencies": {
@@ -39,9 +40,10 @@
     "@angular/language-service": "~7.2.0",
     "@bahmutov/add-typescript-to-cypress": "^2.0.0",
     "@compodoc/compodoc": "^1.1.9",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.5.0",
     "copyfiles": "^2.1.0",
     "cypress": "^3.2.0",
