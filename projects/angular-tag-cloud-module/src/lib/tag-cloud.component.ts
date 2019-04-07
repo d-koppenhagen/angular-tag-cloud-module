@@ -31,34 +31,33 @@ interface CloudOptionsInternal extends CloudOptions {
 })
 export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
-  @Input() width? = 500;
-  @Input() height? = 300;
-  @Input() overflow? = true;
-  @Input() strict? = false;
-  @Input() zoomOnHover?: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0, color: null };
-  @Input() realignOnResize? = false;
-  @Input() randomizeAngle? = false;
+  @Input() width = 500;
+  @Input() height = 300;
+  @Input() overflow = true;
+  @Input() strict = false;
+  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0, color: null };
+  @Input() realignOnResize = false;
+  @Input() randomizeAngle = false;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
   @Output() afterInit?: EventEmitter<void> = new EventEmitter();
   @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
 
-  private _dataArr: CloudData[];
-  private _alreadyPlacedWords: HTMLElement[] = [];
+  private dataArr: CloudData[];
+  private alreadyPlacedWords: HTMLElement[] = [];
 
-  private _options: CloudOptionsInternal;
-  private _timeoutId;
+  private options: CloudOptionsInternal;
+  private timeoutId;
 
   constructor(
     private el: ElementRef,
     private r2: Renderer2
   ) { }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    window.clearTimeout(this._timeoutId);
-    this._timeoutId = window.setTimeout(() => {
+  @HostListener('window:resize', ['$event']) onResize(event: any) {
+    window.clearTimeout(this.timeoutId);
+    this.timeoutId = window.setTimeout(() => {
       if (this.realignOnResize) {
         this.reDraw();
       }
@@ -71,7 +70,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
   reDraw(changes?: SimpleChanges) {
     this.dataChanges.emit(changes);
-    this._alreadyPlacedWords = [];
+    this.alreadyPlacedWords = [];
 
     // check if data is not null or empty
     if (!this.data) {
@@ -83,8 +82,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.el.nativeElement.innerHTML = '';
 
     // set value changes
-    if (changes && changes['data']) {
-      this._dataArr = changes['data'].currentValue;
+    if (changes && changes.data) {
+      this.dataArr = changes.data.currentValue;
     }
 
     let width = this.width;
@@ -96,10 +95,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     }
 
     // set options
-    this._options = {
+    this.options = {
       step: 2.0,
       aspectRatio: (width / this.height),
-      width: width,
+      width,
       height: this.height,
       center: {
         x: (width / 2.0),
@@ -109,8 +108,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       zoomOnHover: this.zoomOnHover
     };
 
-    this.r2.setStyle(this.el.nativeElement, 'width', this._options.width + 'px');
-    this.r2.setStyle(this.el.nativeElement, 'height', this._options.height + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
+    this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
   }
@@ -142,12 +141,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     return description;
   }
 
-  drawWordCloud () {
+  drawWordCloud() {
     // Sort alphabetically to ensure that, all things being equal, words are placed uniformly
-    this._dataArr.sort( (a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
+    this.dataArr.sort( (a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
     // Sort this._dataArr from the word with the highest weight to the one with the lowest
-    this._dataArr.sort((a, b) => b.weight - a.weight);
-    this._dataArr.forEach((elem, index) => {
+    this.dataArr.sort((a, b) => b.weight - a.weight);
+    this.dataArr.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
   }
@@ -155,8 +154,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   // Helper function to test if an element overlaps others
   hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
-    for (let i = 0; i < otherEl.length; i++) {
-      if (this.overlapping(currentEl, otherEl[i])) { return true; }
+    for (let item of otherEl) {
+      if (this.overlapping(currentEl, item)) { return true; }
     }
     return false;
   }
@@ -171,17 +170,17 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
   drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
-    let angle = this.randomizeAngle ? 6.28 * Math.random() : 0,
-        radius = 0.0,
-        weight = 5,
-        wordSpan: HTMLElement;
+    let angle = this.randomizeAngle ? 6.28 * Math.random() : 0;
+    let radius = 0.0;
+    let weight = 5;
+    let wordSpan: HTMLElement;
 
     // Check if min(weight) > max(weight) otherwise use default
-    if (this._dataArr[0].weight > this._dataArr[this._dataArr.length - 1].weight) {
+    if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
       // check if strict mode is active
       if (!this.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
-        weight = Math.round((word.weight - this._dataArr[this._dataArr.length - 1].weight) /
-                  (this._dataArr[0].weight - this._dataArr[this._dataArr.length - 1].weight) * 9.0) + 1;
+        weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
+                  (this.dataArr[0].weight - this.dataArr[this.dataArr.length - 1].weight) * 9.0) + 1;
       } else { // use given value for weigth directly
         // fallback to 10
         if (word.weight > 10) {
@@ -266,8 +265,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     const width = wordSpan.offsetWidth;
     const height = wordSpan.offsetHeight;
-    let left = this._options.center.x;
-    let top = this._options.center.y;
+    let left = this.options.center.x;
+    let top = this.options.center.y;
 
     // Save a reference to the style property, for better performance
     const wordStyle = wordSpan.style;
@@ -287,12 +286,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordSpan.appendChild(tooltipSpan);
     }
 
-    while (this.hitTest(wordSpan, this._alreadyPlacedWords)) {
-      radius += this._options.step;
-      angle += (index % 2 === 0 ? 1 : -1) * this._options.step;
+    while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
+      radius += this.options.step;
+      angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
 
-      left = this._options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this._options.aspectRatio;
-      top = this._options.center.y + radius * Math.sin(angle) - (height / 2.0);
+      left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
+      top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
 
       wordStyle.left = left + 'px';
       wordStyle.top = top + 'px';
@@ -300,15 +299,15 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     // Don't render word if part of it would be outside the container
     if (
-      !this._options.overflow &&
-      (left < 0 || top < 0 || (left + width) > this._options.width ||
-      (top + height) > this._options.height)
+      !this.options.overflow &&
+      (left < 0 || top < 0 || (left + width) > this.options.width ||
+      (top + height) > this.options.height)
     ) {
       wordSpan.remove();
       return;
     }
 
-    this._alreadyPlacedWords.push(wordSpan);
+    this.alreadyPlacedWords.push(wordSpan);
   }
 
 }
