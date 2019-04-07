@@ -33,7 +33,9 @@ yarn add angular-tag-cloud-module
 ```
 
 # Full Documentation
-For having a look at the full documentation navigate in the directory `src` and run `npm run doc` via console (probably you have to install the nodejs dependencies before: `npm install`).
+For having a look at the full documentation clone this repo to your local disk first.
+Then navigate in the directory and run `npm run doc` via console (probably you have to install the nodejs dependencies before: `npm install`).
+The documentation can be accessed in your browser: [localhost:8080](http://localhost:8080).
 
 # Usage
 

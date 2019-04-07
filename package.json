@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "cypress open",
-    "compodoc": "compodoc -p tsconfig.compodoc.json",
+    "compodoc": "compodoc -p projects/angular-tag-cloud-module/tsconfig.lib.json",
     "doc": "npm run compodoc && compodoc -s",
     "build-prod": "ng build angular-tag-cloud-module",
     "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
