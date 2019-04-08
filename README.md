@@ -107,7 +107,6 @@ If you want to rotate some CloudData elements, you can specify a numeric value f
 ```js
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'my-component',
@@ -132,7 +131,6 @@ You can specify the `zoomOnHover` property with an object that defines the zoom 
 ```js
 import { Component } from '@angular/core';
 import { CloudData, ZoomOnHoverOptions } from 'angular-tag-cloud-module';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'my-component',
@@ -179,7 +177,7 @@ export class AppComponent {
   ];
 
   newData(){
-    const changedData$: Observable<CloudData[]> = Observable.of([
+    const changedData$: Observable<CloudData[]> = of([
       { text: 'Weight-3', weight: 3 },
       // ...
     ]);
@@ -225,7 +223,6 @@ If you don't want that the tag cloud is calculating the values manually, set the
 ```js
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'my-component',

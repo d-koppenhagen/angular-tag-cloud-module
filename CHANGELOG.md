@@ -1,3 +1,8 @@
+## 3.4.1
+### Fixes
+* Fixes some descriptions
+* Includes LICENSE file int NPM package
+
 ## 3.4.0
 ### Features
 * restructured project - This will provide the module as an Angular CLI's library. A lots of duplicate code is killed :)
