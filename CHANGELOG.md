@@ -1,3 +1,7 @@
+## 3.4.2
+### Fixes
+* Set minimal angular version to 6.0.0
+
 ## 3.4.1
 ### Fixes
 * Fixes some descriptions
