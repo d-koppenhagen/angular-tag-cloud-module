@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "peerDependencies": {
     "@angular/common": "^6.0.0 || ^7.0.0",
     "@angular/core": "^6.0.0 || ^7.0.0"
