@@ -15,6 +15,7 @@
     "package": "npm run build-prod && npm run copy",
     "publish-gh-pages": "ngh --dir=dist/angular-tag-cloud-module-demo"
   },
+  "license" : "SEE LICENSE IN LICENSE",
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
