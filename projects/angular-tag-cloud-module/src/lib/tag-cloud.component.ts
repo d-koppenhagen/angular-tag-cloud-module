@@ -185,13 +185,13 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
         // fallback to 10
         if (word.weight > 10) {
           weight = 10;
-          console.log(`[TagCloud strict] Weight property ${word.weight} > 10. Fallback to 10 as you are using strict mode`, word);
+          console.warn(`[TagCloud strict] Weight property ${word.weight} > 10. Fallback to 10 as you are using strict mode`, word);
         } else if (word.weight < 1) { // fallback to 1
           weight = 1;
-          console.log(`[TagCloud strict] Given weight property ${word.weight} < 1. Fallback to 1 as you are using strict mode`, word);
+          console.warn(`[TagCloud strict] Given weight property ${word.weight} < 1. Fallback to 1 as you are using strict mode`, word);
         } else if (word.weight % 1 !== 0) { // round if given value is not an integer
           weight = Math.round(word.weight);
-          console.log(`[TagCloud strict] Given weight property ${word.weight} is not an integer. Rounded value to ${weight}`, word);
+          console.warn(`[TagCloud strict] Given weight property ${word.weight} is not an integer. Rounded value to ${weight}`, word);
         } else {
           weight = word.weight;
         }
