@@ -1,9 +1,17 @@
-<div fxLayout="row" fxLayoutGap="15px">
+<div
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayout.sm="column"
+  fxLayoutGap="15px"
+>
   <mat-card fxFlex>
     <mat-card-header>
       <mat-card-title>Cloud Data</mat-card-title>
       <mat-card-subtitle>
-        <a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/blob/master/projects/angular-tag-cloud-module/src/lib/tag-cloud.interfaces.ts" target="_blank">
+        <a
+          href="https://github.com/d-koppenhagen/angular-tag-cloud-module/blob/master/projects/angular-tag-cloud-module/src/lib/tag-cloud.interfaces.ts"
+          target="_blank"
+        >
           See CloudData-Interface
         </a>
       </mat-card-subtitle>
@@ -32,14 +40,14 @@
 
         <h3>Clouddata</h3>
         <div class="input-row" fxLayout="row">
-          <textarea fxFlex
+          <textarea
+            fxFlex
             class="json-input"
             matInput
             rows="10"
             formControlName="data"
           ></textarea>
         </div>
-
       </form>
     </mat-card-content>
     <mat-card-actions>
@@ -57,7 +65,10 @@
     <mat-card-header>
       <mat-card-title>Options</mat-card-title>
       <mat-card-subtitle>
-        <a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/blob/master/projects/angular-tag-cloud-module/src/lib/tag-cloud.interfaces.ts" target="_blank">
+        <a
+          href="https://github.com/d-koppenhagen/angular-tag-cloud-module/blob/master/projects/angular-tag-cloud-module/src/lib/tag-cloud.interfaces.ts"
+          target="_blank"
+        >
           See CloudOptions-Interface
         </a>
       </mat-card-subtitle>
@@ -93,7 +104,11 @@
         </div>
 
         <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-          <mat-label>Please not that a width > 1 causes a absolute width in pixels (e.g. 20 means 20 pixels). A width <= 1 means a relative width (e.g. 0.9 = 90%).</mat-label>
+          <mat-label
+            >Please not that a width > 1 causes a absolute width in pixels (e.g.
+            20 means 20 pixels). A width <= 1 means a relative width (e.g. 0.9 =
+            90%).</mat-label
+          >
         </div>
 
         <h3>General options</h3>
@@ -116,37 +131,36 @@
 
         <h3>Zoom on hover options</h3>
         <div formGroupName="zoomOnHover">
-          <div
-            class="input-row"
-            fxLayout="row"
-            fxLayoutGap="20px">
-            <div fxFlex fxLayoutGap="10px">
-              <mat-form-field fxFlex="75">
-                <mat-label>Color</mat-label>
-                <input
-                  matInput
-                  [colorPicker]="
+          <div class="input-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+            <div fxFlex="50%" fxFlex.xs="100%">
+              <div fxLayout="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex="80%">
+                  <mat-label>Color</mat-label>
+                  <input
+                    matInput
+                    [colorPicker]="
+                      cloudConfigForm.get('zoomOnHover').get('color').value
+                    "
+                    (colorPickerChange)="
+                      cloudConfigForm
+                        .get('zoomOnHover')
+                        .get('color')
+                        .setValue($event)
+                    "
+                    formControlName="color"
+                  />
+                </mat-form-field>
+                <div
+                  fxFlex="20%"
+                  class="color-box"
+                  [style.background]="
                     cloudConfigForm.get('zoomOnHover').get('color').value
                   "
-                  (colorPickerChange)="
-                    cloudConfigForm
-                      .get('zoomOnHover')
-                      .get('color')
-                      .setValue($event)
-                  "
-                  formControlName="color"
-                />
-              </mat-form-field>
-              <div
-                fxFlex="25"
-                class="color-box"
-                [style.background]="
-                  cloudConfigForm.get('zoomOnHover').get('color').value
-                "
-              ></div>
+                ></div>
+              </div>
             </div>
 
-            <div fxFlex>
+            <div fxFlex="50%" fxFlex.xs="100%">
               <mat-label>Scale</mat-label>
               <mat-slider
                 min="1"
@@ -158,12 +172,9 @@
             </div>
           </div>
 
-          <div
-            class="input-row"
-            fxLayout="row"
-            fxLayoutGap="20px">
-            <div fxFlex>
-              <mat-label>Transition Time</mat-label>
+          <div class="input-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+            <div fxFlex="50%" fxFlex.xs="100%">
+              <mat-label>Time</mat-label>
               <mat-slider
                 min="0"
                 max="2"
@@ -172,7 +183,7 @@
                 [thumbLabel]="true"
               ></mat-slider>
             </div>
-            <div fxFlex>
+            <div fxFlex="50%" fxFlex.xs="100%">
               <mat-label>Delay</mat-label>
               <mat-slider
                 min="0"
@@ -197,7 +208,9 @@
 <mat-card class="card-top-space">
   <mat-card-header>
     <mat-card-title>Preview</mat-card-title>
-    <mat-card-subtitle>Open the Dev-Tools to inspect the emitted events</mat-card-subtitle>
+    <mat-card-subtitle
+      >Open the Dev-Tools to inspect the emitted events</mat-card-subtitle
+    >
   </mat-card-header>
 
   <mat-card-content>
