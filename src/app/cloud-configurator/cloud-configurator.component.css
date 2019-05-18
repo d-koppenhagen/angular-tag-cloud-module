@@ -36,3 +36,12 @@
   position: absolute;
   bottom: 15px;
 }
+
+.mat-slider-horizontal {
+  width: 100%;
+}
+
+mat-label.label-text {
+  font-size: 12px;
+  color: rgba(0,0,0,.54);
+}
