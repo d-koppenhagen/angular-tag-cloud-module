@@ -1,0 +1,22 @@
+{
+  "name": "angular-tag-cloud-module",
+  "version": "3.5.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "main": "bundles/angular-tag-cloud-module.umd.js",
+  "module": "fesm5/angular-tag-cloud-module.js",
+  "es2015": "fesm2015/angular-tag-cloud-module.js",
+  "esm5": "esm5/angular-tag-cloud-module.js",
+  "esm2015": "esm2015/angular-tag-cloud-module.js",
+  "fesm5": "fesm5/angular-tag-cloud-module.js",
+  "fesm2015": "fesm2015/angular-tag-cloud-module.js",
+  "typings": "angular-tag-cloud-module.d.ts",
+  "metadata": "angular-tag-cloud-module.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
