@@ -15,3 +15,24 @@
   margin: 5px 5px 20px 5px;
   border: 2px solid rgba(0,0,0,.38);
 }
+
+.json-input {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #3f51b5;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: auto;
+  padding: 5px;
+  display: block;
+  word-wrap: break-word;
+  max-width: calc(100% - 10px);
+}
+
+.pull-bottom {
+  position: absolute;
+  bottom: 15px;
+}

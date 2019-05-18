@@ -1,96 +1,193 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Configuration</mat-card-title>
-  </mat-card-header>
+<div fxLayout="row" fxLayoutGap="15px">
+  <mat-card fxFlex>
+    <mat-card-header>
+      <mat-card-title>Cloud Data</mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <form [formGroup]="cloudConfigForm" fxLayout="column">
-      <h3>Data Options</h3>
-      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-        <mat-form-field fxFlex>
-          <input matInput type="number"
-            formControlName="amount"
-            placeholder="Quantity of random data"
-            min="1"
-            max="100"
-            step="1">
-        </mat-form-field>
-
-        <mat-slide-toggle fxFlex class="adjust-top" formControlName="rotate">
-          Rotate some entries randomly
-        </mat-slide-toggle>
-      </div>
-
-      <h3>Size</h3>
-      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-
-        <mat-form-field fxFlex>
-          <input matInput type="number"
-            formControlName="width"
-            placeholder="Width"
-            min="0.1"
-            max="1000"
-            step="0.1">
-        </mat-form-field>
-
-        <mat-form-field fxFlex>
-            <input matInput type="number"
-            formControlName="height"
-            placeholder="Height"
-            min="100"
-            max="1000"
-            step="10">
-        </mat-form-field>
-      </div>
-
-      <h3>Options</h3>
-      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-        <mat-slide-toggle fxFlex formControlName="overflow">Overflow</mat-slide-toggle>
-        <mat-slide-toggle fxFlex formControlName="strict">Strict</mat-slide-toggle>
-        <mat-slide-toggle fxFlex formControlName="realignOnResize">Realign on resize</mat-slide-toggle>
-        <mat-slide-toggle fxFlex formControlName="randomizeAngle">Randomize angle</mat-slide-toggle>
-      </div>
-
-      <h3>ZoomOnHover</h3>
-      <div class="input-row" fxLayout="row" fxLayoutGap="20px" formGroupName="zoomOnHover">
-        <div fxFlex fxLayoutGap="20px">
-          <mat-form-field fxFlex="80">
-            <mat-label>Color</mat-label>
+    <mat-card-content>
+      <form [formGroup]="cloudDataForm" fxLayout="column">
+        <h3>Example Data Options</h3>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field fxFlex>
             <input
               matInput
-              [colorPicker]="cloudConfigForm.get('zoomOnHover').get('color').value"
-              (colorPickerChange)="cloudConfigForm.get('zoomOnHover').get('color').setValue($event)"
-              formControlName="color">
+              type="number"
+              formControlName="amount"
+              placeholder="Quantity of random data"
+              min="1"
+              max="100"
+              step="1"
+            />
           </mat-form-field>
-          <div fxFlex="20"
-            class="color-box"
-            [style.background]="cloudConfigForm.get('zoomOnHover').get('color').value">
-          </div>
+
+          <mat-slide-toggle fxFlex class="adjust-top" formControlName="rotate">
+            Rotate some entries randomly
+          </mat-slide-toggle>
         </div>
 
-        <div fxFlex>
-          <mat-label>Scale</mat-label>
-          <mat-slider min="1" max="2" step="0.01" formControlName="scale" [thumbLabel]="true"></mat-slider>
+        <h3>Clouddata</h3>
+        <div class="input-row" fxLayout="row">
+          <textarea fxFlex
+            class="json-input"
+            matInput
+            rows="10"
+            formControlName="data"
+          ></textarea>
         </div>
-        <div fxFlex>
-          <mat-label>Transition Time</mat-label>
-          <mat-slider min="0" max="2" step="0.1" formControlName="transitionTime" [thumbLabel]="true"></mat-slider>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="getNewExampleData()">
+        Get new example Data
+      </button>
+
+      <button mat-raised-button color="basic" (click)="renderJsonData()">
+        Render JSON from Clouddata input
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card fxFlex>
+    <mat-card-header>
+      <mat-card-title>Options</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="cloudConfigForm" fxLayout="column">
+        <h3>Proportions</h3>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              type="number"
+              formControlName="width"
+              placeholder="Width"
+              min="0.1"
+              max="1000"
+              step="0.1"
+            />
+          </mat-form-field>
+
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              type="number"
+              formControlName="height"
+              placeholder="Height"
+              min="100"
+              max="1000"
+              step="10"
+            />
+          </mat-form-field>
         </div>
-        <div fxFlex>
-          <mat-label>Delay</mat-label>
-          <mat-slider min="0" max="2" step="0.1" formControlName="delay" [thumbLabel]="true"></mat-slider>
+
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+          <mat-label>Please not that a width > 1 causes a absolute width in pixels (e.g. 20 means 20 pixels). A width <= 1 means a relative width (e.g. 0.9 = 90%).</mat-label>
         </div>
-      </div>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="reDraw()">Redraw with new data</button>
-  </mat-card-actions>
-</mat-card>
+
+        <h3>General options</h3>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+          <mat-slide-toggle fxFlex formControlName="overflow"
+            >Overflow</mat-slide-toggle
+          >
+          <mat-slide-toggle fxFlex formControlName="strict"
+            >Strict</mat-slide-toggle
+          >
+        </div>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+          <mat-slide-toggle fxFlex formControlName="realignOnResize"
+            >Realign on resize</mat-slide-toggle
+          >
+          <mat-slide-toggle fxFlex formControlName="randomizeAngle"
+            >Randomize angle</mat-slide-toggle
+          >
+        </div>
+
+        <h3>Zoom on hover options</h3>
+        <div formGroupName="zoomOnHover">
+          <div
+            class="input-row"
+            fxLayout="row"
+            fxLayoutGap="20px">
+            <div fxFlex fxLayoutGap="10px">
+              <mat-form-field fxFlex="75">
+                <mat-label>Color</mat-label>
+                <input
+                  matInput
+                  [colorPicker]="
+                    cloudConfigForm.get('zoomOnHover').get('color').value
+                  "
+                  (colorPickerChange)="
+                    cloudConfigForm
+                      .get('zoomOnHover')
+                      .get('color')
+                      .setValue($event)
+                  "
+                  formControlName="color"
+                />
+              </mat-form-field>
+              <div
+                fxFlex="25"
+                class="color-box"
+                [style.background]="
+                  cloudConfigForm.get('zoomOnHover').get('color').value
+                "
+              ></div>
+            </div>
+
+            <div fxFlex>
+              <mat-label>Scale</mat-label>
+              <mat-slider
+                min="1"
+                max="2"
+                step="0.01"
+                formControlName="scale"
+                [thumbLabel]="true"
+              ></mat-slider>
+            </div>
+          </div>
+
+          <div
+            class="input-row"
+            fxLayout="row"
+            fxLayoutGap="20px">
+            <div fxFlex>
+              <mat-label>Transition Time</mat-label>
+              <mat-slider
+                min="0"
+                max="2"
+                step="0.1"
+                formControlName="transitionTime"
+                [thumbLabel]="true"
+              ></mat-slider>
+            </div>
+            <div fxFlex>
+              <mat-label>Delay</mat-label>
+              <mat-slider
+                min="0"
+                max="2"
+                step="0.1"
+                formControlName="delay"
+                [thumbLabel]="true"
+              ></mat-slider>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="pull-bottom">
+      <button mat-raised-button color="basic" (click)="reDraw()">
+        Redraw with new example data from Observable
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
 <mat-card class="card-top-space">
   <mat-card-header>
     <mat-card-title>Preview</mat-card-title>
+    <mat-card-subtitle>Open the Dev-Tools to inspect the emitted events</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
@@ -106,8 +203,8 @@
       (clicked)="log('clicked', $event)"
       (dataChanges)="log('dataChanges', $event)"
       (afterInit)="log('After Init', $event)"
-      (afterChecked)="log('After Checked', $event)">
+      (afterChecked)="log('After Checked', $event)"
+    >
     </angular-tag-cloud>
   </mat-card-content>
 </mat-card>
-
