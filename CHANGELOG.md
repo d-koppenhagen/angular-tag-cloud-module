@@ -1,3 +1,7 @@
+## 3.5.0
+### Features
+* Allow a peer dependency of Angular 8
+
 ## 3.4.2
 ### Fixes
 * Set minimal angular version to 6.0.0

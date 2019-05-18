@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module-demo",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,7 +15,7 @@
     "package": "npm run build-prod && npm run copy",
     "publish-gh-pages": "ngh --dir=dist/angular-tag-cloud-module-demo"
   },
-  "license" : "SEE LICENSE IN LICENSE",
+  "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",

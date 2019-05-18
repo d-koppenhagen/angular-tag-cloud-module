@@ -143,7 +143,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
   drawWordCloud() {
     // Sort alphabetically to ensure that, all things being equal, words are placed uniformly
-    this.dataArr.sort( (a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
+    this.dataArr.sort((a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
     // Sort this._dataArr from the word with the highest weight to the one with the lowest
     this.dataArr.sort((a, b) => b.weight - a.weight);
     this.dataArr.forEach((elem, index) => {
@@ -154,7 +154,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   // Helper function to test if an element overlaps others
   hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
-    for (let item of otherEl) {
+    for (const item of otherEl) {
       if (this.overlapping(currentEl, item)) { return true; }
     }
     return false;
