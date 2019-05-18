@@ -54,7 +54,7 @@ export class CloudConfiguratorComponent implements OnInit {
       zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover)
     });
 
-    console.log(this.cloudConfigForm.get('zoomOnHover').get('color'));
+    this.getNewExampleData();
   }
 
   log(eventType: string, e?: CloudData) {
@@ -62,12 +62,10 @@ export class CloudConfiguratorComponent implements OnInit {
   }
 
   getNewExampleData() {
-    this.data = randomData(
+    this.setData(randomData(
       this.cloudDataForm.value.amount,
       this.cloudDataForm.value.rotate
-    );
-
-    this.cloudDataForm.get('data').setValue(JSON.stringify(this.data, null, 2));
+    ));
   }
 
   renderJsonData() {
@@ -85,11 +83,13 @@ export class CloudConfiguratorComponent implements OnInit {
       this.cloudDataForm.value.amount,
       this.cloudDataForm.value.rotate
     ));
-    changedData$.subscribe(res => {
-      this.data = res;
-      this.cloudDataForm.get('data').setValue(JSON.stringify(this.data, null, 2));
-    });
+    changedData$.subscribe(res => this.setData(res));
     this.tagCloudComponent.reDraw();
+  }
+
+  private setData(data: CloudData[]) {
+    this.data = data;
+    this.cloudDataForm.get('data').setValue(JSON.stringify(this.data, null, 2));
   }
 
 }
