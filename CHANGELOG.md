@@ -1,4 +1,8 @@
 ## 3.5.0
+### Fixes
+* Adds missing option `strict` to exported interface CloudOptions ([b96f2bf](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/b96f2bf2bb26e1159139c40764ee664367a22703))
+
+## 3.5.0
 ### Features
 * Allow a peer dependency of Angular 8
 
