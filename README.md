@@ -18,6 +18,10 @@ The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angu
 
 ![TagCloud][logo]
 
+# Demo
+
+https://d-koppenhagen.github.io/angular-tag-cloud-module/
+
 # Install
 
 To install the module just run the following command on your CLI:

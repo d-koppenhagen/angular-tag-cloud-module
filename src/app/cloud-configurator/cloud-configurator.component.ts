@@ -16,17 +16,17 @@ export class CloudConfiguratorComponent implements OnInit {
   data: CloudData[] = randomData(30);
 
   defaultCloudOptions: CloudOptions = {
-    width : 1000,
-    height : 500,
+    width : 0.9,
+    height : 600,
     overflow: false,
     strict: false,
     realignOnResize: true,
     randomizeAngle: true,
     zoomOnHover: {
-      scale: 1.3,
-      transitionTime: 1.2,
-      delay: 0,
-      color: '#aaaaaa'
+      scale: 1.2,
+      transitionTime: 0.6,
+      delay: 0.1,
+      color: '#33bb33'
     }
   };
 
@@ -43,6 +43,8 @@ export class CloudConfiguratorComponent implements OnInit {
       ...this.defaultCloudOptions,
       zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover)
     });
+
+    console.log(this.cloudConfigForm.get('zoomOnHover').get('color'));
   }
 
   log(eventType: string, e?: CloudData) {

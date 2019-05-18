@@ -1,3 +1,17 @@
 .adjust-top {
   padding-top: 12px;
 }
+
+/deep/ color-picker > div.color-picker {
+  top: 0px !important;
+}
+
+.card-top-space {
+  margin-top: 15px;
+}
+
+.color-box {
+  float: left;
+  margin: 5px 5px 20px 5px;
+  border: 2px solid rgba(0,0,0,.38);
+}

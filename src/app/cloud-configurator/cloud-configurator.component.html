@@ -1,87 +1,113 @@
 <mat-card>
-  <form [formGroup]="cloudConfigForm" fxLayout="column">
+  <mat-card-header>
+    <mat-card-title>Configuration</mat-card-title>
+  </mat-card-header>
 
-    <h3>Data Options</h3>
-    <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-      <mat-form-field fxFlex>
-        <input matInput type="number"
-          formControlName="amount"
-          placeholder="Amount of example data texts"
-          min="1"
-          max="100"
-          step="1">
-      </mat-form-field>
-
-      <mat-slide-toggle fxFlex formControlName="rotate" class="adjust-top">rotate</mat-slide-toggle>
-    </div>
-
-    <h3>Size</h3>
-    <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-      <mat-form-field fxFlex>
-        <input matInput type="number"
-          formControlName="width"
-          placeholder="Width"
-          min="100"
-          max="1000"
-          step="10">
-      </mat-form-field>
-
-      <mat-form-field fxFlex>
+  <mat-card-content>
+    <form [formGroup]="cloudConfigForm" fxLayout="column">
+      <h3>Data Options</h3>
+      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field fxFlex>
           <input matInput type="number"
-          formControlName="height"
-          placeholder="Height"
-          min="100"
-          max="1000"
-          step="10">
-      </mat-form-field>
-    </div>
+            formControlName="amount"
+            placeholder="Quantity of random data"
+            min="1"
+            max="100"
+            step="1">
+        </mat-form-field>
 
-    <h3>Options</h3>
-    <div class="input-row" fxLayout="row" fxLayoutGap="20px">
-      <mat-slide-toggle fxFlex formControlName="overflow">Overflow</mat-slide-toggle>
-      <mat-slide-toggle fxFlex formControlName="strict">Strict</mat-slide-toggle>
-      <mat-slide-toggle fxFlex formControlName="realignOnResize">Realign on resize</mat-slide-toggle>
-      <mat-slide-toggle fxFlex formControlName="randomizeAngle">Randomize angle</mat-slide-toggle>
-    </div>
+        <mat-slide-toggle fxFlex formControlName="rotate" class="adjust-top">
+          Rotate some entries randomly
+        </mat-slide-toggle>
+      </div>
 
-    <h3>ZoomOnHover</h3>
-    <div class="input-row" fxLayout="row" fxLayoutGap="20px" formGroupName="zoomOnHover">
-      <mat-form-field fxFlex>
-        <input matInput type="text"
-          formControlName="color"
-          placeholder="Color">
-      </mat-form-field>
-      <div fxFlex class="adjust-top">
-        <label>Scale</label>
-        <mat-slider min="0.1" max="5" step="0.1" formControlName="scale" thumbLabel></mat-slider>
-      </div>
-      <div fxFlex class="adjust-top">
-        <label>Transition Time</label>
-        <mat-slider min="0.1" max="5" step="0.1" formControlName="transitionTime" thumbLabel></mat-slider>
-      </div>
-      <div fxFlex class="adjust-top">
-        <label>Delay</label>
-        <mat-slider min="0.1" max="5" step="0.1" formControlName="delay" thumbLabel></mat-slider>
-      </div>
-    </div>
-  </form>
+      <h3>Size</h3>
+      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
 
-  <button mat-raised-button color="primary" (click)="reDraw()">Redraw with new data</button>
+        <mat-form-field fxFlex>
+          <input matInput type="number"
+            formControlName="width"
+            placeholder="Width"
+            min="0.1"
+            max="1000"
+            step="0.1">
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+            <input matInput type="number"
+            formControlName="height"
+            placeholder="Height"
+            min="100"
+            max="1000"
+            step="10">
+        </mat-form-field>
+      </div>
+
+      <h3>Options</h3>
+      <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+        <mat-slide-toggle fxFlex formControlName="overflow">Overflow</mat-slide-toggle>
+        <mat-slide-toggle fxFlex formControlName="strict">Strict</mat-slide-toggle>
+        <mat-slide-toggle fxFlex formControlName="realignOnResize">Realign on resize</mat-slide-toggle>
+        <mat-slide-toggle fxFlex formControlName="randomizeAngle">Randomize angle</mat-slide-toggle>
+      </div>
+
+      <h3>ZoomOnHover</h3>
+      <div class="input-row" fxLayout="row" fxLayoutGap="20px" formGroupName="zoomOnHover">
+        <div fxFlex fxLayoutGap="20px">
+          <mat-form-field fxFlex="80">
+            <mat-label>Color</mat-label>
+            <input
+              matInput
+              [colorPicker]="cloudConfigForm.get('zoomOnHover').get('color').value"
+              (colorPickerChange)="cloudConfigForm.get('zoomOnHover').get('color').setValue($event)"
+              formControlName="color">
+          </mat-form-field>
+          <div fxFlex="20"
+            class="color-box"
+            [style.background]="cloudConfigForm.get('zoomOnHover').get('color').value">
+          </div>
+        </div>
+
+        <div fxFlex class="adjust-top">
+          <label>Scale</label>
+          <mat-slider min="1" max="2" step="0.01" formControlName="scale" [thumbLabel]="true"></mat-slider>
+        </div>
+        <div fxFlex class="adjust-top">
+          <label>Transition Time</label>
+          <mat-slider min="0" max="2" step="0.1" formControlName="transitionTime" [thumbLabel]="true"></mat-slider>
+        </div>
+        <div fxFlex class="adjust-top">
+          <label>Delay</label>
+          <mat-slider min="0" max="2" step="0.1" formControlName="delay" [thumbLabel]="true"></mat-slider>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="reDraw()">Redraw with new data</button>
+  </mat-card-actions>
 </mat-card>
 
+<mat-card class="card-top-space">
+  <mat-card-header>
+    <mat-card-title>Preview</mat-card-title>
+  </mat-card-header>
 
-<angular-tag-cloud
-  [data]="data"
-  [width]="cloudConfigForm.value.width"
-  [height]="cloudConfigForm.value.height"
-  [overflow]="cloudConfigForm.value.overflow"
-  [strict]="cloudConfigForm.value.strict"
-  [realignOnResize]="cloudConfigForm.value.realignOnResize"
-  [randomizeAngle]="cloudConfigForm.value.randomizeAngle"
-  [zoomOnHover]="cloudConfigForm.value.zoomOnHover"
-  (clicked)="log('clicked', $event)"
-  (dataChanges)="log('dataChanges', $event)"
-  (afterInit)="log('After Init', $event)"
-  (afterChecked)="log('After Checked', $event)">
-</angular-tag-cloud>
+  <mat-card-content>
+    <angular-tag-cloud
+      [data]="data"
+      [width]="cloudConfigForm.value.width"
+      [height]="cloudConfigForm.value.height"
+      [overflow]="cloudConfigForm.value.overflow"
+      [strict]="cloudConfigForm.value.strict"
+      [realignOnResize]="cloudConfigForm.value.realignOnResize"
+      [randomizeAngle]="cloudConfigForm.value.randomizeAngle"
+      [zoomOnHover]="cloudConfigForm.value.zoomOnHover"
+      (clicked)="log('clicked', $event)"
+      (dataChanges)="log('dataChanges', $event)"
+      (afterInit)="log('After Init', $event)"
+      (afterChecked)="log('After Checked', $event)">
+    </angular-tag-cloud>
+  </mat-card-content>
+</mat-card>
 

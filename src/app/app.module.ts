@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TagCloudModule } from '../../projects/angular-tag-cloud-module/src/public-api';
+import { ColorPickerModule } from 'ngx-color-picker';
 
+import { TagCloudModule } from '../../projects/angular-tag-cloud-module/src/public-api';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
@@ -17,10 +18,11 @@ import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configura
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    TagCloudModule,
-    ReactiveFormsModule
+    ColorPickerModule,
+    TagCloudModule
   ],
   providers: [],
   bootstrap: [AppComponent]
