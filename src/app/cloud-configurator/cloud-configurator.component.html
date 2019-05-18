@@ -16,7 +16,7 @@
             step="1">
         </mat-form-field>
 
-        <mat-slide-toggle fxFlex formControlName="rotate" class="adjust-top">
+        <mat-slide-toggle fxFlex class="adjust-top" formControlName="rotate">
           Rotate some entries randomly
         </mat-slide-toggle>
       </div>
@@ -68,16 +68,16 @@
           </div>
         </div>
 
-        <div fxFlex class="adjust-top">
-          <label>Scale</label>
+        <div fxFlex>
+          <mat-label>Scale</mat-label>
           <mat-slider min="1" max="2" step="0.01" formControlName="scale" [thumbLabel]="true"></mat-slider>
         </div>
-        <div fxFlex class="adjust-top">
-          <label>Transition Time</label>
+        <div fxFlex>
+          <mat-label>Transition Time</mat-label>
           <mat-slider min="0" max="2" step="0.1" formControlName="transitionTime" [thumbLabel]="true"></mat-slider>
         </div>
-        <div fxFlex class="adjust-top">
-          <label>Delay</label>
+        <div fxFlex>
+          <mat-label>Delay</mat-label>
           <mat-slider min="0" max="2" step="0.1" formControlName="delay" [thumbLabel]="true"></mat-slider>
         </div>
       </div>
