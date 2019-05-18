@@ -13,7 +13,7 @@
     "build-prod": "ng build angular-tag-cloud-module",
     "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
     "package": "npm run build-prod && npm run copy",
-    "publish-gh-pages": "ng build --prod --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module && npx ngh --dir=dist/angular-tag-cloud-module-demo --no-silent"
+    "publish-gh-pages": "ng build --prod --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module/ && npx ngh --dir=dist/angular-tag-cloud-module-demo --no-silent"
   },
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
