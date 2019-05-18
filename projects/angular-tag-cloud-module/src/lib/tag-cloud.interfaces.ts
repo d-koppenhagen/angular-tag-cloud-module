@@ -61,6 +61,10 @@ export interface CloudOptions {
    */
   overflow?: boolean;
   /**
+   * Defines weather to use strict weight or calculate it by given values
+   */
+  strict?: boolean;
+  /**
    * Define Option which will take effect when hovering with the cursor over the elements
    */
   zoomOnHover?: ZoomOnHoverOptions;
