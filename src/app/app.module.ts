@@ -1,25 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TagCloudModule } from '../../projects/angular-tag-cloud-module/src/public-api';
 
 import { AppComponent } from './app.component';
-import { TagCloudModule } from 'projects/angular-tag-cloud-module/src/public-api';
-// import { TagCloudModule } from 'angular-tag-cloud-module';
+import { MaterialModule } from './material.module';
+import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CloudConfiguratorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatExpansionModule,
-    MatTableModule,
-    TagCloudModule
+    MaterialModule,
+    FlexLayoutModule,
+    TagCloudModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,8 @@
-/* General Layout */
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+/* TagCloud */
+angular-tag-cloud {
+  border: 1px solid black;
+  margin: 20px 0px;
+}
 
 angular-tag-cloud.custom-css {
   font-family: 'Amatic SC';
@@ -12,6 +15,7 @@ angular-tag-cloud.custom-css {
 angular-tag-cloud.custom-css > span > a {
   text-decoration: none;
 }
+
  /* font sizes */
 angular-tag-cloud.custom-css > span.w10 { font-size: 550%; }
 angular-tag-cloud.custom-css > span.w9 { font-size: 500%; }
@@ -49,4 +53,13 @@ angular-tag-cloud.custom-css > span.w1 { color: #18cb42; }
 .headers-align .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
+}
+
+/* Nav */
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+main {
+  padding: 20px;
 }
