@@ -79,10 +79,17 @@ export class CloudConfiguratorComponent implements OnInit {
   }
 
   reDraw() {
-    const changedData$: Observable<CloudData[]> = of(randomData(
-      this.cloudDataForm.value.amount,
-      this.cloudDataForm.value.rotate
-    ));
+    let data: CloudData[] = [];
+    try {
+      data = JSON.parse(this.cloudDataForm.value.data);
+    } catch (error) {
+      this.snackBar.open('Error parsing JSON. Fall back to random data.' + error, 'Ok, got it!', {
+        duration: 3000,
+      });
+      data = randomData(30);
+    }
+
+    const changedData$: Observable<CloudData[]> = of(data);
     changedData$.subscribe(res => this.setData(res));
     this.tagCloudComponent.reDraw();
   }
