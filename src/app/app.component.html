@@ -1,18 +1,13 @@
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      AngularTagCloudModule Demo
-    </mat-toolbar>
-    <main>
-      <app-cloud-configurator></app-cloud-configurator>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<mat-toolbar color="primary">
+  <span>AngularTagCloudModule Demo</span>
 
+  <span class="fill-space"></span>
 
-
-
-
-
-
-
+  <a mat-button href="https://github.com/d-koppenhagen/angular-tag-cloud-module">
+    Github
+    <mat-icon aria-hidden="false" aria-label="Github" svgIcon="github"></mat-icon>
+  </a>
+</mat-toolbar>
+<main>
+  <app-cloud-configurator></app-cloud-configurator>
+</main>

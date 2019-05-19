@@ -63,3 +63,11 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
 main {
   padding: 20px;
 }
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+}
