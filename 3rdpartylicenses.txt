@@ -116,7 +116,7 @@ THE SOFTWARE.
 
 @angular/material/form-field
 
-@angular/material/sidenav
+@angular/material/icon
 
 @angular/material/slide-toggle
 
