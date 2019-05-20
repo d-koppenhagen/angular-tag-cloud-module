@@ -79,8 +79,8 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 export class AppComponent {
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
-    width : 1000,
-    height : 400,
+    width: 1000,
+    height: 400,
     overflow: false,
   };
 
@@ -90,6 +90,12 @@ export class AppComponent {
     // ...
   ];
 }
+```
+
+You can either pass configuration properties as an `Input` (As shown in the example above) or pass a an object described by the `CloudOptions`-Interface using the `config` property as shown below.
+
+```html
+<angular-tag-cloud [config]="options" [data]="data"></angular-tag-cloud>
 ```
 
 You can use one of the following HTML-Tags for the tag cloud in your template:
@@ -289,7 +295,8 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
 | Input            | Type               | default value  | mandatory
 | ---------------- | ------------------ | -------------- | ---------
-| `data`           | Array of cloudData |                | yes
+| `config`         | CloudOptions       | See other default params | no
+| `data`           | CloudData[]        |                | yes
 | `width`          | number (*)         | 500            | no
 | `height`         | number             | 300            | no
 | `overflow`       | boolean            | true           | no

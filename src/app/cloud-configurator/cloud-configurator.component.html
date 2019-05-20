@@ -224,15 +224,20 @@
   </mat-card-header>
 
   <mat-card-content>
+
+    <!-- Yo can set / override the config -->
+    <!--
+    [height]="cloudConfigForm.value.height"
+    [overflow]="cloudConfigForm.value.overflow"
+    [strict]="cloudConfigForm.value.strict"
+    [realignOnResize]="cloudConfigForm.value.realignOnResize"
+    [randomizeAngle]="cloudConfigForm.value.randomizeAngle"
+    [zoomOnHover]="cloudConfigForm.value.zoomOnHover"
+    -->
+
     <angular-tag-cloud
       [data]="data"
-      [width]="cloudConfigForm.value.width"
-      [height]="cloudConfigForm.value.height"
-      [overflow]="cloudConfigForm.value.overflow"
-      [strict]="cloudConfigForm.value.strict"
-      [realignOnResize]="cloudConfigForm.value.realignOnResize"
-      [randomizeAngle]="cloudConfigForm.value.randomizeAngle"
-      [zoomOnHover]="cloudConfigForm.value.zoomOnHover"
+      [config]="cloudConfigForm.value"
       (clicked)="log('clicked', $event)"
       (dataChanges)="log('dataChanges', $event)"
       (afterInit)="log('After Init', $event)"
@@ -241,3 +246,4 @@
     </angular-tag-cloud>
   </mat-card-content>
 </mat-card>
+

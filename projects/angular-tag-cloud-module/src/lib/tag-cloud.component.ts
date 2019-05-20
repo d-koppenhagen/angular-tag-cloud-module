@@ -31,13 +31,14 @@ interface CloudOptionsInternal extends CloudOptions {
 })
 export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
-  @Input() width = 500;
-  @Input() height = 300;
-  @Input() overflow = true;
-  @Input() strict = false;
-  @Input() zoomOnHover: ZoomOnHoverOptions = { transitionTime: 0, scale: 1, delay: 0, color: null };
-  @Input() realignOnResize = false;
-  @Input() randomizeAngle = false;
+  @Input() width;
+  @Input() height;
+  @Input() overflow;
+  @Input() strict;
+  @Input() zoomOnHover: ZoomOnHoverOptions;
+  @Input() realignOnResize;
+  @Input() randomizeAngle;
+  @Input() config: CloudOptions;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
@@ -58,13 +59,39 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @HostListener('window:resize', ['$event']) onResize(event: any) {
     window.clearTimeout(this.timeoutId);
     this.timeoutId = window.setTimeout(() => {
-      if (this.realignOnResize) {
+      if (this.options.realignOnResize) {
         this.reDraw();
       }
     }, 200);
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // set default values
+    this.config = {
+      width: 500,
+      height: 300,
+      overflow: true,
+      strict: false,
+      zoomOnHover: {
+        transitionTime: 0,
+        scale: 1,
+        delay: 0,
+        color: null
+      },
+      realignOnResize: false,
+      randomizeAngle: false,
+      ...this.config // override default width params in config object
+    };
+
+    // override properties if explicitly set
+    if (this.width) { this.config.width = this.width; }
+    if (this.height) { this.config.height = this.height; }
+    if (typeof this.overflow === 'boolean') { this.config.overflow = this.overflow; }
+    if (typeof this.strict === 'boolean') { this.config.strict = this.strict; }
+    if (typeof this.realignOnResize === 'boolean') { this.config.realignOnResize = this.realignOnResize; }
+    if (typeof this.randomizeAngle === 'boolean') { this.config.randomizeAngle = this.randomizeAngle; }
+    if (this.zoomOnHover) { this.config.zoomOnHover = this.zoomOnHover; }
+
     this.reDraw(changes);
   }
 
@@ -86,26 +113,26 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.dataArr = changes.data.currentValue;
     }
 
-    let width = this.width;
+    // calculate width and height
+    let width = this.config.width;
     if (this.el.nativeElement.parentNode.offsetWidth > 0
       && width <= 1
       && width > 0
     ) {
       width = this.el.nativeElement.parentNode.offsetWidth * width;
     }
+    const height = this.config.height;
 
     // set options
     this.options = {
+      ...this.config,
       step: 2.0,
-      aspectRatio: (width / this.height),
+      aspectRatio: (width / height),
       width,
-      height: this.height,
       center: {
         x: (width / 2.0),
-        y: (this.height / 2.0)
-      },
-      overflow: this.overflow,
-      zoomOnHover: this.zoomOnHover
+        y: (height / 2.0)
+      }
     };
 
     this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
@@ -170,7 +197,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
   drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
-    let angle = this.randomizeAngle ? 6.28 * Math.random() : 0;
+    let angle = this.options.randomizeAngle ? 6.28 * Math.random() : 0;
     let radius = 0.0;
     let weight = 5;
     let wordSpan: HTMLElement;
@@ -178,7 +205,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // Check if min(weight) > max(weight) otherwise use default
     if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
       // check if strict mode is active
-      if (!this.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
+      if (!this.options.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
         weight = Math.round((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
                   (this.dataArr[0].weight - this.dataArr[this.dataArr.length - 1].weight) * 9.0) + 1;
       } else { // use given value for weigth directly
@@ -237,18 +264,18 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     }
 
     // set zoomOption
-    if (this.zoomOnHover && this.zoomOnHover.scale !== 1) {
-      if (!this.zoomOnHover.transitionTime) { this.zoomOnHover.transitionTime = 0; }
-      if (!this.zoomOnHover.scale) { this.zoomOnHover.scale = 1; }
+    if (this.options.zoomOnHover && this.options.zoomOnHover.scale !== 1) {
+      if (!this.options.zoomOnHover.transitionTime) { this.options.zoomOnHover.transitionTime = 0; }
+      if (!this.options.zoomOnHover.scale) { this.options.zoomOnHover.scale = 1; }
 
       wordSpan.onmouseover = () => {
-        this.r2.setStyle(wordSpan, 'transition', `transform ${this.zoomOnHover.transitionTime}s`);
-        this.r2.setStyle(wordSpan, 'transform', `scale(${this.zoomOnHover.scale}) ${transformString}`);
-        this.r2.setStyle(wordSpan, 'transition-delay', `${this.zoomOnHover.delay}s`);
-        if (this.zoomOnHover.color) {
+        this.r2.setStyle(wordSpan, 'transition', `transform ${this.options.zoomOnHover.transitionTime}s`);
+        this.r2.setStyle(wordSpan, 'transform', `scale(${this.options.zoomOnHover.scale}) ${transformString}`);
+        this.r2.setStyle(wordSpan, 'transition-delay', `${this.options.zoomOnHover.delay}s`);
+        if (this.options.zoomOnHover.color) {
           word.link
-            ? this.r2.setStyle(node, 'color', this.zoomOnHover.color)
-            : this.r2.setStyle(wordSpan, 'color', this.zoomOnHover.color);
+            ? this.r2.setStyle(node, 'color', this.options.zoomOnHover.color)
+            : this.r2.setStyle(wordSpan, 'color', this.options.zoomOnHover.color);
         }
       };
 
