@@ -108,6 +108,7 @@ You can use one of the following HTML-Tags for the tag cloud in your template:
 > So the given value for `weight` is not directly mapped to the CSS-class. For example you can use also a value like `123` or `34` - it will always be mapped to a scale from 1 to 10 relativly to the other array elements.
 > If you don't want that the tag cloud is calculating the values manually, set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
 > If you want the tag cloud to randomly generate an angle for each entry (when it is undefined), set `randomizeAngle` property to `true`.
+> The `step` property defines the steps which will be added for the next cloud element to check during calculation. The calculation starts somewhere in the middle of the canvas. The steps will be increased by the given value like a spiral to the outer canvas area. When the algorithm detects that there is space for the current element, it will be added to the cloud. A lower value for the `step` attribute is more granular and precisely but needs also more time and processing power during the cloud creation.
 
 Check out the `demo`-Folder for a complete example
 
@@ -299,6 +300,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `data`           | CloudData[]        |                | yes
 | `width`          | number (*)         | 500            | no
 | `height`         | number             | 300            | no
+| `step`           | number             | 2.0            | no
 | `overflow`       | boolean            | true           | no
 | `strict`         | boolean            | false          | no
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no

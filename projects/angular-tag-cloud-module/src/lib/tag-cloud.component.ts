@@ -12,8 +12,6 @@ import { Component,
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
 interface CloudOptionsInternal extends CloudOptions {
-  step: number;
-
   /**
    * setting the aspect ratio. This value is calculated by the given width and height
    */
@@ -31,13 +29,14 @@ interface CloudOptionsInternal extends CloudOptions {
 })
 export class TagCloudComponent implements OnChanges, AfterContentInit, AfterContentChecked {
   @Input() data: CloudData[];
-  @Input() width;
-  @Input() height;
-  @Input() overflow;
-  @Input() strict;
+  @Input() width: number;
+  @Input() height: number;
+  @Input() step: number;
+  @Input() overflow: boolean;
+  @Input() strict: boolean;
   @Input() zoomOnHover: ZoomOnHoverOptions;
-  @Input() realignOnResize;
-  @Input() randomizeAngle;
+  @Input() realignOnResize: boolean;
+  @Input() randomizeAngle: boolean;
   @Input() config: CloudOptions;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
@@ -80,6 +79,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       },
       realignOnResize: false,
       randomizeAngle: false,
+      step: 2.0,
       ...this.config // override default width params in config object
     };
 
@@ -91,6 +91,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     if (typeof this.realignOnResize === 'boolean') { this.config.realignOnResize = this.realignOnResize; }
     if (typeof this.randomizeAngle === 'boolean') { this.config.randomizeAngle = this.randomizeAngle; }
     if (this.zoomOnHover) { this.config.zoomOnHover = this.zoomOnHover; }
+    if (this.step) { this.config.step = this.step; }
 
     this.reDraw(changes);
   }
@@ -126,7 +127,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // set options
     this.options = {
       ...this.config,
-      step: 2.0,
       aspectRatio: (width / height),
       width,
       center: {
@@ -205,7 +205,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   private drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
     let angle = this.options.randomizeAngle ? 6.28 * Math.random() : 0;
-    let radius = 0.0;
+    let radius = 0;
     let weight = 5;
     let wordSpan: HTMLElement;
 
@@ -329,6 +329,13 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
       left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
       top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
+
+      console.log({
+        radius,
+        angle,
+        left,
+        top
+      });
 
       wordStyle.left = left + 'px';
       wordStyle.top = top + 'px';

@@ -76,6 +76,10 @@ export interface CloudOptions {
    * Enable or disable randomly determining an angle when it is not explicitly set
    */
   randomizeAngle?: boolean;
+  /**
+   * steps for the next check if element fits into cloud (circular detection)
+   */
+  step?: number;
 }
 
 /**
