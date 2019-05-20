@@ -151,7 +151,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // helper to generate a descriptive string for an entry to use when sorting alphabetically
-  descriptiveEntry(entry: CloudData): string {
+  private descriptiveEntry(entry: CloudData): string {
     let description = entry.text;
     if (entry.color) {
       description += '-' + entry.color;
@@ -168,7 +168,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     return description;
   }
 
-  drawWordCloud() {
+  private drawWordCloud() {
     // Sort alphabetically to ensure that, all things being equal, words are placed uniformly
     this.dataArr.sort((a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
     // Sort this._dataArr from the word with the highest weight to the one with the lowest
@@ -179,7 +179,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // Helper function to test if an element overlaps others
-  hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
+  private hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
     for (const item of otherEl) {
       if (this.overlapping(currentEl, item)) { return true; }
@@ -188,14 +188,14 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // Pairwise overlap detection
-  overlapping(a: HTMLElement, b: HTMLElement): boolean {
+  private overlapping(a: HTMLElement, b: HTMLElement): boolean {
     return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
             Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
     ? true : false;
   }
 
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
-  drawWord(index: number, word: CloudData) {
+  private drawWord(index: number, word: CloudData) {
     // Define the ID attribute of the span that will wrap the word
     let angle = this.options.randomizeAngle ? 6.28 * Math.random() : 0;
     let radius = 0.0;
@@ -313,6 +313,9 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordSpan.appendChild(tooltipSpan);
     }
 
+    // set a unique id
+    wordSpan.id = `angular-tag-cloud-item-${index}`;
+
     while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
       radius += this.options.step;
       angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
@@ -333,8 +336,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordSpan.remove();
       return;
     }
-
-    wordSpan.id = `angular-tag-cloud-item-${index}`;
 
     this.alreadyPlacedWords.push(wordSpan);
   }
