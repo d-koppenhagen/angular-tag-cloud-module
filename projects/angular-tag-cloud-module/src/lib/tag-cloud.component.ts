@@ -179,19 +179,26 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   // Helper function to test if an element overlaps others
-  private hitTest(currentEl: HTMLElement, otherEl: HTMLElement[]): boolean {
+  private hitTest(testEl: HTMLElement): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
-    for (const item of otherEl) {
-      if (this.overlapping(currentEl, item)) { return true; }
+    for (const item of this.alreadyPlacedWords) {
+      if (this.overlapping(testEl, item)) { return true; }
     }
     return false;
   }
 
   // Pairwise overlap detection
-  private overlapping(a: HTMLElement, b: HTMLElement): boolean {
-    return (Math.abs(2.0 * a.offsetLeft + a.offsetWidth  - 2.0 * b.offsetLeft - b.offsetWidth)  < a.offsetWidth  + b.offsetWidth &&
-            Math.abs(2.0 * a.offsetTop  + a.offsetHeight - 2.0 * b.offsetTop  - b.offsetHeight) < a.offsetHeight + b.offsetHeight)
-    ? true : false;
+  private overlapping(e1: HTMLElement, e2: HTMLElement) {
+    const rect1 = e1.getBoundingClientRect();
+    const rect2 = e2.getBoundingClientRect();
+
+    const overlap = !(
+      rect1.right < rect2.left ||
+      rect1.left > rect2.right ||
+      rect1.bottom < rect2.top ||
+      rect1.top > rect2.bottom
+    );
+    return overlap;
   }
 
   // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
@@ -316,7 +323,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // set a unique id
     wordSpan.id = `angular-tag-cloud-item-${index}`;
 
-    while (this.hitTest(wordSpan, this.alreadyPlacedWords)) {
+    while (this.hitTest(wordSpan)) {
       radius += this.options.step;
       angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
 
