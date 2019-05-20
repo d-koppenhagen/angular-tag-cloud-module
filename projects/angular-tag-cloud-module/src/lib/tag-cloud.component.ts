@@ -330,13 +330,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
       top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
 
-      console.log({
-        radius,
-        angle,
-        left,
-        top
-      });
-
       wordStyle.left = left + 'px';
       wordStyle.top = top + 'px';
     }
