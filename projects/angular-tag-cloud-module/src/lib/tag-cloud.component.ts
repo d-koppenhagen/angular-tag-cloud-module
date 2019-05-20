@@ -334,6 +334,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       return;
     }
 
+    wordSpan.id = `angular-tag-cloud-item-${index}`;
+
     this.alreadyPlacedWords.push(wordSpan);
   }
 
