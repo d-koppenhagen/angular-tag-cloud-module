@@ -1,4 +1,10 @@
-## 3.5.0
+## 3.6.0
+### Features
+* Adds an `id` attribute to each word ([a4ce14c](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/a4ce14c3cece4844a035e79e9e2ce942bd6c7a57))
+* Ability to pass an object width `CloudOptions` as input ([96cb5f7](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/96cb5f72de8b9b320ce34e8a4d5bb688f0a51751))
+* Allow peer dependencies of Angular 9 preview versions
+
+## 3.5.1
 ### Fixes
 * Adds missing option `strict` to exported interface CloudOptions ([b96f2bf](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/b96f2bf2bb26e1159139c40764ee664367a22703))
 

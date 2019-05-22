@@ -17,6 +17,7 @@ Run `ng build angular-tag-cloud-module` to build the project. The build artifact
 1. Add a scetion to `CHANGELOG.md`.
 2. Build the library and artifacts using the npm script `npm run package`.
 3. Go to the dist folder `cd dist/angular-tag-cloud-module` and run `npm publish`.
+4. Consider updating the gh-pages example probject running `npm run publish-gh-pages`
 
 ## Running unit tests
 
