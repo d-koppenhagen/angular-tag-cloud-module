@@ -299,8 +299,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
     const width = wordSpan.offsetWidth;
     const height = wordSpan.offsetHeight;
-    let left = this.options.center.x;
-    let top = this.options.center.y;
+    let left = this.options.center.x - (width / 2);
+    let top = this.options.center.y - (height / 2);
 
     // Save a reference to the style property, for better performance
     const wordStyle = wordSpan.style;
