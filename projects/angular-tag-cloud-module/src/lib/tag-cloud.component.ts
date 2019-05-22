@@ -334,6 +334,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordStyle.top = top + 'px';
     }
 
+    // do not place the first word always right in the middle
+    if (index === 0) {
+      wordStyle.left = left + ((Math.random() - 0.5) * 2) * (this.options.width / 5) + 'px';
+      wordStyle.top = top + ((Math.random() - 0.5) * 2) * (this.options.height / 5) + '30px';
+    }
+
     // Don't render word if part of it would be outside the container
     if (
       !this.options.overflow &&
