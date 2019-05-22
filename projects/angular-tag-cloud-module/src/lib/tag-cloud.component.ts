@@ -346,6 +346,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       (left < 0 || top < 0 || (left + width) > this.options.width ||
       (top + height) > this.options.height)
     ) {
+      console.warn('Word did not fit into the cloud and overflow is set to \'false\'. The element will be removed', wordSpan);
       wordSpan.remove();
       return;
     }
