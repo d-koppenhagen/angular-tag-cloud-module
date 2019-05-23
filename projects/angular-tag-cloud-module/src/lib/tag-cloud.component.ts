@@ -38,6 +38,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() realignOnResize: boolean;
   @Input() randomizeAngle: boolean;
   @Input() config: CloudOptions;
+  @Input() log: 'warn' | 'debug' | false;
 
   @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
   @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
@@ -56,6 +57,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   ) { }
 
   @HostListener('window:resize', ['$event']) onResize(event: any) {
+    this.logMessage(
+      'debug',
+      'rezisze triggered'
+    );
     window.clearTimeout(this.timeoutId);
     this.timeoutId = window.setTimeout(() => {
       if (this.options.realignOnResize) {
@@ -65,6 +70,11 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.logMessage(
+      'debug',
+      'ngOnChanges fired',
+      changes
+    );
     // set default values
     this.config = {
       width: 500,
@@ -80,6 +90,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       realignOnResize: false,
       randomizeAngle: false,
       step: 2.0,
+      log: false,
       ...this.config // override default width params in config object
     };
 
@@ -92,12 +103,18 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     if (typeof this.randomizeAngle === 'boolean') { this.config.randomizeAngle = this.randomizeAngle; }
     if (this.zoomOnHover) { this.config.zoomOnHover = this.zoomOnHover; }
     if (this.step) { this.config.step = this.step; }
+    if (this.log) { this.config.log = this.log; }
 
     this.reDraw(changes);
   }
 
   reDraw(changes?: SimpleChanges) {
     this.dataChanges.emit(changes);
+    this.afterChecked.emit();
+    this.logMessage(
+      'debug',
+      'dataChanges emitted'
+    );
     this.alreadyPlacedWords = [];
 
     // check if data is not null or empty
@@ -139,15 +156,27 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
     // draw the cloud
     this.drawWordCloud();
+    this.logMessage(
+      'debug',
+      'reDraw finished'
+    );
   }
 
 
   ngAfterContentInit() {
     this.afterInit.emit();
+    this.logMessage(
+      'debug',
+      'afterInit emitted'
+    );
   }
 
   ngAfterContentChecked() {
     this.afterChecked.emit();
+    this.logMessage(
+      'debug',
+      'afterChecked emitted'
+    );
   }
 
   // helper to generate a descriptive string for an entry to use when sorting alphabetically
@@ -219,13 +248,25 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
         // fallback to 10
         if (word.weight > 10) {
           weight = 10;
-          console.warn(`[TagCloud strict] Weight property ${word.weight} > 10. Fallback to 10 as you are using strict mode`, word);
+          this.logMessage(
+            'warn',
+            `[TagCloud strict] Weight property ${word.weight} > 10. Fallback to 10 as you are using strict mode`,
+            word
+          );
         } else if (word.weight < 1) { // fallback to 1
           weight = 1;
-          console.warn(`[TagCloud strict] Given weight property ${word.weight} < 1. Fallback to 1 as you are using strict mode`, word);
+          this.logMessage(
+            'warn',
+            `[TagCloud strict] Given weight property ${word.weight} < 1. Fallback to 1 as you are using strict mode`,
+            word
+          );
         } else if (word.weight % 1 !== 0) { // round if given value is not an integer
           weight = Math.round(word.weight);
-          console.warn(`[TagCloud strict] Given weight property ${word.weight} is not an integer. Rounded value to ${weight}`, word);
+          this.logMessage(
+            'warn',
+            `[TagCloud strict] Given weight property ${word.weight} is not an integer. Rounded value to ${weight}`,
+            word
+          );
         } else {
           weight = word.weight;
         }
@@ -346,12 +387,35 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       (left < 0 || top < 0 || (left + width) > this.options.width ||
       (top + height) > this.options.height)
     ) {
-      console.warn('Word did not fit into the cloud and overflow is set to \'false\'. The element will be removed', wordSpan);
+      this.logMessage(
+        'warn',
+        'Word did not fit into the cloud and overflow is set to \'false\'. The element will be removed',
+        wordSpan
+      );
       wordSpan.remove();
       return;
     }
 
+    this.logMessage(
+      'debug',
+      'Adds new word <span>',
+      wordSpan
+    );
     this.alreadyPlacedWords.push(wordSpan);
+
+    this.logMessage(
+      'debug',
+      'Placed words',
+      this.alreadyPlacedWords
+    );
+  }
+
+  private logMessage(level: 'warn' | 'debug' | false, ...args: any) {
+    if (this.config.log === 'debug') {
+      console.log(`[AngularTagCloudModule ${level}]`, ...args);
+    } else if (this.config.log === 'warn' && level === 'warn') {
+      console.warn(`[AngularTagCloudModule ${level}]`, ...args);
+    }
   }
 
 }

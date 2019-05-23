@@ -80,6 +80,10 @@ export interface CloudOptions {
    * steps for the next check if element fits into cloud (circular detection)
    */
   step?: number;
+  /**
+   * Activate logging for debug purpose
+   */
+  log?: 'warn' | 'debug' | false;
 }
 
 /**

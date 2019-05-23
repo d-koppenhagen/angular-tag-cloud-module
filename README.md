@@ -298,14 +298,15 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | ---------------- | ------------------ | -------------- | ---------
 | `config`         | CloudOptions       | See other default params | no
 | `data`           | CloudData[]        |                | yes
-| `width`          | number (*)         | 500            | no
-| `height`         | number             | 300            | no
-| `step`           | number             | 2.0            | no
-| `overflow`       | boolean            | true           | no
-| `strict`         | boolean            | false          | no
+| `width`          | number (*)         | `500`          | no
+| `height`         | number             | `300`          | no
+| `step`           | number             | `2.0`          | no
+| `overflow`       | boolean            | `true`         | no
+| `strict`         | boolean            | `false`        | no
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no
-| `realignOnResize`| boolean            | false          | no
-| `randomizeAngle` | boolean            | false          | no
+| `realignOnResize`| boolean            | `false`        | no
+| `randomizeAngle` | boolean            | `false`        | no
+| `log`            | `'warn'` / `'debug'` / `false` | `false`    | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
 
@@ -314,11 +315,11 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | name       | Type            | default value                              | mandatory
 | ---------- | --------------- | ------------------------------------------ | ---------
 | `text`     | string | null   |                                            | yes
-| `weight`   | number          | 5                                          | no
+| `weight`   | number          | `5`                                        | no
 | `link`     | string          |                                            | no
-| `external` | boolean         | false (only has relevance if link was set) | no
+| `external` | boolean         | `false` (only has relevance if link was set) | no
 | `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
-| `rotate`   | number          | 0                                          | no
+| `rotate`   | number          | `0`                                        | no
 | `tooltip`  | string          |                                            | no
 
  Also the element can have the following output:

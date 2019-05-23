@@ -238,6 +238,7 @@
     <angular-tag-cloud
       [data]="data"
       [config]="cloudConfigForm.value"
+      [log]="'warn'"
       (clicked)="log('clicked', $event)"
       (dataChanges)="log('dataChanges', $event)"
       (afterInit)="log('After Init', $event)"
