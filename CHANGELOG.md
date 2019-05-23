@@ -1,3 +1,8 @@
+## 3.7.0
+### Features
+* Do not place the first word always right in the middle ([ad4d5a4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/ad4d5a43ac2fa5183c8dbc399c801b5078ff1a30))
+* Adds input for logging (`[log]="'warn'"`). Possible values: `warn`, `debug`, `false` ([874cda3](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/874cda31258361164cddbf789122c7538246152f))
+
 ## 3.6.0
 ### Features
 * Adds an `id` attribute to each word ([a4ce14c](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/a4ce14c3cece4844a035e79e9e2ce942bd6c7a57))
