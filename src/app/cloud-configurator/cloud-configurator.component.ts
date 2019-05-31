@@ -19,7 +19,7 @@ export class CloudConfiguratorComponent implements OnInit {
   data: CloudData[] = [];
 
   defaultCloudOptions: CloudOptions = {
-    width : 0.9,
+    width : 0.98,
     height : 500,
     overflow: false,
     strict: false,
@@ -35,7 +35,7 @@ export class CloudConfiguratorComponent implements OnInit {
   };
 
   exampleDataOptions = {
-    amount: 20,
+    amount: 40,
     rotate: true,
     data: JSON.stringify(this.data, null, 2)
   };
@@ -52,7 +52,8 @@ export class CloudConfiguratorComponent implements OnInit {
 
     this.cloudConfigForm = this.fb.group({
       ...this.defaultCloudOptions,
-      zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover)
+      zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover),
+      customStyle: true
     });
 
     this.getNewExampleData();

@@ -1,9 +1,57 @@
+/* TagCloud Style */
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+angular-tag-cloud.custom-css {
+  border: 8px solid black;
+  font-size: 12px;
+  font-family: 'Indie Flower', cursive;
+  background: #2C2C2C url('../../assets/blackboard.jpg') no-repeat;
+  background-size: 100% auto;
+}
+
+/* no decoration for links */
+::ng-deep angular-tag-cloud.custom-css a {
+  text-decoration: none;
+  color: inherit;
+}
+::ng-deep angular-tag-cloud.custom-css a:hover {
+  color: rgb(255, 255, 255);
+}
+
+/* font sizes */
+::ng-deep angular-tag-cloud.custom-css span.w10 { font-size: 380%; }
+::ng-deep angular-tag-cloud.custom-css span.w9 { font-size: 330%; }
+::ng-deep angular-tag-cloud.custom-css span.w8 { font-size: 280%; }
+::ng-deep angular-tag-cloud.custom-css span.w7 { font-size: 240%; }
+::ng-deep angular-tag-cloud.custom-css span.w6 { font-size: 210%; }
+::ng-deep angular-tag-cloud.custom-css span.w5 { font-size: 180%; }
+::ng-deep angular-tag-cloud.custom-css span.w4 { font-size: 160%; }
+::ng-deep angular-tag-cloud.custom-css span.w3 { font-size: 140%; }
+::ng-deep angular-tag-cloud.custom-css span.w2 { font-size: 120%; }
+::ng-deep angular-tag-cloud.custom-css span.w1 { font-size: 100%; }
+
+/* colors */
+::ng-deep angular-tag-cloud.custom-css span.w10 { color: #0cf; }
+::ng-deep angular-tag-cloud.custom-css span.w9 { color: #fff; }
+::ng-deep angular-tag-cloud.custom-css span.w8 { color: rgb(255, 0, 195); }
+::ng-deep angular-tag-cloud.custom-css span.w7 { color: rgb(36, 154, 116); }
+::ng-deep angular-tag-cloud.custom-css span.w6 { color: #e8f090; }
+::ng-deep angular-tag-cloud.custom-css span.w5 { color: #c3dd90; }
+::ng-deep angular-tag-cloud.custom-css span.w4 { color: #f09090; }
+::ng-deep angular-tag-cloud.custom-css span.w3 { color: #f2ea10; }
+::ng-deep angular-tag-cloud.custom-css span.w2 { color: #ee99e7; }
+::ng-deep angular-tag-cloud.custom-css span.w1 { color: #18cb42; }
+
+
+
+
+/* Component style */
 .adjust-top {
   padding-top: 12px;
 }
 
-/deep/ color-picker > div.color-picker {
-  top: 0px !important;
+::ng-deep color-picker > div.color-picker {
+  top: 0px;
 }
 
 .card-top-space {
@@ -44,4 +92,18 @@
 mat-label.label-text {
   font-size: 12px;
   color: rgba(0,0,0,.54);
+}
+
+
+.card-image {
+  border-radius: 0%;
+  background-size: cover;
+}
+
+.image-options {
+  background-image: url('../../assets/icon-control-panel.png');
+}
+
+.image-data {
+  background-image: url('../../assets/icon-db.png');
 }
