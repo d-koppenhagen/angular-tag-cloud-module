@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./cloud-configurator.component.css']
 })
 export class CloudConfiguratorComponent implements OnInit {
-  @ViewChild(TagCloudComponent) tagCloudComponent: TagCloudComponent;
+  @ViewChild(TagCloudComponent, { static: true }) tagCloudComponent: TagCloudComponent;
   cloudDataForm: FormGroup;
   cloudConfigForm: FormGroup;
   data: CloudData[] = [];
