@@ -37,6 +37,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() zoomOnHover: ZoomOnHoverOptions;
   @Input() realignOnResize: boolean;
   @Input() randomizeAngle: boolean;
+  @Input() background: string;
+  @Input() font: string;
   @Input() config: CloudOptions;
   @Input() log: 'warn' | 'debug' | false;
 
@@ -89,6 +91,8 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       },
       realignOnResize: false,
       randomizeAngle: false,
+      background: null,
+      font: null,
       step: 2.0,
       log: false,
       ...this.config // override default width params in config object
@@ -101,9 +105,24 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     if (typeof this.strict === 'boolean') { this.config.strict = this.strict; }
     if (typeof this.realignOnResize === 'boolean') { this.config.realignOnResize = this.realignOnResize; }
     if (typeof this.randomizeAngle === 'boolean') { this.config.randomizeAngle = this.randomizeAngle; }
+    if (typeof this.background === 'string') { this.config.background = this.background; }
+    if (typeof this.font === 'string') { this.config.font = this.font; }
     if (this.zoomOnHover) { this.config.zoomOnHover = this.zoomOnHover; }
     if (this.step) { this.config.step = this.step; }
     if (this.log) { this.config.log = this.log; }
+
+    this.logMessage('warn', 'cloud configuration', this.config);
+
+    // set the basic font style if property is provided
+    if (this.config.font) {
+      this.r2.setStyle(this.el.nativeElement, 'font', this.config.font);
+    }
+
+    // set a background image if property is provided
+    if (this.config.background) {
+      this.r2.setStyle(this.el.nativeElement, 'background', this.config.background);
+    }
+
 
     this.reDraw(changes);
   }
@@ -152,8 +171,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       }
     };
 
+    // set the dimensions
     this.r2.setStyle(this.el.nativeElement, 'width', this.options.width + 'px');
     this.r2.setStyle(this.el.nativeElement, 'height', this.options.height + 'px');
+
     // draw the cloud
     this.drawWordCloud();
     this.logMessage(

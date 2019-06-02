@@ -33,10 +33,10 @@ export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
     // set random weight
     weight = Math.floor((Math.random() * 10) + 1);
 
-    text = `weight-${weight}`;
+    text = `w${weight}`;
     if (color) { text += '-color'; }
     if (link) { text += '-link'; }
-    if (external) { text += '-external'; }
+    if (external) { text += '-ext'; }
 
     const el: CloudData = {
       text,

@@ -45,7 +45,7 @@
             fxFlex
             class="json-input"
             matInput
-            rows="14"
+            rows="20"
             formControlName="data"
           ></textarea>
         </div>
@@ -213,6 +213,24 @@
           <mat-slide-toggle fxFlex formControlName="customStyle"
             >Use custom Stylesheet</mat-slide-toggle
           >
+        </div>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              formControlName="font"
+              placeholder="Font"
+            />
+          </mat-form-field>
+        </div>
+        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              formControlName="background"
+              placeholder="Background"
+            />
+          </mat-form-field>
         </div>
       </form>
     </mat-card-content>

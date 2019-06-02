@@ -4,15 +4,16 @@
 [![npm](https://img.shields.io/badge/Required%20Angular%20Version-%3E%3D6.0.0-blue.svg)](https://github.com/angular/angular/releases/tag/6.0.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Demo at GH-Pages](https://img.shields.io/badge/Demo-gh--pages-blueviolet.svg)](https://github.com/d-koppenhagen/angular-tag-cloud-module)
 
 [![npm](https://img.shields.io/npm/dw/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/dm/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/dy/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/dt/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 
-This angular module contains a component which generates tag clouds.
-he module requires a peer dependency to angular/core >= Version 6.0.0.
-For working with Angular 5 and 4, please use version 2.6.0 by installing via `npm i angular-tag-cloud-module@2.6.0`.
+With this module you can generate word clouds / tag clouds.
+The module requires a peer dependency to angular/core >= Version 6.0.0.
+> For working with Angular 5 and 4, please use version 2.6.0 by installing via `npm i angular-tag-cloud-module@2.6.0`.
 
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
 
@@ -20,6 +21,7 @@ The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angu
 
 # Demo
 
+Check out the demo page to play around with the options:
 https://d-koppenhagen.github.io/angular-tag-cloud-module/
 
 # Install
@@ -306,6 +308,8 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no
 | `realignOnResize`| boolean            | `false`        | no
 | `randomizeAngle` | boolean            | `false`        | no
+| `font`           | string ([CSS font](https://www.w3schools.com/cssref/pr_font_font.asp)) |        | no
+| `background`     | string ([CSS background](https://www.w3schools.com/cssref/css3_pr_background.asp)) |        | no
 | `log`            | `'warn'` / `'debug'` / `false` | `false`    | no
 
 (*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
@@ -318,7 +322,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `weight`   | number          | `5`                                        | no
 | `link`     | string          |                                            | no
 | `external` | boolean         | `false` (only has relevance if link was set) | no
-| `color`    | valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | (a shade of blue, depends on the weight)   | no
+| `color`    | string ([CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)) | (a shade of blue, depends on the weight)   | no
 | `rotate`   | number          | `0`                                        | no
 | `tooltip`  | string          |                                            | no
 
@@ -331,7 +335,12 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `afterInit`     | -                  | -              | no        | Fires after the View was initilized
 | `afterChecked`  | -                  | -              | no        | Fires after the View was checked
 
-You can also call the method `reDraw()` to force the cloud data to be re-drawn (`@ViewChild(TagCloudComponent) child: TagCloudComponent; child.redraw()`).
+You can also call the method `reDraw()` to force the cloud data to be re-drawn:
+```ts
+@ViewChild(TagCloudComponent, { static: false }) child: TagCloudComponent;
+...
+child.redraw();
+```
 
 # Development
 For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/README.dev.md)

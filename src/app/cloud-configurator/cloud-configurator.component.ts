@@ -53,7 +53,9 @@ export class CloudConfiguratorComponent implements OnInit {
     this.cloudConfigForm = this.fb.group({
       ...this.defaultCloudOptions,
       zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover),
-      customStyle: true
+      customStyle: true,
+      background: '#2C2C2C url("../../assets/blackboard.jpg") no-repeat center',
+      font: 'italic bold 14px "Indie Flower", cursive'
     });
 
     this.getNewExampleData();

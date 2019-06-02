@@ -84,6 +84,18 @@ export interface CloudOptions {
    * Activate logging for debug purpose
    */
   log?: 'warn' | 'debug' | false;
+  /**
+   * Define a background which should be used for the cloud.
+   * The syntax follows the CSS background property
+   * @see https://www.w3schools.com/cssref/css3_pr_background.asp
+   */
+  background?: string;
+  /**
+   * Define the basic font which should be used for the cloud.
+   * The syntax follows the CSS font property
+   * @see https://www.w3schools.com/cssref/pr_font_font.asp
+   */
+  font?: string;
 }
 
 /**

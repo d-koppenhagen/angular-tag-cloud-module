@@ -3,10 +3,6 @@
 
 angular-tag-cloud.custom-css {
   border: 8px solid black;
-  font-size: 12px;
-  font-family: 'Indie Flower', cursive;
-  background: #2C2C2C url('../../assets/blackboard.jpg') no-repeat;
-  background-size: 100% auto;
 }
 
 /* no decoration for links */
