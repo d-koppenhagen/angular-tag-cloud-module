@@ -1,3 +1,8 @@
+## 3.8.0
+### Features
+* Adds the property `background` for setting a CSS background color / picture ([de7cd4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
+* Adds the property `font` for setting a CSS font style ([de7cd4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
+
 ## 3.7.0
 ### Features
 * Do not place the first word always right in the middle ([ad4d5a4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/ad4d5a43ac2fa5183c8dbc399c801b5078ff1a30))
