@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/badge/Required%20Angular%20Version-%3E%3D6.0.0-blue.svg)](https://github.com/angular/angular/releases/tag/6.0.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
-[![Demo at GH-Pages](https://img.shields.io/badge/Demo-gh--pages-blueviolet.svg)](https://github.com/d-koppenhagen/angular-tag-cloud-module)
+[![Demo at GH-Pages](https://img.shields.io/badge/Demo-gh--pages-blueviolet.svg)](https://d-koppenhagen.github.io/angular-tag-cloud-module/)
 
 [![npm](https://img.shields.io/npm/dw/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/dm/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
