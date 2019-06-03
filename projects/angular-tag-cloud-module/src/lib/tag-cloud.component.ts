@@ -432,6 +432,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   }
 
   private logMessage(level: 'warn' | 'debug' | false, ...args: any) {
+    if (!this.config) { return; }
     if (this.config.log === 'debug') {
       console.log(`[AngularTagCloudModule ${level}]`, ...args);
     } else if (this.config.log === 'warn' && level === 'warn') {
