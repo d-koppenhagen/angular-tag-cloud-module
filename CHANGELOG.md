@@ -1,7 +1,11 @@
+## 3.8.1
+### Fixes
+* Input property `log` caused an error ([9b374ea](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/9b374ea097e822308664a17d6a4257493b129e1b#diff-0190ffbcbcf4e5176955d2f8e4cd5da7R435))
+
 ## 3.8.0
 ### Features
-* Adds the property `background` for setting a CSS background color / picture ([de7cd4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
-* Adds the property `font` for setting a CSS font style ([de7cd4](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
+* Adds the property `background` for setting a CSS background color / picture ([de7cd4c](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
+* Adds the property `font` for setting a CSS font style ([de7cd4c](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/de7cd4c21db98d12c335b4d07dd424b3387c4e28))
 
 ## 3.7.0
 ### Features
