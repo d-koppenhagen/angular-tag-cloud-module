@@ -350,9 +350,11 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
 
       wordSpan.onmouseout = () => {
         this.r2.setStyle(wordSpan, 'transform', `none ${transformString}`);
-        word.link
-          ? this.r2.removeStyle(node, 'color')
-          : this.r2.removeStyle(wordSpan, 'color');
+        if (this.options.zoomOnHover.color) {
+          word.link
+            ? this.r2.removeStyle(node, 'color')
+            : this.r2.removeStyle(wordSpan, 'color');
+        }
       };
     }
 
