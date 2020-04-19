@@ -30,7 +30,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2020 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2020 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2020 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -110,33 +110,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@angular/material/button
-
-@angular/material/card
-
-@angular/material/form-field
-
-@angular/material/icon
-
-@angular/material/slide-toggle
-
-@angular/material/slider
-
-@angular/material/snack-bar
-
-@angular/material/toolbar
-
 @angular/platform-browser
 MIT
 
 angular-tag-cloud-module
 SEE LICENSE IN LICENSE
 
-hammerjs
+core-js
 MIT
-The MIT License (MIT)
-
-Copyright (C) 2011-2014 by Jorik Tangelder (Eight Media)
+Copyright (c) 2014-2020 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -159,9 +141,12 @@ THE SOFTWARE.
 
 ngx-color-picker
 MIT
+
+regenerator-runtime
+MIT
 MIT License
 
-Copyright (c) 2017 ZEF Oy
+Copyright (c) 2014-present, Facebook, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -392,7 +377,7 @@ zone.js
 MIT
 The MIT License
 
-Copyright (c) 2016-2018 Google, Inc.
+Copyright (c) 2010-2020 Google LLC. http://angular.io/license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
