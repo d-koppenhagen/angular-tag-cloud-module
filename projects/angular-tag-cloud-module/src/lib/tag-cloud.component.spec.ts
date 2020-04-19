@@ -4,8 +4,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagCloudComponent } from './tag-cloud.component';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
-import { WSA_E_CANCELLED } from 'constants';
-
 
 @Component({
   selector: 'tag-cloud-dummy',
