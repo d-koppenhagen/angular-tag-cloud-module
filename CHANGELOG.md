@@ -1,3 +1,11 @@
+## 4.0.0
+### BREAKING CHANGES
+* add Angular 9 version as `peerDependency`.
+* to use Angular 8 or lower, install the module by running:
+  ```bash
+  npm install --save angular-tag-cloud-module@3
+  ```
+
 ## 3.8.2
 ### Fixes
 * remove `colorStyle` only when `zoomOnHover.color` is set [ #43 ]([ef65e9f](https://github.com/d-koppenhagen/angular-tag-cloud-module/pull/43/commits/e1436f2568812d76896265ac5636e77e9ef65e9f)), Thanks to @andreasIBM

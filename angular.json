@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/angular-tag-cloud-module-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -51,6 +52,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -116,6 +121,11 @@
           "options": {
             "tsConfig": "projects/angular-tag-cloud-module/tsconfig.lib.json",
             "project": "projects/angular-tag-cloud-module/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-tag-cloud-module/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -141,5 +151,8 @@
       }
     }
   },
-  "defaultProject": "angular-tag-cloud-module-demo"
+  "defaultProject": "angular-tag-cloud-module-demo",
+  "cli": {
+    "analytics": "7351cae9-b414-4baf-ab0d-77000b879735"
+  }
 }

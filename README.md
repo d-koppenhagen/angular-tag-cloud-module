@@ -24,18 +24,27 @@ The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angu
 Check out the demo page to play around with the options:
 https://d-koppenhagen.github.io/angular-tag-cloud-module/
 
+# Version and compability
+
+| Version             | Angular Version Compability   | 
+| ------------------- | ----------------------------- |
+| `3.8.2` and below   | between `^6.0.0` and `^8.X.X` |
+| `4.0.0` and greater | `^9.0.0` and higher           |
+
 # Install
 
 To install the module just run the following command on your CLI:
 
-```
+```bash
 npm install --save angular-tag-cloud-module
+# or: npm install --save angular-tag-cloud-module@3
 ```
 
 Or if you use yarn:
 
-```
+```bash
 yarn add angular-tag-cloud-module
+# or yarn add angular-tag-cloud-module@3
 ```
 
 # Full Documentation
@@ -47,7 +56,7 @@ The documentation can be accessed in your browser: [localhost:8080](http://local
 
 1. Import the module into your Angular-NgModule:
 
-```js
+```ts
 // app.module.ts
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
@@ -61,7 +70,7 @@ export class AppModule { }
 
 2. Setup the cloud:
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 
@@ -117,7 +126,7 @@ Check out the `demo`-Folder for a complete example
 ## Example: Rotate some elements
 If you want to rotate some CloudData elements, you can specify a numeric value for rotation within the `rotate`-Attribute:
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
 
@@ -141,7 +150,7 @@ export class AppComponent {
 ## Example: Zoom elements on hover
 You can specify the `zoomOnHover` property with an object that defines the zoom level (`scale`) and optionally a time for the transition (`transitionTime`):
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData, ZoomOnHoverOptions } from 'angular-tag-cloud-module';
 
@@ -170,7 +179,7 @@ export class AppComponent {
 ## Example: Changing Data after initializing
 If you want to change the data after initializing it (e.g. when fetching the data from a backend),  you have to pass a new `CloudData[]` into the component so that it can detect the changes:
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
 import { Observable, of } from 'rxjs';
@@ -202,7 +211,7 @@ export class AppComponent {
 ## Example: Detect the clicked item
 Angular-Tag-Cloud emits an event as soon as an item is clicked.
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
 
@@ -233,7 +242,7 @@ The `weight` property defines by default the relative importance of the word (su
 This cuases that e.g. passing just one word to the array has the effect that this is relative to other elements. As there aren't any other elements in that case it's result is that the element becomes a container with the class `w5` - right in the middle of the discret scale.
 If you don't want that the tag cloud is calculating the values manually, set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
 
-```js
+```ts
 import { Component } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
 
@@ -263,7 +272,7 @@ export class AppComponent {
 You can trigger the tag cloud to be redrawn by running the method `reDraw()`.
 This can be useful if e.g. the boundaries of the upper container are changing and you wanna re-order the words to fit into the container.
 
-```js
+```ts
 import { Component, ViewChild } from '@angular/core';
 import { CloudData } from 'angular-tag-cloud-module';
 import { TagCloudComponent } from './tag-cloud-module/tag-cloud.component';
