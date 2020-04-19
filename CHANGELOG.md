@@ -1,3 +1,7 @@
+## 3.8.2
+### Fixes
+* remove `colorStyle` only when `zoomOnHover.color` is set [ #43 ]([ef65e9f](https://github.com/d-koppenhagen/angular-tag-cloud-module/pull/43/commits/e1436f2568812d76896265ac5636e77e9ef65e9f)), Thanks to @andreasIBM
+
 ## 3.8.1
 ### Fixes
 * Input property `log` caused an error ([9b374ea](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/9b374ea097e822308664a17d6a4257493b129e1b#diff-0190ffbcbcf4e5176955d2f8e4cd5da7R435))
