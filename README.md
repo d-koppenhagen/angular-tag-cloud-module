@@ -298,6 +298,34 @@ export class AppComponent {
 }
 ```
 
+
+## Example: Place words on fixed position 
+You can force that words are placed on a specific position by defining the `position` property for a word.
+The word won't be placed anymore randomly but at the defined position.
+Keep in mind that the `x` and `y` values must be withing the proportions of the tag cloud.
+
+```ts
+import { Component, ViewChild } from '@angular/core';
+import { CloudData } from 'angular-tag-cloud-module';
+import { TagCloudComponent } from './tag-cloud-module/tag-cloud.component';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <angular-tag-cloud [data]="data"></angular-tag-cloud>
+  `
+})
+export class AppComponent {
+  @ViewChild(TagCloudComponent) tagCloudComponent: TagCloudComponent;
+
+  data: CloudData[] = [
+    { text: 'Weight-8-fixed', weight: 8, position: { left: 20, top: 30 } },
+    { text: 'Weight-8-random', weight: 8 },
+    // ...
+  ];
+}
+```
+
 ## Using a custom Stylesheet
 You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
 ![TagCloud with custom stylesheet][logo2]
@@ -334,6 +362,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `color`    | string ([CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)) | (a shade of blue, depends on the weight)   | no
 | `rotate`   | number          | `0`                                        | no
 | `tooltip`  | string          |                                            | no
+| `position` | { left: number, top: number } |                              | no
 
  Also the element can have the following output:
 

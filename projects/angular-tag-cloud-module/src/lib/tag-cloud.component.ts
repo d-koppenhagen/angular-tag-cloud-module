@@ -1,14 +1,16 @@
-import { Component,
-         OnChanges,
-         AfterContentInit,
-         AfterContentChecked,
-         Input,
-         Output,
-         EventEmitter,
-         ElementRef,
-         Renderer2,
-         SimpleChanges,
-         HostListener } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  AfterContentInit,
+  AfterContentChecked,
+  Input,
+  Output,
+  EventEmitter,
+  ElementRef,
+  Renderer2,
+  SimpleChanges,
+  HostListener
+} from '@angular/core';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from './tag-cloud.interfaces';
 
 interface CloudOptionsInternal extends CloudOptions {
@@ -223,7 +225,13 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.dataArr.sort((a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
     // Sort this._dataArr from the word with the highest weight to the one with the lowest
     this.dataArr.sort((a, b) => b.weight - a.weight);
-    this.dataArr.forEach((elem, index) => {
+    // place fixed elements first
+    const elementsWithFixedPositions = this.dataArr.filter(item => item.position);
+    const elementsWithRandomPositions = this.dataArr.filter(item => !item.position);
+    elementsWithFixedPositions.forEach((elem, index) => {
+      this.drawWord(index, elem);
+    });
+    elementsWithRandomPositions.forEach((elem, index) => {
       this.drawWord(index, elem);
     });
   }
@@ -361,19 +369,6 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     wordSpan.appendChild(node);
     this.r2.appendChild(this.el.nativeElement, wordSpan);
 
-    const width = wordSpan.offsetWidth;
-    const height = wordSpan.offsetHeight;
-    let left = this.options.center.x - (width / 2);
-    let top = this.options.center.y - (height / 2);
-
-    // Save a reference to the style property, for better performance
-    const wordStyle = wordSpan.style;
-    wordStyle.position = 'absolute';
-
-    // place the first word
-    wordStyle.left = left + 'px';
-    wordStyle.top = top + 'px';
-
     // add tooltip if provided
     if (word.tooltip) {
       this.r2.addClass(wordSpan, 'tooltip');
@@ -387,21 +382,39 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // set a unique id
     wordSpan.id = `angular-tag-cloud-item-${index}`;
 
-    while (this.hitTest(wordSpan)) {
-      radius += this.options.step;
-      angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
+    // Save a reference to the style property, for better performance
+    const wordStyle = wordSpan.style;
+    wordStyle.position = 'absolute';
 
-      left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
-      top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
+    const useFixedPosition: boolean = Boolean(word.position && word.position.left && word.position.top)
 
-      wordStyle.left = left + 'px';
-      wordStyle.top = top + 'px';
-    }
+    const width = wordSpan.offsetWidth;
+    const height = wordSpan.offsetHeight;
+    let left = useFixedPosition ? word.position.left : this.options.center.x - (width / 2);
+    let top = useFixedPosition ? word.position.top : this.options.center.y - (height / 2);
 
-    // do not place the first word always right in the middle
-    if (index === 0) {
-      wordStyle.left = left + ((Math.random() - 0.5) * 2) * (this.options.width / 5) + 'px';
-      wordStyle.top = top + ((Math.random() - 0.5) * 2) * (this.options.height / 5) + '30px';
+    // place the first word
+    wordStyle.left = left + 'px';
+    wordStyle.top = top + 'px';
+
+    // default case: place randomly
+    if (!useFixedPosition) {
+      // do not place the first word always right in the middle
+      if (index === 0) {
+        wordStyle.left = left + ((Math.random() - 0.5) * 2) * (this.options.width / 5) + 'px';
+        wordStyle.top = top + ((Math.random() - 0.5) * 2) * (this.options.height / 5) + '30px';
+      } else {
+        while (this.hitTest(wordSpan)) {
+          radius += this.options.step;
+          angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
+
+          left = this.options.center.x - (width / 2.0) + (radius * Math.cos(angle)) * this.options.aspectRatio;
+          top = this.options.center.y + radius * Math.sin(angle) - (height / 2.0);
+
+          wordStyle.left = left + 'px';
+          wordStyle.top = top + 'px';
+        }
+      }
     }
 
     // Don't render word if part of it would be outside the container

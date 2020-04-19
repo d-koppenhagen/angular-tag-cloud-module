@@ -42,6 +42,10 @@ export interface CloudData {
    * Define a tooltip text
    */
   tooltip?: string;
+  /**
+   * Use an explicit position for the word (the word won't be placed randomly)
+   */
+  position?: Position;
 }
 
 /**
@@ -119,4 +123,18 @@ export interface ZoomOnHoverOptions {
    * This will override probably your CSS setttings
    */
   color?: string;
+}
+
+/**
+ * Define a specifiy position
+ */
+export interface Position {
+  /**
+   * the position from the left
+   */
+  left: number,
+  /**
+   * the position from the top
+   */
+  top: number,
 }

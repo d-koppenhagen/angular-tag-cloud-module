@@ -1,3 +1,7 @@
+## 4.1.0
+### Features
+* allow to specify a fixed position for a word [ #49 ]
+
 ## 4.0.0
 ### BREAKING CHANGES
 * add Angular 9 version as `peerDependency`.
