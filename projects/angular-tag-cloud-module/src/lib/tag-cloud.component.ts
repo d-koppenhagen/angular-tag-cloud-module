@@ -160,13 +160,20 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     ) {
       width = this.el.nativeElement.parentNode.offsetWidth * width;
     }
-    const height = this.config.height;
+    let height = this.config.height;
+    if (this.el.nativeElement.parentNode.offsetHeight > 0
+      && height <= 1
+      && height > 0
+    ) {
+      height = this.el.nativeElement.parentNode.offsetHeight * height;
+    }
 
     // set options
     this.options = {
       ...this.config,
       aspectRatio: (width / height),
       width,
+      height,
       center: {
         x: (width / 2.0),
         y: (height / 2.0)
