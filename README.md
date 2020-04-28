@@ -89,8 +89,9 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 })
 export class AppComponent {
   options: CloudOptions = {
-    // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
+    // if width is between 0 and 1 it will be set to the width of the upper element multiplied by the value 
     width: 1000,
+    // if height is between 0 and 1 it will be set to the height of the upper element multiplied by the value 
     height: 400,
     overflow: false,
   };
@@ -338,7 +339,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `config`         | CloudOptions       | See other default params | no
 | `data`           | CloudData[]        |                | yes
 | `width`          | number (*)         | `500`          | no
-| `height`         | number             | `300`          | no
+| `height`         | number (*)         | `300`          | no
 | `step`           | number             | `2.0`          | no
 | `overflow`       | boolean            | `true`         | no
 | `strict`         | boolean            | `false`        | no
@@ -349,7 +350,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `background`     | string ([CSS background](https://www.w3schools.com/cssref/css3_pr_background.asp)) |        | no
 | `log`            | `'warn'` / `'debug'` / `false` | `false`    | no
 
-(*) if the value is between 0 and 1, it will be set to the size of the upper element multiplied by the value. Setting the value > 1 it will be set the width to the appropriate value in Pixel (px).
+(*) if the value is between 0 and 1, it will be set to the size (width or height respectively) of the upper element multiplied by the value. Setting the value > 1 it will be set the size (width or height respectively) to the appropriate value in Pixel (px).
 
 `data`-Array elements can/must have the following attributes:
 
