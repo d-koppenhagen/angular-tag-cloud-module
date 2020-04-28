@@ -38,10 +38,11 @@ angular-tag-cloud.custom-css {
 ::ng-deep angular-tag-cloud.custom-css span.w2 { color: #ee99e7; }
 ::ng-deep angular-tag-cloud.custom-css span.w1 { color: #18cb42; }
 
-
-
-
 /* Component style */
+.wrapper {
+  min-height: 500px;
+}
+
 .adjust-top {
   padding-top: 12px;
 }

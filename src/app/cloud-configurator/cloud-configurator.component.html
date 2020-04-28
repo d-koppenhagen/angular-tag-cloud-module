@@ -262,17 +262,19 @@
     [zoomOnHover]="cloudConfigForm.value.zoomOnHover"
     -->
 
-    <angular-tag-cloud
-      [data]="data"
-      [config]="cloudConfigForm.value"
-      [log]="'warn'"
-      (clicked)="log('clicked', $event)"
-      (dataChanges)="log('dataChanges', $event)"
-      (afterInit)="log('After Init', $event)"
-      (afterChecked)="log('After Checked', $event)"
-      [class.custom-css]="cloudConfigForm.get('customStyle').value"
-    >
-    </angular-tag-cloud>
+    <div class="wrapper">
+      <angular-tag-cloud
+        [data]="data"
+        [config]="cloudConfigForm.value"
+        [log]="'warn'"
+        (clicked)="log('clicked', $event)"
+        (dataChanges)="log('dataChanges', $event)"
+        (afterInit)="log('After Init', $event)"
+        (afterChecked)="log('After Checked', $event)"
+        [class.custom-css]="cloudConfigForm.get('customStyle').value"
+      >
+      </angular-tag-cloud>
+    </div>
   </mat-card-content>
 </mat-card>
 
