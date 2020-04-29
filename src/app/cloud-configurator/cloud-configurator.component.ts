@@ -31,7 +31,8 @@ export class CloudConfiguratorComponent implements OnInit {
       delay: 0.1,
       color: '#33bb33'
     },
-    step: 5
+    step: 5,
+    log: 'debug'
   };
 
   exampleDataOptions = {

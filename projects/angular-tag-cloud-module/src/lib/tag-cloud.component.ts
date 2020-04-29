@@ -55,6 +55,28 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   private options: CloudOptionsInternal;
   private timeoutId;
 
+  get calculatedWidth(): number {
+    let width = this.config.width;
+    if (this.el.nativeElement.parentNode.offsetWidth > 0
+      && width <= 1
+      && width > 0
+    ) {
+      width = this.el.nativeElement.parentNode.offsetWidth * width;
+    }
+    return width;
+  }
+
+  get calculatedHeight(): number {
+    let height = this.config.height;
+    if (this.el.nativeElement.parentNode.offsetHeight > 0
+      && height <= 1
+      && height > 0
+    ) {
+      height = this.el.nativeElement.parentNode.offsetHeight * height;
+    }
+    return height;
+  }
+
   constructor(
     private el: ElementRef,
     private r2: Renderer2
@@ -129,6 +151,27 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     this.reDraw(changes);
   }
 
+  ngAfterContentInit() {
+    this.afterInit.emit();
+    this.logMessage(
+      'debug',
+      'afterInit emitted'
+    );
+  }
+
+  ngAfterContentChecked() {
+    this.afterChecked.emit();
+    this.logMessage(
+      'debug',
+      'afterChecked emitted'
+    );
+  }
+
+
+  /**
+   * re-draw the word cloud
+   * @param changes the change set
+   */
   reDraw(changes?: SimpleChanges) {
     this.dataChanges.emit(changes);
     this.afterChecked.emit();
@@ -152,31 +195,15 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.dataArr = changes.data.currentValue;
     }
 
-    // calculate width and height
-    let width = this.config.width;
-    if (this.el.nativeElement.parentNode.offsetWidth > 0
-      && width <= 1
-      && width > 0
-    ) {
-      width = this.el.nativeElement.parentNode.offsetWidth * width;
-    }
-    let height = this.config.height;
-    if (this.el.nativeElement.parentNode.offsetHeight > 0
-      && height <= 1
-      && height > 0
-    ) {
-      height = this.el.nativeElement.parentNode.offsetHeight * height;
-    }
-
     // set options
     this.options = {
       ...this.config,
-      aspectRatio: (width / height),
-      width,
-      height,
+      aspectRatio: (this.calculatedWidth / this.calculatedHeight),
+      width: this.calculatedWidth,
+      height: this.calculatedHeight,
       center: {
-        x: (width / 2.0),
-        y: (height / 2.0)
+        x: (this.calculatedWidth / 2.0),
+        y: (this.calculatedHeight / 2.0)
       }
     };
 
@@ -192,41 +219,22 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     );
   }
 
-
-  ngAfterContentInit() {
-    this.afterInit.emit();
-    this.logMessage(
-      'debug',
-      'afterInit emitted'
-    );
-  }
-
-  ngAfterContentChecked() {
-    this.afterChecked.emit();
-    this.logMessage(
-      'debug',
-      'afterChecked emitted'
-    );
-  }
-
-  // helper to generate a descriptive string for an entry to use when sorting alphabetically
+  /**
+   * helper to generate a descriptive string for an entry to use when sorting alphabetically
+   * @param entry the cloud entry to be used
+   */
   private descriptiveEntry(entry: CloudData): string {
     let description = entry.text;
-    if (entry.color) {
-      description += '-' + entry.color;
-    }
-    if (entry.external) {
-      description += '-' + entry.external;
-    }
-    if (entry.link) {
-      description += '-' + entry.link;
-    }
-    if (entry.rotate) {
-      description += '-' + entry.rotate;
-    }
+    description += entry.color ? `-${entry.color}` : ''
+    description += entry.external ? `-${entry.external}` : ''
+    description += entry.link ? `-${entry.link}` : ''
+    description += entry.rotate ? `-${entry.rotate}` : ''
     return description;
   }
 
+  /**
+   * proceed draw the cloud
+   */
   private drawWordCloud() {
     // Sort alphabetically to ensure that, all things being equal, words are placed uniformly
     this.dataArr.sort((a, b) => (this.descriptiveEntry(a)).localeCompare(this.descriptiveEntry(b)));
@@ -243,7 +251,10 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     });
   }
 
-  // Helper function to test if an element overlaps others
+  /**
+   * Helper function to test if an element overlaps others
+   * @param testEl the HTML Element to be tested
+   */
   private hitTest(testEl: HTMLElement): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
     for (const item of this.alreadyPlacedWords) {
@@ -252,7 +263,11 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     return false;
   }
 
-  // Pairwise overlap detection
+  /**
+   * Pairwise overlap detection
+   * @param e1 the first element for overlap detection
+   * @param e2 the second element for overlap detection
+   */
   private overlapping(e1: HTMLElement, e2: HTMLElement) {
     const rect1 = e1.getBoundingClientRect();
     const rect2 = e2.getBoundingClientRect();
@@ -266,15 +281,12 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     return overlap;
   }
 
-  // Function to draw a word, by moving it in spiral until it finds a suitable empty place. This will be iterated on each word.
-  private drawWord(index: number, word: CloudData) {
-    // Define the ID attribute of the span that will wrap the word
-    let angle = this.options.randomizeAngle ? 6.28 * Math.random() : 0;
-    let radius = 0;
+  /**
+   * Check if min(weight) > max(weight) otherwise use default
+   * @param word the particular word configuration
+   */
+  private getWeightForWord(word: CloudData): number {
     let weight = 5;
-    let wordSpan: HTMLElement;
-
-    // Check if min(weight) > max(weight) otherwise use default
     if (this.dataArr[0].weight > this.dataArr[this.dataArr.length - 1].weight) {
       // check if strict mode is active
       if (!this.options.strict) { // Linearly map the original weight to a discrete scale from 1 to 10
@@ -306,89 +318,103 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
         } else {
           weight = word.weight;
         }
-
       }
     }
+    return weight;
+  }
 
-    // Create a new span and insert node.
-    wordSpan = this.r2.createElement('span');
-    wordSpan.className = 'w' + weight;
+  /**
+   * change the HTMLElements color style
+   * @param el the HTML element
+   * @param color the CSS color value
+   */
+  private setWordColor(el: HTMLElement, color: string) {
+    this.r2.setStyle(el, 'color', color);
+  }
 
-    const thatClicked = this.clicked;
-    wordSpan.onclick = () => {
-      thatClicked.emit(word);
-    };
+  /**
+   * Add a tooltip to the element
+   * @param el the HTML element
+   * @param tooltip the tooltip text
+   */
+  private setTooltip(el: HTMLElement, tooltip: string) {
+    this.r2.addClass(el, 'tooltip');
+    const tooltipSpan = this.r2.createElement('span');
+    tooltipSpan.className = 'tooltiptext';
+    const text = this.r2.createText(tooltip);
+    tooltipSpan.appendChild(text);
+    el.appendChild(tooltipSpan);
+  }
 
-    let node = this.r2.createText(word.text);
+  /**
+   * change the HTMLElements rotation style
+   * @param el the HTML element
+   * @param deg the rotation value (degrees)
+   */
+  private setWordRotation(el: HTMLElement, deg?: number): string {
+    const transformString = deg ? `rotate(${deg}deg)` : '';
+    this.r2.setStyle(el, 'transform', transformString);
+    return transformString;
+  }
 
-    // set color
-    if (word.color) {
-      this.r2.setStyle(wordSpan, 'color', word.color);
+  /**
+   * wrap the given node into an HTML anchor element
+   * @param node the HTML node that should be wrapped
+   * @param word the particular word configuration
+   */
+  private wrapNodeIntoAnchorElement(node: HTMLElement, word: CloudData): HTMLAnchorElement {
+    const wordLink: HTMLAnchorElement = this.r2.createElement('a');
+    wordLink.href = word.link;
+
+    if (word.external !== undefined && word.external) {
+      wordLink.target = '_blank';
     }
 
-    let transformString = '';
+    wordLink.appendChild(node);
+    return wordLink;
+  }
 
-    // set color
-    if (word.rotate) {
-      transformString = `rotate(${word.rotate}deg)`;
-      this.r2.setStyle(wordSpan, 'transform', transformString);
-    }
-
-    // Append href if there's a link alongwith the tag
-    if (word.link) {
-      const wordLink = this.r2.createElement('a');
-      wordLink.href = word.link;
-
-      if (word.external !== undefined && word.external) {
-        wordLink.target = '_blank';
-      }
-
-      wordLink.appendChild(node);
-      node = wordLink;
-    }
-
-    // set zoomOption
+  /**
+   * wrap the given node into an HTML anchor element
+   * @param node the HTML node that should be wrapped
+   * @param word the particular word configuration
+   */
+  private applyZoomStyle(node: HTMLElement, el: HTMLElement, link: string, transformString: string) {
     if (this.options.zoomOnHover && this.options.zoomOnHover.scale !== 1) {
       if (!this.options.zoomOnHover.transitionTime) { this.options.zoomOnHover.transitionTime = 0; }
       if (!this.options.zoomOnHover.scale) { this.options.zoomOnHover.scale = 1; }
 
-      wordSpan.onmouseover = () => {
-        this.r2.setStyle(wordSpan, 'transition', `transform ${this.options.zoomOnHover.transitionTime}s`);
-        this.r2.setStyle(wordSpan, 'transform', `scale(${this.options.zoomOnHover.scale}) ${transformString}`);
-        this.r2.setStyle(wordSpan, 'transition-delay', `${this.options.zoomOnHover.delay}s`);
+      el.onmouseover = () => {
+        this.r2.setStyle(el, 'transition', `transform ${this.options.zoomOnHover.transitionTime}s`);
+        this.r2.setStyle(el, 'transform', `scale(${this.options.zoomOnHover.scale}) ${transformString}`);
+        this.r2.setStyle(el, 'transition-delay', `${this.options.zoomOnHover.delay}s`);
         if (this.options.zoomOnHover.color) {
-          word.link
+          link
             ? this.r2.setStyle(node, 'color', this.options.zoomOnHover.color)
-            : this.r2.setStyle(wordSpan, 'color', this.options.zoomOnHover.color);
+            : this.r2.setStyle(el, 'color', this.options.zoomOnHover.color);
         }
       };
 
-      wordSpan.onmouseout = () => {
-        this.r2.setStyle(wordSpan, 'transform', `none ${transformString}`);
+      el.onmouseout = () => {
+        this.r2.setStyle(el, 'transform', `none ${transformString}`);
         if (this.options.zoomOnHover.color) {
-          word.link
+          link
             ? this.r2.removeStyle(node, 'color')
-            : this.r2.removeStyle(wordSpan, 'color');
+            : this.r2.removeStyle(el, 'color');
         }
       };
     }
+  }
 
-    wordSpan.appendChild(node);
-    this.r2.appendChild(this.el.nativeElement, wordSpan);
-
-    // add tooltip if provided
-    if (word.tooltip) {
-      this.r2.addClass(wordSpan, 'tooltip');
-      const tooltipSpan = this.r2.createElement('span');
-      tooltipSpan.className = 'tooltiptext';
-      const text = this.r2.createText(word.tooltip);
-      tooltipSpan.appendChild(text);
-      wordSpan.appendChild(tooltipSpan);
-    }
-
-    // set a unique id
-    wordSpan.id = `angular-tag-cloud-item-${index}`;
-
+  /**
+   * Place the word at a calculated position
+   * @param wordSpan The HTML Span element to be placed
+   * @param word The word to be placed
+   * @param index The index of the element
+   */
+  private setPosition(wordSpan: HTMLSpanElement, word: CloudData, index: number) {
+    let angle = this.options.randomizeAngle ? 6.28 * Math.random() : 0;
+    let radius = 0;
     // Save a reference to the style property, for better performance
     const wordStyle = wordSpan.style;
     wordStyle.position = 'absolute';
@@ -438,6 +464,57 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       wordSpan.remove();
       return;
     }
+  }
+
+  /**
+   * Methods to draw a word, by moving it in spiral until it finds a suitable empty place.
+   * This will be iterated on each word.
+   * @param index the index number for the word
+   * @param word the particular word configuration
+   */
+  private drawWord(index: number, word: CloudData) {
+    let wordSpan: HTMLSpanElement;
+
+    // get calculated word weight
+    const weight: number = this.getWeightForWord(word);
+
+    // Create a new span and insert node.
+    wordSpan = this.r2.createElement('span');
+    wordSpan.className = `w${weight}`;
+
+    // emit onclick event
+    wordSpan.onclick = () => {
+      this.clicked.emit(word);
+    };
+
+    // append word text
+    let node = this.r2.createText(word.text);
+
+    // set color
+    if (word.color) this.setWordColor(wordSpan, word.color);
+
+    // rotate word possibly
+    const transformString = this.setWordRotation(wordSpan, word.rotate)
+
+    // Append href if there's a link alongwith the tag
+    if (word.link) node = this.wrapNodeIntoAnchorElement(node, word);
+
+    // set zoomOption
+    if (this.options.zoomOnHover && this.options.zoomOnHover.scale !== 1) {
+      this.applyZoomStyle(node, wordSpan, word.link, transformString);
+    }
+
+    wordSpan.appendChild(node);
+    this.r2.appendChild(this.el.nativeElement, wordSpan);
+
+    // add tooltip if provided
+    if (word.tooltip) this.setTooltip(wordSpan, word.tooltip)
+
+    // set a unique id
+    wordSpan.id = `angular-tag-cloud-item-${index}`;
+
+    // define the elements position
+    this.setPosition(wordSpan, word, index);
 
     this.logMessage(
       'debug',
@@ -453,6 +530,11 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     );
   }
 
+  /**
+   * Log messages to console
+   * @param level the log level
+   * @param args extra args to be logged
+   */
   private logMessage(level: 'warn' | 'debug' | false, ...args: any) {
     if (!this.config) { return; }
     if (this.config.log === 'debug') {
@@ -461,5 +543,4 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       console.warn(`[AngularTagCloudModule ${level}]`, ...args);
     }
   }
-
 }
