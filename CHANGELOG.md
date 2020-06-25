@@ -1,3 +1,11 @@
+## 5.0.0
+### Features
+* add support for Angular 10
+
+### BREAKING CHANGES
+- support for Angular 9.x.x has been dropped for future versions
+- you need to have a peer dependency of Angular 10.0.0 and `tslib` 2.0.0 or greater
+
 ## 4.2.0
 ### Features
 * allow responsive height [ #44 ]

@@ -1,9 +1,12 @@
 {
   "name": "angular-tag-cloud-module",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "license" : "SEE LICENSE IN LICENSE",
   "peerDependencies": {
-    "@angular/common": "^9.0.0 || ^10.0.0-0",
-    "@angular/core": "^9.0.0 || ^10.0.0-0"
+    "@angular/common": "^10.0.0 || ^11.0.0-0",
+    "@angular/core": "^10.0.0 || ^11.0.0-0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

@@ -13,7 +13,6 @@
 
 With this module you can generate word clouds / tag clouds.
 The module requires a peer dependency to angular/core >= Version 6.0.0.
-> For working with Angular 5 and 4, please use version 2.6.0 by installing via `npm i angular-tag-cloud-module@2.6.0`.
 
 The project is based on [angular-tag-cloud](https://github.com/zeeshanhyder/angular-tag-cloud) which provides a tag cloud for Angular 1.X.X applications.
 
@@ -28,8 +27,10 @@ https://d-koppenhagen.github.io/angular-tag-cloud-module/
 
 | Version             | Angular Version Compability   | 
 | ------------------- | ----------------------------- |
+| `2.6.0` and below   | between `^4.0.0` and `^5.X.X` |
 | `3.8.2` and below   | between `^6.0.0` and `^8.X.X` |
-| `4.0.0` and greater | `^9.0.0` and higher           |
+| `4.2.0` and below   | `^9.0.0`                      |
+| `5.0.0` and greater | `^10.0.0` and greater         |
 
 # Install
 
