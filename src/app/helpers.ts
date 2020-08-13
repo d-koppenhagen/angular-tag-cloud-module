@@ -1,7 +1,9 @@
 import { CloudData } from 'angular-tag-cloud-module';
 
 export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
-  if (!cnt) { cnt = 20; }
+  if (!cnt) {
+    cnt = 20;
+  }
 
   const cd: CloudData[] = [];
 
@@ -16,7 +18,9 @@ export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
     // randomly set link attribute and external
     if (Math.random() >= 0.5) {
       link = 'http://example.org';
-      if (Math.random() >= 0.5) { external = true; }
+      if (Math.random() >= 0.5) {
+        external = true;
+      }
     }
 
     // randomly set color attribute
@@ -25,18 +29,24 @@ export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
     }
 
     // randomly rotate some elements (less probability)
-    if ((Math.random() >= 0.7) && rotate) {
+    if (Math.random() >= 0.7 && rotate) {
       const plusMinus = Math.random() >= 0.5 ? '' : '-';
       r = Math.floor(Math.random() * Number(`${plusMinus}20`) + 1);
     }
 
     // set random weight
-    weight = Math.floor((Math.random() * 10) + 1);
+    weight = Math.floor(Math.random() * 10 + 1);
 
     text = `w${weight}`;
-    if (color) { text += '-color'; }
-    if (link) { text += '-link'; }
-    if (external) { text += '-ext'; }
+    if (color) {
+      text += '-color';
+    }
+    if (link) {
+      text += '-link';
+    }
+    if (external) {
+      text += '-ext';
+    }
 
     const el: CloudData = {
       text,
