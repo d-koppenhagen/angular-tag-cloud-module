@@ -487,6 +487,16 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       this.clicked.emit(word);
     };
 
+    // Put the word (and its tooltip) in foreground when cursor is above
+    wordSpan.onmouseenter = () => {
+      wordSpan.style.zIndex = "2";
+    };
+
+    // Otherwise, restore standard priority
+    wordSpan.onmouseleave = () => {
+      wordSpan.style.zIndex = "1";
+    };
+
     // append word text
     let node = this.r2.createText(word.text);
 
