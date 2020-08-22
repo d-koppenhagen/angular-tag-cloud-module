@@ -13,14 +13,13 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
       [strict]="options.strict"
       [config]="configObject"
     ></angular-tag-cloud>
-  `
+  `,
 })
 class TestHostComponent {
   options: CloudOptions = {};
   configObject: CloudOptions = {};
   data: CloudData[];
 }
-
 
 describe('TagCloudComponent', () => {
   let testHostComponent: TestHostComponent;
@@ -29,12 +28,8 @@ describe('TagCloudComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestHostComponent,
-        TagCloudComponent
-      ]
-    })
-    .compileComponents();
+      declarations: [TestHostComponent, TagCloudComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -49,9 +44,7 @@ describe('TagCloudComponent', () => {
   });
 
   it('should render CloudData', () => {
-    testHostComponent.data = [
-      {text: 'A'}, {text: 'B'}
-    ];
+    testHostComponent.data = [{ text: 'A' }, { text: 'B' }];
 
     hostFixture.detectChanges();
 
@@ -63,16 +56,16 @@ describe('TagCloudComponent', () => {
 
   it('should correctly assign the weight property', () => {
     testHostComponent.data = [
-      {text: 'A', weight: 1},
-      {text: 'B', weight: 2},
-      {text: 'C', weight: 3},
-      {text: 'D', weight: 4},
-      {text: 'E', weight: 5},
-      {text: 'F', weight: 6},
-      {text: 'G', weight: 7},
-      {text: 'H', weight: 8},
-      {text: 'I', weight: 9},
-      {text: 'J', weight: 10}
+      { text: 'A', weight: 1 },
+      { text: 'B', weight: 2 },
+      { text: 'C', weight: 3 },
+      { text: 'D', weight: 4 },
+      { text: 'E', weight: 5 },
+      { text: 'F', weight: 6 },
+      { text: 'G', weight: 7 },
+      { text: 'H', weight: 8 },
+      { text: 'I', weight: 9 },
+      { text: 'J', weight: 10 },
     ];
 
     hostFixture.detectChanges();
@@ -104,11 +97,11 @@ describe('TagCloudComponent', () => {
 
   it('should correctly calculate the weight if scale raange is smaller than 10', () => {
     testHostComponent.data = [
-      {text: 'A', weight: 3},
-      {text: 'B', weight: 3},
-      {text: 'C', weight: 6},
-      {text: 'D', weight: 7},
-      {text: 'E', weight: 7}
+      { text: 'A', weight: 3 },
+      { text: 'B', weight: 3 },
+      { text: 'C', weight: 6 },
+      { text: 'D', weight: 7 },
+      { text: 'E', weight: 7 },
     ];
     // check if the config object will be explicitely overridden by the separate input property
     testHostComponent.configObject.strict = true;
@@ -131,11 +124,11 @@ describe('TagCloudComponent', () => {
 
   it('should not calculate the weight if strict property has been set', () => {
     testHostComponent.data = [
-      {text: 'A', weight: 3},
-      {text: 'B', weight: 3},
-      {text: 'C', weight: 6},
-      {text: 'D', weight: 7},
-      {text: 'E', weight: 7}
+      { text: 'A', weight: 3 },
+      { text: 'B', weight: 3 },
+      { text: 'C', weight: 6 },
+      { text: 'D', weight: 7 },
+      { text: 'E', weight: 7 },
     ];
     // check if the config object will be explicitely overridden by the separate input property
     testHostComponent.configObject.strict = false;
@@ -158,10 +151,10 @@ describe('TagCloudComponent', () => {
 
   it('should correctly calculate the weight if it is out of scale 1-10', () => {
     testHostComponent.data = [
-      {text: 'A', weight: -20},
-      {text: 'B', weight: 0},
-      {text: 'C', weight: 30},
-      {text: 'D', weight: 90}
+      { text: 'A', weight: -20 },
+      { text: 'B', weight: 0 },
+      { text: 'C', weight: 30 },
+      { text: 'D', weight: 90 },
     ];
 
     hostFixture.detectChanges();
@@ -181,16 +174,16 @@ describe('TagCloudComponent', () => {
 
   it('should add hyperlinked words', () => {
     testHostComponent.data = [
-      {text: 'A', link: 'http://google.de'},
-      {text: 'B', link: 'http://google.de', external: true},
-      {text: 'C', link: 'http://google.de', external: false},
-      {text: 'D', link: 'http://google.de', external: null},
-      {text: 'E', link: ''},
-      {text: 'F', link: null},
-      {text: 'G', link: null, external: false},
-      {text: 'H', link: null, external: true},
-      {text: 'I', link: '', external: false},
-      {text: 'J', link: '', external: true}
+      { text: 'A', link: 'http://google.de' },
+      { text: 'B', link: 'http://google.de', external: true },
+      { text: 'C', link: 'http://google.de', external: false },
+      { text: 'D', link: 'http://google.de', external: null },
+      { text: 'E', link: '' },
+      { text: 'F', link: null },
+      { text: 'G', link: null, external: false },
+      { text: 'H', link: null, external: true },
+      { text: 'I', link: '', external: false },
+      { text: 'J', link: '', external: true },
     ];
 
     hostFixture.detectChanges();

@@ -55,7 +55,7 @@ export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
       link,
       external,
       rotate: r,
-      tooltip: 'tooltip ' + text
+      tooltip: 'tooltip ' + text,
     };
 
     cd.push(el);

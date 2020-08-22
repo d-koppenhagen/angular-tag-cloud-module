@@ -12,10 +12,7 @@ import { MaterialModule } from './material.module';
 import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CloudConfiguratorComponent
-  ],
+  declarations: [AppComponent, CloudConfiguratorComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,9 +21,9 @@ import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configura
     MaterialModule,
     FlexLayoutModule,
     ColorPickerModule,
-    TagCloudModule
+    TagCloudModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

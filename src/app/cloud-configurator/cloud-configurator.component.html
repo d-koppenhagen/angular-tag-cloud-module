@@ -21,7 +21,12 @@
     <mat-card-content>
       <form [formGroup]="cloudDataForm" fxLayout="column">
         <h2>Example Data Options</h2>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-form-field fxFlex>
             <input
               matInput
@@ -34,7 +39,12 @@
             />
           </mat-form-field>
 
-          <mat-slide-toggle fxFlex class="adjust-top" formControlName="rotate" fxLayout.xs="column">
+          <mat-slide-toggle
+            fxFlex
+            class="adjust-top"
+            formControlName="rotate"
+            fxLayout.xs="column"
+          >
             Rotate some entries randomly
           </mat-slide-toggle>
         </div>
@@ -79,7 +89,12 @@
     <mat-card-content>
       <form [formGroup]="cloudConfigForm" fxLayout="column">
         <h2>Proportions</h2>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-form-field fxFlex>
             <input
               matInput
@@ -114,7 +129,12 @@
         </div>
 
         <h2>General options</h2>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-slide-toggle fxFlex formControlName="overflow"
             >Overflow</mat-slide-toggle
           >
@@ -122,7 +142,12 @@
             >Strict</mat-slide-toggle
           >
         </div>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-slide-toggle fxFlex formControlName="realignOnResize"
             >Realign on resize</mat-slide-toggle
           >
@@ -130,7 +155,13 @@
             >Randomize angle</mat-slide-toggle
           >
         </div>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column" style="padding-top: 20px">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+          style="padding-top: 20px;"
+        >
           <mat-form-field fxFlex>
             <input
               matInput
@@ -221,21 +252,32 @@
         </div>
 
         <h2>Style</h2>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-slide-toggle fxFlex formControlName="customStyle"
             >Use custom Stylesheet</mat-slide-toggle
           >
         </div>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-form-field fxFlex>
-            <input
-              matInput
-              formControlName="font"
-              placeholder="Font"
-            />
+            <input matInput formControlName="font" placeholder="Font" />
           </mat-form-field>
         </div>
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+        <div
+          class="input-row"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.xs="column"
+        >
           <mat-form-field fxFlex>
             <input
               matInput
@@ -263,7 +305,6 @@
   </mat-card-header>
 
   <mat-card-content>
-
     <!-- Yo can set / override the config -->
     <!--
     [height]="cloudConfigForm.value.height"
@@ -289,4 +330,3 @@
     </div>
   </mat-card-content>
 </mat-card>
-

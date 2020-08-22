@@ -137,9 +137,9 @@ export interface Position {
   /**
    * the position from the left
    */
-  left: number,
+  left: number;
   /**
    * the position from the top
    */
-  top: number,
+  top: number;
 }

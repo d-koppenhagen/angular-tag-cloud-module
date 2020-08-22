@@ -1,5 +1,5 @@
 /* TagCloud Style */
-@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+@import url(https://fonts.googleapis.com/css?family=Indie + Flower);
 
 angular-tag-cloud.custom-css {
   border: 8px solid black;
@@ -15,28 +15,68 @@ angular-tag-cloud.custom-css {
 }
 
 /* font sizes */
-::ng-deep angular-tag-cloud.custom-css span.w10 { font-size: 380%; }
-::ng-deep angular-tag-cloud.custom-css span.w9 { font-size: 330%; }
-::ng-deep angular-tag-cloud.custom-css span.w8 { font-size: 280%; }
-::ng-deep angular-tag-cloud.custom-css span.w7 { font-size: 240%; }
-::ng-deep angular-tag-cloud.custom-css span.w6 { font-size: 210%; }
-::ng-deep angular-tag-cloud.custom-css span.w5 { font-size: 180%; }
-::ng-deep angular-tag-cloud.custom-css span.w4 { font-size: 160%; }
-::ng-deep angular-tag-cloud.custom-css span.w3 { font-size: 140%; }
-::ng-deep angular-tag-cloud.custom-css span.w2 { font-size: 120%; }
-::ng-deep angular-tag-cloud.custom-css span.w1 { font-size: 100%; }
+::ng-deep angular-tag-cloud.custom-css span.w10 {
+  font-size: 380%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w9 {
+  font-size: 330%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w8 {
+  font-size: 280%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w7 {
+  font-size: 240%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w6 {
+  font-size: 210%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w5 {
+  font-size: 180%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w4 {
+  font-size: 160%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w3 {
+  font-size: 140%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w2 {
+  font-size: 120%;
+}
+::ng-deep angular-tag-cloud.custom-css span.w1 {
+  font-size: 100%;
+}
 
 /* colors */
-::ng-deep angular-tag-cloud.custom-css span.w10 { color: #0cf; }
-::ng-deep angular-tag-cloud.custom-css span.w9 { color: #fff; }
-::ng-deep angular-tag-cloud.custom-css span.w8 { color: rgb(255, 0, 195); }
-::ng-deep angular-tag-cloud.custom-css span.w7 { color: rgb(36, 154, 116); }
-::ng-deep angular-tag-cloud.custom-css span.w6 { color: #e8f090; }
-::ng-deep angular-tag-cloud.custom-css span.w5 { color: #c3dd90; }
-::ng-deep angular-tag-cloud.custom-css span.w4 { color: #f09090; }
-::ng-deep angular-tag-cloud.custom-css span.w3 { color: #f2ea10; }
-::ng-deep angular-tag-cloud.custom-css span.w2 { color: #ee99e7; }
-::ng-deep angular-tag-cloud.custom-css span.w1 { color: #18cb42; }
+::ng-deep angular-tag-cloud.custom-css span.w10 {
+  color: #0cf;
+}
+::ng-deep angular-tag-cloud.custom-css span.w9 {
+  color: #fff;
+}
+::ng-deep angular-tag-cloud.custom-css span.w8 {
+  color: rgb(255, 0, 195);
+}
+::ng-deep angular-tag-cloud.custom-css span.w7 {
+  color: rgb(36, 154, 116);
+}
+::ng-deep angular-tag-cloud.custom-css span.w6 {
+  color: #e8f090;
+}
+::ng-deep angular-tag-cloud.custom-css span.w5 {
+  color: #c3dd90;
+}
+::ng-deep angular-tag-cloud.custom-css span.w4 {
+  color: #f09090;
+}
+::ng-deep angular-tag-cloud.custom-css span.w3 {
+  color: #f2ea10;
+}
+::ng-deep angular-tag-cloud.custom-css span.w2 {
+  color: #ee99e7;
+}
+::ng-deep angular-tag-cloud.custom-css span.w1 {
+  color: #18cb42;
+}
 
 /* Component style */
 .wrapper {
@@ -58,7 +98,7 @@ angular-tag-cloud.custom-css {
 .color-box {
   float: left;
   margin: 5px 5px 20px 5px;
-  border: 2px solid rgba(0,0,0,.38);
+  border: 2px solid rgba(0, 0, 0, 0.38);
 }
 
 .json-input {
@@ -88,9 +128,8 @@ angular-tag-cloud.custom-css {
 
 mat-label.label-text {
   font-size: 12px;
-  color: rgba(0,0,0,.54);
+  color: rgba(0, 0, 0, 0.54);
 }
-
 
 .card-image {
   border-radius: 0%;

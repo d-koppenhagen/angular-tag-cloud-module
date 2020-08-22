@@ -8,9 +8,8 @@ describe('CloudConfiguratorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CloudConfiguratorComponent ]
-    })
-    .compileComponents();
+      declarations: [CloudConfiguratorComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
