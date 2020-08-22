@@ -1,10 +1,14 @@
+## 5.1.0
+### Features
+* add configuration option `delay`: Delay the appearance for each cloud element by defining a value in milliseconds [ #8 ](https://github.com/d-koppenhagen/angular-tag-cloud-module/issues/8)
+
 ## 5.0.1
 ### Fixes
 * tooltips were displayed behind other words [ #51 ]([7d25ff](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/7d25ffaac64084c8169678aa18987a296584c709)), Thanks to @gaeljaffre
 
 ## 5.0.0
 ### Features
-* add support for Angular 10
+* add support for Angular 10, drop support for older Angular versions
 
 ### BREAKING CHANGES
 - support for Angular 9.x.x has been dropped for future versions
