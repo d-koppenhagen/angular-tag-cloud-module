@@ -24,7 +24,7 @@ https://d-koppenhagen.github.io/angular-tag-cloud-module/
 
 # Version and compability
 
-| Version             | Angular Version Compability   | 
+| Version             | Angular Version Compability   |
 | ------------------- | ----------------------------- |
 | `2.6.0` and below   | between `^4.0.0` and `^5.X.X` |
 | `3.8.2` and below   | between `^6.0.0` and `^8.X.X` |
@@ -89,9 +89,9 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 })
 export class AppComponent {
   options: CloudOptions = {
-    // if width is between 0 and 1 it will be set to the width of the upper element multiplied by the value 
+    // if width is between 0 and 1 it will be set to the width of the upper element multiplied by the value
     width: 1000,
-    // if height is between 0 and 1 it will be set to the height of the upper element multiplied by the value 
+    // if height is between 0 and 1 it will be set to the height of the upper element multiplied by the value
     height: 400,
     overflow: false,
   };
@@ -300,7 +300,7 @@ export class AppComponent {
 ```
 
 
-## Example: Place words on fixed position 
+## Example: Place words on fixed position
 You can force that words are placed on a specific position by defining the `position` property for a word.
 The word won't be placed anymore randomly but at the defined position.
 Keep in mind that the `x` and `y` values must be withing the proportions of the tag cloud.
@@ -343,6 +343,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 | `step`           | number             | `2.0`          | no
 | `overflow`       | boolean            | `true`         | no
 | `strict`         | boolean            | `false`        | no
+| `delay`          | number             | `null`         | no
 | `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no
 | `realignOnResize`| boolean            | `false`        | no
 | `randomizeAngle` | boolean            | `false`        | no

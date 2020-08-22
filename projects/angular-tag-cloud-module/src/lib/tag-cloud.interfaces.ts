@@ -100,6 +100,11 @@ export interface CloudOptions {
    * @see https://www.w3schools.com/cssref/pr_font_font.asp
    */
   font?: string;
+  /**
+   * define a number in milliseconds for a delayed appearance for each element.
+   * e.g. a value of 1000 will cause that each second an element will appear on the canvas.
+   */
+  delay?: number;
 }
 
 /**

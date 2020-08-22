@@ -41,6 +41,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
   @Input() randomizeAngle: boolean;
   @Input() background: string;
   @Input() font: string;
+  @Input() delay: number;
   @Input() config: CloudOptions;
   @Input() log: 'warn' | 'debug' | false;
 
@@ -119,6 +120,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
       font: null,
       step: 2.0,
       log: false,
+      delay: null,
       ...this.config // override default width params in config object
     };
 
@@ -134,6 +136,7 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     if (this.zoomOnHover) { this.config.zoomOnHover = this.zoomOnHover; }
     if (this.step) { this.config.step = this.step; }
     if (this.log) { this.config.log = this.log; }
+    if (this.delay) { this.config.delay = this.delay; }
 
     this.logMessage('warn', 'cloud configuration', this.config);
 
@@ -429,6 +432,15 @@ export class TagCloudComponent implements OnChanges, AfterContentInit, AfterCont
     // place the first word
     wordStyle.left = left + 'px';
     wordStyle.top = top + 'px';
+
+
+    // delayed appearance
+    if (this.options.delay) {
+      wordStyle.animation = 'fadeIn 0.5s';
+      wordStyle.opacity = '0';
+      wordStyle.animationFillMode = 'forwards';
+      wordStyle.animationDelay = `${this.options.delay * index}ms`;
+    }
 
     // default case: place randomly
     if (!useFixedPosition) {

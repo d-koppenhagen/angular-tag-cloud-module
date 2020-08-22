@@ -69,3 +69,8 @@ span.w1 { color: #aab5f0; }
   visibility: visible;
   opacity: 1;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
