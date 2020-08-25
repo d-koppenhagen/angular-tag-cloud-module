@@ -40,6 +40,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "afm497",
+      "name": "Ray Soto",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/586053?v=4",
+      "profile": "https://github.com/afm497",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
