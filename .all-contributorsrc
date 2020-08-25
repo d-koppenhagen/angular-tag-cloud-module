@@ -13,6 +13,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "sweinbach",
+      "name": "sweinbach",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/18198364?v=4",
+      "profile": "https://github.com/sweinbach",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
