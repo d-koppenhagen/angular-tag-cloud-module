@@ -31,6 +31,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "GregOnNet",
+      "name": "Gregor Woiwode",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/444278?v=4",
+      "profile": "https://medium.com/@gregor.woiwode",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
