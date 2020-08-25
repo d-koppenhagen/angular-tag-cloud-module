@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "gaeljaffre",
+      "name": "gaeljaffre",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/59866251?v=4",
+      "profile": "https://github.com/gaeljaffre",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "angular-tag-cloud-module",
+  "projectOwner": "d-koppenhagen",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
