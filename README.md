@@ -1,6 +1,6 @@
 # angular-tag-cloud-module
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![npm](https://img.shields.io/npm/v/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/l/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
@@ -406,6 +406,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://medium.com/@gregor.woiwode"><img src="https://avatars3.githubusercontent.com/u/444278?v=4" width="100px;" alt=""/><br /><sub><b>Gregor Woiwode</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=GregOnNet" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/afm497"><img src="https://avatars3.githubusercontent.com/u/586053?v=4" width="100px;" alt=""/><br /><sub><b>Ray Soto</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/issues?q=author%3Aafm497" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://www.enhanceit.ai"><img src="https://avatars0.githubusercontent.com/u/17472224?v=4" width="100px;" alt=""/><br /><sub><b>Ignacio Peletier</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/issues?q=author%3ASorkanius" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/shrutibidada"><img src="https://avatars2.githubusercontent.com/u/21032444?v=4" width="100px;" alt=""/><br /><sub><b>Shruti Bidada</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=shrutibidada" title="Code">💻</a></td>
   </tr>
 </table>
 
