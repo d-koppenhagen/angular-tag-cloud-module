@@ -1,4 +1,7 @@
 # angular-tag-cloud-module
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![npm](https://img.shields.io/npm/v/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![npm](https://img.shields.io/npm/l/angular-tag-cloud-module.svg)](https://www.npmjs.com/package/angular-tag-cloud-module)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
@@ -387,3 +390,22 @@ For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "TagCloud"
 [logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud2.png "TagCloud with custom Style"
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gaeljaffre"><img src="https://avatars2.githubusercontent.com/u/59866251?v=4" width="100px;" alt=""/><br /><sub><b>gaeljaffre</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/issues?q=author%3Agaeljaffre" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
