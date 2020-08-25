@@ -58,6 +58,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "shrutibidada",
+      "name": "Shruti Bidada",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/21032444?v=4",
+      "profile": "https://github.com/shrutibidada",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
