@@ -1,3 +1,7 @@
+## 5.2.0
+### Features
+* Add support for Angular 11
+
 ## 5.1.0
 ### Features
 * add configuration option `delay`: Delay the appearance for each cloud element by defining a value in milliseconds [ #8 ](https://github.com/d-koppenhagen/angular-tag-cloud-module/issues/8)
