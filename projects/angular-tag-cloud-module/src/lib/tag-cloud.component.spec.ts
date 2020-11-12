@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TagCloudComponent } from './tag-cloud.component';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
@@ -26,7 +26,7 @@ describe('TagCloudComponent', () => {
   let hostFixture: ComponentFixture<TestHostComponent>;
   let tagCloudEl: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestHostComponent, TagCloudComponent],
     }).compileComponents();
