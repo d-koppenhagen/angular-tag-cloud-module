@@ -59,7 +59,7 @@ export class TagCloudComponent
   private alreadyPlacedWords: HTMLElement[] = [];
 
   private options: CloudOptionsInternal;
-  private timeoutId;
+  private timeoutId: number;
 
   get calculatedWidth(): number {
     let width = this.config.width;
@@ -518,7 +518,11 @@ export class TagCloudComponent
         wordStyle.top =
           top + (Math.random() - 0.5) * 2 * (this.options.height / 5) + '30px';
       } else {
-        while (this.hitTest(wordSpan)) {
+        while (
+          this.options.width &&
+          this.options.height &&
+          this.hitTest(wordSpan)
+        ) {
           radius += this.options.step;
           angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
 
@@ -592,7 +596,7 @@ export class TagCloudComponent
     // rotate word possibly
     const transformString = this.setWordRotation(wordSpan, word.rotate);
 
-    // Append href if there's a link alongwith the tag
+    // Append href if there's a link along with the tag
     if (word.link) node = this.wrapNodeIntoAnchorElement(node, word);
 
     // set zoomOption
