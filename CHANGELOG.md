@@ -1,3 +1,6 @@
+## 5.2.1
+### Fixes
+* Don't run into an infinite loop when the word cloud has a width or height of `0px` [ #45 ]([54c717](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/5124e4b83a7544858a1581cde4617194d054c717))
 ## 5.2.0
 ### Features
 * Add support for Angular 11
