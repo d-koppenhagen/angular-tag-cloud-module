@@ -521,6 +521,8 @@ export class TagCloudComponent
         while (
           this.options.width &&
           this.options.height &&
+          wordSpan.offsetHeight &&
+          wordSpan.offsetWidth &&
           this.hitTest(wordSpan)
         ) {
           radius += this.options.step;
