@@ -55,8 +55,8 @@ export class TagCloudComponent
   @Output() afterInit?: EventEmitter<void> = new EventEmitter();
   @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
 
+  public cloudDataHtmlElements: HTMLElement[] = [];
   private dataArr: CloudData[];
-  private alreadyPlacedWords: HTMLElement[] = [];
 
   private options: CloudOptionsInternal;
   private timeoutId: number;
@@ -196,7 +196,7 @@ export class TagCloudComponent
     this.dataChanges.emit(changes);
     this.afterChecked.emit();
     this.logMessage('debug', 'dataChanges emitted');
-    this.alreadyPlacedWords = [];
+    this.cloudDataHtmlElements = [];
 
     // check if data is not null or empty
     if (!this.data) {
@@ -283,7 +283,7 @@ export class TagCloudComponent
    */
   private hitTest(testEl: HTMLElement): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
-    for (const item of this.alreadyPlacedWords) {
+    for (const item of this.cloudDataHtmlElements) {
       if (this.overlapping(testEl, item)) {
         return true;
       }
@@ -619,9 +619,9 @@ export class TagCloudComponent
     this.setPosition(wordSpan, word, index);
 
     this.logMessage('debug', 'Adds new word <span>', wordSpan);
-    this.alreadyPlacedWords.push(wordSpan);
+    this.cloudDataHtmlElements.push(wordSpan);
 
-    this.logMessage('debug', 'Placed words', this.alreadyPlacedWords);
+    this.logMessage('debug', 'Placed words', this.cloudDataHtmlElements);
   }
 
   /**

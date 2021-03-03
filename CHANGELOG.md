@@ -1,3 +1,7 @@
+## 5.3.0
+### Features
+* allow to access `cloudDataHtmlElements` component property for manual element placements [ #64 ]
+
 ## 5.2.2
 ### Fixes
 * Don't run into an infinite loop when the word cloud has a width or height of `0px` [ #45 ]([02ae49](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/3c005eeada362f1caeef5467423c6672fb02ae49))

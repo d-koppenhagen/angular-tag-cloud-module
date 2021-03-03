@@ -337,49 +337,53 @@ export class AppComponent {
 You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
 ![TagCloud with custom stylesheet][logo2]
 
+## Place data on fixed positions
+
+You can access the component property `cloudDataHtmlElements` to set / override the final placements for the HTML Elements inside the word cloud.
+
 # Options
 The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
-| Input            | Type               | default value  | mandatory
-| ---------------- | ------------------ | -------------- | ---------
-| `config`         | CloudOptions       | See other default params | no
-| `data`           | CloudData[]        |                | yes
-| `width`          | number (*)         | `500`          | no
-| `height`         | number (*)         | `300`          | no
-| `step`           | number             | `2.0`          | no
-| `overflow`       | boolean            | `true`         | no
-| `strict`         | boolean            | `false`        | no
-| `delay`          | number             | `null`         | no
-| `zoomOnHover`    | ZoomOnHoverOptions | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no
-| `realignOnResize`| boolean            | `false`        | no
-| `randomizeAngle` | boolean            | `false`        | no
-| `font`           | string ([CSS font](https://www.w3schools.com/cssref/pr_font_font.asp)) |        | no
-| `background`     | string ([CSS background](https://www.w3schools.com/cssref/css3_pr_background.asp)) |        | no
-| `log`            | `'warn'` / `'debug'` / `false` | `false`    | no
+| Input             | Type                                                                               | default value                                            | mandatory |
+| ----------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- | --------- |
+| `config`          | CloudOptions                                                                       | See other default params                                 | no        |
+| `data`            | CloudData[]                                                                        |                                                          | yes       |
+| `width`           | number (*)                                                                         | `500`                                                    | no        |
+| `height`          | number (*)                                                                         | `300`                                                    | no        |
+| `step`            | number                                                                             | `2.0`                                                    | no        |
+| `overflow`        | boolean                                                                            | `true`                                                   | no        |
+| `strict`          | boolean                                                                            | `false`                                                  | no        |
+| `delay`           | number                                                                             | `null`                                                   | no        |
+| `zoomOnHover`     | ZoomOnHoverOptions                                                                 | `{ scale: 1, transitionTime: 0, delay: 0, color: null }` | no        |
+| `realignOnResize` | boolean                                                                            | `false`                                                  | no        |
+| `randomizeAngle`  | boolean                                                                            | `false`                                                  | no        |
+| `font`            | string ([CSS font](https://www.w3schools.com/cssref/pr_font_font.asp))             |                                                          | no        |
+| `background`      | string ([CSS background](https://www.w3schools.com/cssref/css3_pr_background.asp)) |                                                          | no        |
+| `log`             | `'warn'` / `'debug'` / `false`                                                     | `false`                                                  | no        |
 
 (*) if the value is between 0 and 1, it will be set to the size (width or height respectively) of the upper element multiplied by the value. Setting the value > 1 it will be set the size (width or height respectively) to the appropriate value in Pixel (px).
 
 `data`-Array elements can/must have the following attributes:
 
-| name       | Type            | default value                              | mandatory
-| ---------- | --------------- | ------------------------------------------ | ---------
-| `text`     | string | null   |                                            | yes
-| `weight`   | number          | `5`                                        | no
-| `link`     | string          |                                            | no
-| `external` | boolean         | `false` (only has relevance if link was set) | no
-| `color`    | string ([CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)) | (a shade of blue, depends on the weight)   | no
-| `rotate`   | number          | `0`                                        | no
-| `tooltip`  | string          |                                            | no
-| `position` | { left: number, top: number } |                              | no
+| name       | Type                                                                               | default value                                | mandatory |
+| ---------- | ---------------------------------------------------------------------------------- | -------------------------------------------- | --------- |
+| `text`     | string                                                                             | null                                         |           | yes |
+| `weight`   | number                                                                             | `5`                                          | no        |
+| `link`     | string                                                                             |                                              | no        |
+| `external` | boolean                                                                            | `false` (only has relevance if link was set) | no        |
+| `color`    | string ([CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)) | (a shade of blue, depends on the weight)     | no        |
+| `rotate`   | number                                                                             | `0`                                          | no        |
+| `tooltip`  | string                                                                             |                                              | no        |
+| `position` | { left: number, top: number }                                                      |                                              | no        |
 
  Also the element can have the following output:
 
-| Input           | Event Return Type  | default value  | mandatory | Description
-| --------------- | ------------------ | -------------- | ----------| ------------
-| `clicked`       | `CloudData`        | -              | no        | Returns the clicked `CloudData`-Object
-| `dataChanges`   | `SimpleChanges` from `@angular/common`  | -              | no        | Returns an `SimpleChanges`-Object which gives you access to the previous and current values
-| `afterInit`     | -                  | -              | no        | Fires after the View was initilized
-| `afterChecked`  | -                  | -              | no        | Fires after the View was checked
+| Input          | Event Return Type                      | default value | mandatory | Description                                                                                 |
+| -------------- | -------------------------------------- | ------------- | --------- | ------------------------------------------------------------------------------------------- |
+| `clicked`      | `CloudData`                            | -             | no        | Returns the clicked `CloudData`-Object                                                      |
+| `dataChanges`  | `SimpleChanges` from `@angular/common` | -             | no        | Returns an `SimpleChanges`-Object which gives you access to the previous and current values |
+| `afterInit`    | -                                      | -             | no        | Fires after the View was initilized                                                         |
+| `afterChecked` | -                                      | -             | no        | Fires after the View was checked                                                            |
 
 You can also call the method `reDraw()` to force the cloud data to be re-drawn:
 ```ts
