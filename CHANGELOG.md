@@ -1,6 +1,6 @@
 ## 5.3.0
 ### Features
-* allow to access `cloudDataHtmlElements` component property for manual element placements [ #64 ]
+* allow to access `cloudDataHtmlElements` component property for manual element placements [ #64 ]([7885e58](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/7885e585232e918773eea2787bb1cb1a0dd083ca))
 
 ## 5.2.2
 ### Fixes
