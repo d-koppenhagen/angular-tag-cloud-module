@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module-demo",
-  "version": "5.2.2",
+  "version": "6.0.0",
   "scripts": {
     "cypress-open": "cypress open",
     "cypress-run": "cypress run",
@@ -11,10 +11,10 @@
     "lint": "ng lint",
     "compodoc": "compodoc -p projects/angular-tag-cloud-module/tsconfig.lib.json",
     "doc": "npm run compodoc && compodoc -s",
-    "build-prod": "ng build angular-tag-cloud-module --prod",
+    "build-prod": "ng build angular-tag-cloud-module --configuration production",
     "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
     "package": "npm run build-prod && npm run copy",
-    "publish-gh-pages": "ng build --prod --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module/ && npx ngh --dir=dist/angular-tag-cloud-module-demo"
+    "publish-gh-pages": "ng build --configuration production --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module/ && npx ngh --dir=dist/angular-tag-cloud-module-demo"
   },
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
@@ -30,7 +30,7 @@
     "@angular/platform-browser": "~12.0.0",
     "@angular/platform-browser-dynamic": "~12.0.0",
     "@angular/router": "~12.0.0",
-    "angular-tag-cloud-module": "^5.3.0",
+    "angular-tag-cloud-module": "^6.0.0",
     "core-js": "^3.6.5",
     "ngx-color-picker": "^10.1.0",
     "rxjs": "~6.5.5",

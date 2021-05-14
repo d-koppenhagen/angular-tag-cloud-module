@@ -1,3 +1,10 @@
+## 6.0.0
+### Features
+* add support for Angular 12, drop support for older Angular versions
+
+### BREAKING CHANGES
+- support for Angular 10.x.x has been dropped for future versions
+- you need to have a peer dependency of Angular 11.0.0 or greater
 ## 5.3.0
 ### Features
 * allow to access `cloudDataHtmlElements` component property for manual element placements [ #64 ]([7885e58](https://github.com/d-koppenhagen/angular-tag-cloud-module/commit/7885e585232e918773eea2787bb1cb1a0dd083ca))
