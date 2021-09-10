@@ -11,6 +11,7 @@ import {
   SimpleChanges,
   HostListener,
 } from '@angular/core';
+
 import {
   CloudData,
   CloudOptions,
@@ -28,41 +29,46 @@ interface CloudOptionsInternal extends CloudOptions {
   };
 }
 
+const DEFAULT_HEIGHT = 400;
+const DEFAULT_WIDTH = 1;
+const DEFAULT_STEP = 1;
+
 @Component({
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
   styleUrls: ['./tag-cloud.component.css'],
 })
 export class TagCloudComponent
-  implements OnChanges, AfterContentInit, AfterContentChecked {
-  @Input() data: CloudData[];
-  @Input() width: number;
-  @Input() height: number;
-  @Input() step: number;
-  @Input() overflow: boolean;
-  @Input() strict: boolean;
-  @Input() zoomOnHover: ZoomOnHoverOptions;
-  @Input() realignOnResize: boolean;
-  @Input() randomizeAngle: boolean;
-  @Input() background: string;
-  @Input() font: string;
-  @Input() delay: number;
-  @Input() config: CloudOptions;
-  @Input() log: 'warn' | 'debug' | false;
+  implements OnChanges, AfterContentInit, AfterContentChecked
+{
+  @Input() data: CloudData[] = [];
+  @Input() width?: number;
+  @Input() height?: number;
+  @Input() step?: number;
+  @Input() overflow?: boolean;
+  @Input() strict?: boolean;
+  @Input() zoomOnHover?: ZoomOnHoverOptions;
+  @Input() realignOnResize?: boolean;
+  @Input() randomizeAngle?: boolean;
+  @Input() background?: string;
+  @Input() font?: string;
+  @Input() delay?: number;
+  @Input() config: CloudOptions = {};
+  @Input() log?: 'warn' | 'debug' | false;
 
-  @Output() clicked?: EventEmitter<CloudData> = new EventEmitter();
-  @Output() dataChanges?: EventEmitter<SimpleChanges> = new EventEmitter();
-  @Output() afterInit?: EventEmitter<void> = new EventEmitter();
-  @Output() afterChecked?: EventEmitter<void> = new EventEmitter();
+  @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
+  @Output() dataChanges: EventEmitter<SimpleChanges> = new EventEmitter();
+  @Output() afterInit: EventEmitter<void> = new EventEmitter();
+  @Output() afterChecked: EventEmitter<void> = new EventEmitter();
 
   public cloudDataHtmlElements: HTMLElement[] = [];
-  private dataArr: CloudData[];
+  private dataArr: CloudData[] = [];
 
-  private options: CloudOptionsInternal;
-  private timeoutId: number;
+  private options!: CloudOptionsInternal;
+  private timeoutId: number | undefined;
 
   get calculatedWidth(): number {
-    let width = this.config.width;
+    let width = this.config.width || this.width || DEFAULT_WIDTH;
     if (
       this.el.nativeElement.parentNode.offsetWidth > 0 &&
       width <= 1 &&
@@ -74,7 +80,7 @@ export class TagCloudComponent
   }
 
   get calculatedHeight(): number {
-    let height = this.config.height;
+    let height = this.config.height || this.height || DEFAULT_HEIGHT;
     if (
       this.el.nativeElement.parentNode.offsetHeight > 0 &&
       height <= 1 &&
@@ -109,15 +115,11 @@ export class TagCloudComponent
         transitionTime: 0,
         scale: 1,
         delay: 0,
-        color: null,
       },
       realignOnResize: false,
       randomizeAngle: false,
-      background: null,
-      font: null,
       step: 2.0,
       log: false,
-      delay: null,
       ...this.config, // override default width params in config object
     };
 
@@ -179,12 +181,12 @@ export class TagCloudComponent
   }
 
   ngAfterContentInit() {
-    this.afterInit.emit();
+    this.afterInit?.emit();
     this.logMessage('debug', 'afterInit emitted');
   }
 
   ngAfterContentChecked() {
-    this.afterChecked.emit();
+    this.afterChecked?.emit();
     this.logMessage('debug', 'afterChecked emitted');
   }
 
@@ -193,8 +195,8 @@ export class TagCloudComponent
    * @param changes the change set
    */
   reDraw(changes?: SimpleChanges) {
-    this.dataChanges.emit(changes);
-    this.afterChecked.emit();
+    this.dataChanges?.emit(changes);
+    this.afterChecked?.emit();
     this.logMessage('debug', 'dataChanges emitted');
     this.cloudDataHtmlElements = [];
 
@@ -404,7 +406,7 @@ export class TagCloudComponent
     word: CloudData,
   ): HTMLAnchorElement {
     const wordLink: HTMLAnchorElement = this.r2.createElement('a');
-    wordLink.href = word.link;
+    wordLink.href = word.link || '';
 
     if (word.external !== undefined && word.external) {
       wordLink.target = '_blank';
@@ -422,7 +424,7 @@ export class TagCloudComponent
   private applyZoomStyle(
     node: HTMLElement,
     el: HTMLElement,
-    link: string,
+    link: string | undefined,
     transformString: string,
   ) {
     if (this.options.zoomOnHover && this.options.zoomOnHover.scale !== 1) {
@@ -434,22 +436,28 @@ export class TagCloudComponent
       }
 
       el.onmouseover = () => {
-        this.r2.setStyle(
-          el,
-          'transition',
-          `transform ${this.options.zoomOnHover.transitionTime}s`,
-        );
-        this.r2.setStyle(
-          el,
-          'transform',
-          `scale(${this.options.zoomOnHover.scale}) ${transformString}`,
-        );
-        this.r2.setStyle(
-          el,
-          'transition-delay',
-          `${this.options.zoomOnHover.delay}s`,
-        );
-        if (this.options.zoomOnHover.color) {
+        if (this.options.zoomOnHover?.transitionTime) {
+          this.r2.setStyle(
+            el,
+            'transition',
+            `transform ${this.options.zoomOnHover.transitionTime}s`,
+          );
+        }
+        if (this.options.zoomOnHover?.scale) {
+          this.r2.setStyle(
+            el,
+            'transform',
+            `scale(${this.options.zoomOnHover.scale}) ${transformString}`,
+          );
+        }
+        if (this.options.zoomOnHover?.delay) {
+          this.r2.setStyle(
+            el,
+            'transition-delay',
+            `${this.options.zoomOnHover.delay}s`,
+          );
+        }
+        if (this.options.zoomOnHover?.color) {
           link
             ? this.r2.setStyle(node, 'color', this.options.zoomOnHover.color)
             : this.r2.setStyle(el, 'color', this.options.zoomOnHover.color);
@@ -458,7 +466,7 @@ export class TagCloudComponent
 
       el.onmouseout = () => {
         this.r2.setStyle(el, 'transform', `none ${transformString}`);
-        if (this.options.zoomOnHover.color) {
+        if (this.options.zoomOnHover?.color) {
           link
             ? this.r2.removeStyle(node, 'color')
             : this.r2.removeStyle(el, 'color');
@@ -490,12 +498,14 @@ export class TagCloudComponent
 
     const width = wordSpan.offsetWidth;
     const height = wordSpan.offsetHeight;
-    let left = useFixedPosition
-      ? word.position.left
-      : this.options.center.x - width / 2;
-    let top = useFixedPosition
-      ? word.position.top
-      : this.options.center.y - height / 2;
+    let left =
+      useFixedPosition && word.position?.left
+        ? word.position.left
+        : this.options.center.x - width / 2;
+    let top =
+      useFixedPosition && word.position?.top
+        ? word.position.top
+        : this.options.center.y - height / 2;
 
     // place the first word
     wordStyle.left = left + 'px';
@@ -514,9 +524,11 @@ export class TagCloudComponent
       // do not place the first word always right in the middle
       if (index === 0) {
         wordStyle.left =
-          left + (Math.random() - 0.5) * 2 * (this.options.width / 5) + 'px';
+          left + (Math.random() - 0.5) * 2 * (this.calculatedWidth / 5) + 'px';
         wordStyle.top =
-          top + (Math.random() - 0.5) * 2 * (this.options.height / 5) + '30px';
+          top +
+          (Math.random() - 0.5) * 2 * (this.calculatedHeight / 5) +
+          '30px';
       } else {
         while (
           this.options.width &&
@@ -525,8 +537,9 @@ export class TagCloudComponent
           wordSpan.offsetWidth &&
           this.hitTest(wordSpan)
         ) {
-          radius += this.options.step;
-          angle += (index % 2 === 0 ? 1 : -1) * this.options.step;
+          radius += this.options.step || DEFAULT_STEP;
+          angle +=
+            (index % 2 === 0 ? 1 : -1) * (this.options.step || DEFAULT_STEP);
 
           left =
             this.options.center.x -
@@ -545,8 +558,8 @@ export class TagCloudComponent
       !this.options.overflow &&
       (left < 0 ||
         top < 0 ||
-        left + width > this.options.width ||
-        top + height > this.options.height)
+        left + width > this.calculatedWidth ||
+        top + height > this.calculatedHeight)
     ) {
       this.logMessage(
         'warn',
@@ -576,7 +589,7 @@ export class TagCloudComponent
 
     // emit onclick event
     wordSpan.onclick = () => {
-      this.clicked.emit(word);
+      this.clicked?.emit(word);
     };
 
     // Put the word (and its tooltip) in foreground when cursor is above

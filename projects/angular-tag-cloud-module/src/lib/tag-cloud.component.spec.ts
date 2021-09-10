@@ -18,7 +18,7 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 class TestHostComponent {
   options: CloudOptions = {};
   configObject: CloudOptions = {};
-  data: CloudData[];
+  data: CloudData[] = [];
 }
 
 describe('TagCloudComponent', () => {
@@ -26,11 +26,13 @@ describe('TagCloudComponent', () => {
   let hostFixture: ComponentFixture<TestHostComponent>;
   let tagCloudEl: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TestHostComponent, TagCloudComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TestHostComponent, TagCloudComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     hostFixture = TestBed.createComponent(TestHostComponent);
@@ -177,11 +179,7 @@ describe('TagCloudComponent', () => {
       { text: 'A', link: 'http://google.de' },
       { text: 'B', link: 'http://google.de', external: true },
       { text: 'C', link: 'http://google.de', external: false },
-      { text: 'D', link: 'http://google.de', external: null },
       { text: 'E', link: '' },
-      { text: 'F', link: null },
-      { text: 'G', link: null, external: false },
-      { text: 'H', link: null, external: true },
       { text: 'I', link: '', external: false },
       { text: 'J', link: '', external: true },
     ];
@@ -189,7 +187,7 @@ describe('TagCloudComponent', () => {
     hostFixture.detectChanges();
 
     expect(tagCloudEl.childElementCount).toBe(10);
-    expect(tagCloudEl.getElementsByTagName('a').length).toBe(4);
+    expect(tagCloudEl.getElementsByTagName('a').length).toBe(3);
     // TODO: check for externals if 'target' attr has been set
   });
 });

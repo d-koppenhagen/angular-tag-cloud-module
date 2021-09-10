@@ -8,9 +8,9 @@ export function randomData(cnt?: number, rotate?: boolean): CloudData[] {
   const cd: CloudData[] = [];
 
   for (let i = 0; i < cnt; i++) {
-    let link: string;
-    let color: string;
-    let external: boolean;
+    let link: string | undefined;
+    let color: string | undefined;
+    let external = false;
     let weight = 5;
     let text = '';
     let r = 0;

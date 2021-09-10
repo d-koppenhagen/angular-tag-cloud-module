@@ -160,7 +160,7 @@
           fxLayout="row"
           fxLayoutGap="20px"
           fxLayout.xs="column"
-          style="padding-top: 20px;"
+          style="padding-top: 20px"
         >
           <mat-form-field fxFlex>
             <input
@@ -189,13 +189,13 @@
                   <input
                     matInput
                     [colorPicker]="
-                      cloudConfigForm.get('zoomOnHover').get('color').value
+                      cloudConfigForm.get('zoomOnHover')?.get('color')?.value
                     "
                     (colorPickerChange)="
                       cloudConfigForm
                         .get('zoomOnHover')
-                        .get('color')
-                        .setValue($event)
+                        ?.get('color')
+                        ?.setValue($event)
                     "
                     formControlName="color"
                   />
@@ -204,7 +204,7 @@
                   fxFlex="20%"
                   class="color-box"
                   [style.background]="
-                    cloudConfigForm.get('zoomOnHover').get('color').value
+                    cloudConfigForm.get('zoomOnHover')?.get('color')?.value
                   "
                 ></div>
               </div>
@@ -324,7 +324,7 @@
         (dataChanges)="log('dataChanges', $event)"
         (afterInit)="log('After Init', $event)"
         (afterChecked)="log('After Checked', $event)"
-        [class.custom-css]="cloudConfigForm.get('customStyle').value"
+        [class.custom-css]="cloudConfigForm.get('customStyle')?.value"
       >
       </angular-tag-cloud>
     </div>

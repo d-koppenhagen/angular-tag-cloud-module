@@ -1,3 +1,10 @@
+## 6.0.1
+
+### Refactoring
+* update workspace to Angular12 defaults
+* use strict mode everywhere
+### Fixes
+* remove optional event emitter typing [ #66 ]
 ## 6.0.0
 ### Features
 * add support for Angular 12, drop support for older Angular versions

@@ -20,7 +20,7 @@ export interface CloudData {
    * If you don't want that the tag cloud is calculating the values manually,
    * set the `strict` property to `true` and use integer values `1` to `10` within the `weight` property.
    */
-  weight?: number;
+  weight: number;
   /**
    * Specifies optionally a link target for this element
    */

@@ -6,11 +6,13 @@ describe('CloudConfiguratorComponent', () => {
   let component: CloudConfiguratorComponent;
   let fixture: ComponentFixture<CloudConfiguratorComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [CloudConfiguratorComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [CloudConfiguratorComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CloudConfiguratorComponent);

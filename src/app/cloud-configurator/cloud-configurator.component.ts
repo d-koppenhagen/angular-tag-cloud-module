@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -18,9 +18,9 @@ import { Observable, of } from 'rxjs';
 })
 export class CloudConfiguratorComponent implements OnInit {
   @ViewChild(TagCloudComponent, { static: true })
-  tagCloudComponent: TagCloudComponent;
-  cloudDataForm: FormGroup;
-  cloudConfigForm: FormGroup;
+  tagCloudComponent!: TagCloudComponent;
+  cloudDataForm!: FormGroup;
+  cloudConfigForm!: FormGroup;
   data: CloudData[] = [];
 
   defaultCloudOptions: CloudOptions = {
@@ -56,7 +56,7 @@ export class CloudConfiguratorComponent implements OnInit {
 
     this.cloudConfigForm = this.fb.group({
       ...this.defaultCloudOptions,
-      zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover),
+      zoomOnHover: this.fb.group(this.defaultCloudOptions.zoomOnHover || {}),
       customStyle: true,
       background: '#2C2C2C url("../../assets/blackboard.jpg") no-repeat center',
       font: 'italic bold 14px "Indie Flower", cursive',
@@ -65,7 +65,7 @@ export class CloudConfiguratorComponent implements OnInit {
     this.getNewExampleData();
   }
 
-  log(eventType: string, e?: CloudData) {
+  log(eventType: string, e?: any) {
     console.log(eventType, e);
   }
 
@@ -82,7 +82,7 @@ export class CloudConfiguratorComponent implements OnInit {
     try {
       this.data = JSON.parse(this.cloudDataForm.value.data);
     } catch (error) {
-      this.snackBar.open(error, 'Ok, got it!', {
+      this.snackBar.open(error as string, 'Ok, got it!', {
         duration: 2500,
       });
     }
@@ -110,6 +110,8 @@ export class CloudConfiguratorComponent implements OnInit {
 
   private setData(data: CloudData[]) {
     this.data = data;
-    this.cloudDataForm.get('data').setValue(JSON.stringify(this.data, null, 2));
+    this.cloudDataForm
+      .get('data')
+      ?.setValue(JSON.stringify(this.data, null, 2));
   }
 }
