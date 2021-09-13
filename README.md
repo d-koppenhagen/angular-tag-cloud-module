@@ -393,10 +393,10 @@ child.redraw();
 ```
 
 # Development
-For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/master/README.dev.md)
+For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/main/README.dev.md)
 
-[logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud.png "TagCloud"
-[logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/master/assets/tag-cloud2.png "TagCloud with custom Style"
+[logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/main/assets/tag-cloud.png "TagCloud"
+[logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/main/assets/tag-cloud2.png "TagCloud with custom Style"
 
 ## Contributors ✨
 
