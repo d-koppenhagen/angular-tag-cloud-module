@@ -6,6 +6,11 @@
     "@angular/common": "^11.0.0 || ^12.0.0 || ^13.0.0-0",
     "@angular/core": "^11.0.0 || ^12.0.0 || ^13.0.0-0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d-koppenhagen/angular-tag-cloud-module.git",
+    "directory": "projects/angular-tag-cloud-module"
+  },
   "dependencies": {
     "tslib": "^2.3.0"
   }
