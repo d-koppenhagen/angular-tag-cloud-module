@@ -338,7 +338,7 @@ You can adjust the style for the component. Please read the [Wiki article](https
 
 Note that you have to set the class.custom-css attribute to true in order for the custom css to be applied, e.g. :
 ```html
-<angular-tag-cloud [config]="options" [data]="data"></angular-tag-cloud>
+<angular-tag-cloud [config]="options" [data]="data" [class.custom-css]='true'></angular-tag-cloud>
 ```
 ![TagCloud with custom stylesheet][logo2]
 
