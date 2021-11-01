@@ -335,6 +335,11 @@ export class AppComponent {
 
 ## Using a custom Stylesheet
 You can adjust the style for the component. Please read the [Wiki article](https://github.com/d-koppenhagen/angular-tag-cloud-module/wiki/Custom-CSS-Style) and follow the instructions.
+
+Note that you have to set the class attribute in order for the custom css class to be applied, e.g. :
+```html
+<angular-tag-cloud [config]="options" [data]="data" [class.custom-css]='true'></angular-tag-cloud>
+```
 ![TagCloud with custom stylesheet][logo2]
 
 ## Place data on fixed positions
