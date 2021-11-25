@@ -1,3 +1,12 @@
+## 13.0.0
+### Features
+* add support for Angular 13, drop support for older Angular versions
+* align version with angular version
+
+### BREAKING CHANGES
+- dropped support for Angular 11.x.x
+- you need to have a peer dependency of Angular 12.0.0 or greater
+
 ## 6.0.1
 
 ### Refactoring

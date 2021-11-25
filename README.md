@@ -30,12 +30,14 @@ https://d-koppenhagen.github.io/angular-tag-cloud-module/
 
 # Version and compability
 
-| Version             | Angular Version Compability   |
-| ------------------- | ----------------------------- |
-| `2.6.0` and below   | between `^4.0.0` and `^5.X.X` |
-| `3.8.2` and below   | between `^6.0.0` and `^8.X.X` |
-| `4.2.0` and below   | `^9.0.0`                      |
-| `5.0.0` and greater | `^10.0.0` and greater         |
+| Version              | Angular Version Compability   |
+| -------------------- | ----------------------------- |
+| `2.6.0` and below    | between `^4.0.0` and `^5.X.X` |
+| `3.8.2` and below    | between `^6.0.0` and `^8.X.X` |
+| `4.2.0` and below    | `^9.0.0`                      |
+| `5.0.0` and greater  | `^10.0.0` and greater         |
+| `6.0.0` and greater  | `^12.0.0` and greater         |
+| `13.0.0` and greater | `^13.0.0` and greater         |
 
 # Install
 
