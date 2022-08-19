@@ -118,7 +118,7 @@ You can either pass configuration properties as an `Input` (As shown in the exam
 <angular-tag-cloud [config]="options" [data]="data"></angular-tag-cloud>
 ```
 
-You can use one of the following HTML-Tags for the tag cloud in your template:
+You can use one of the following [HTML-Tags](https://www.scaler.com/topics/html/html-tags-list/) for the tag cloud in your template:
 * `<angular-tag-cloud ...></angular-tag-cloud>`
 * `<ng-tag-cloud ...></ng-tag-cloud>`
 * `<ngtc ...></ngtc>`
