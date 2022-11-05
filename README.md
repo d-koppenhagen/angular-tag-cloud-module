@@ -31,13 +31,14 @@ https://d-koppenhagen.github.io/angular-tag-cloud-module/
 # Version and compability
 
 | Version              | Angular Version Compability   |
-| -------------------- | ----------------------------- |
+|----------------------|-------------------------------|
 | `2.6.0` and below    | between `^4.0.0` and `^5.X.X` |
 | `3.8.2` and below    | between `^6.0.0` and `^8.X.X` |
 | `4.2.0` and below    | `^9.0.0`                      |
 | `5.0.0` and greater  | `^10.0.0` and greater         |
 | `6.0.0` and greater  | `^12.0.0` and greater         |
 | `13.0.0` and greater | `^13.0.0` and greater         |
+| `14.0.0` and greater | `^14.0.0` and greater         |
 
 # Install
 
@@ -66,11 +67,11 @@ The documentation can be accessed in your browser: [localhost:8080](http://local
 
 ```ts
 // app.module.ts
-import { TagCloudModule } from 'angular-tag-cloud-module';
+import { TagCloudComponent } from 'angular-tag-cloud-module';
 
 @NgModule({
   imports: [
-    TagCloudModule
+    TagCloudComponent
   ]
 })
 export class AppModule { }
@@ -352,7 +353,7 @@ You can access the component property `cloudDataHtmlElements` to set / override 
 The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 
 | Input             | Type                                                                               | default value                                            | mandatory |
-| ----------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- | --------- |
+|-------------------|------------------------------------------------------------------------------------|----------------------------------------------------------|-----------|
 | `config`          | CloudOptions                                                                       | See other default params                                 | no        |
 | `data`            | CloudData[]                                                                        |                                                          | yes       |
 | `width`           | number (*)                                                                         | `500`                                                    | no        |
@@ -373,8 +374,8 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
 `data`-Array elements can/must have the following attributes:
 
 | name       | Type                                                                               | default value                                | mandatory |
-| ---------- | ---------------------------------------------------------------------------------- | -------------------------------------------- | --------- |
-| `text`     | string                                                                             | null                                         |           | yes |
+|------------|------------------------------------------------------------------------------------|----------------------------------------------|-----------|
+| `text`     | string                                                                             | null                                         |           |
 | `weight`   | number                                                                             | `5`                                          | no        |
 | `link`     | string                                                                             |                                              | no        |
 | `external` | boolean                                                                            | `false` (only has relevance if link was set) | no        |
@@ -386,7 +387,7 @@ The HTML-selector `<angular-tag-cloud>` can/must have the following inputs:
  Also the element can have the following output:
 
 | Input          | Event Return Type                      | default value | mandatory | Description                                                                                 |
-| -------------- | -------------------------------------- | ------------- | --------- | ------------------------------------------------------------------------------------------- |
+|----------------|----------------------------------------|---------------|-----------|---------------------------------------------------------------------------------------------|
 | `clicked`      | `CloudData`                            | -             | no        | Returns the clicked `CloudData`-Object                                                      |
 | `dataChanges`  | `SimpleChanges` from `@angular/common` | -             | no        | Returns an `SimpleChanges`-Object which gives you access to the previous and current values |
 | `afterInit`    | -                                      | -             | no        | Fires after the View was initilized                                                         |

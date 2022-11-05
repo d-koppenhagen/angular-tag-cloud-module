@@ -1,3 +1,33 @@
+## 14.0.0
+### Refactoring
+* mark `TagCloudComponent` as `standalone: true`
+* Remove `TagCloudModule`
+
+### BREAKING CHANGES
+- dropped support for Angular < 14.x.x. You need to have a peer dependency of Angular 14.0.0 or greater.
+- `TagCloudModule` is no longer exported. Please use the standalone component `TagCloudComponent` instead.
+
+**OLD:**
+```ts
+import { TagCloudModule } from 'angular-tag-cloud-module';
+// ...
+
+@NgModule({
+  // ...
+  imports: [TagCloudModule],
+})
+```
+**NEW:**
+```ts
+import { TagCloudComponent } from 'angular-tag-cloud-module';
+// ...
+
+@NgModule({
+  // ...
+  imports: [TagCloudComponent],
+})
+```
+
 ## 13.0.0
 ### Features
 * add support for Angular 13, drop support for older Angular versions

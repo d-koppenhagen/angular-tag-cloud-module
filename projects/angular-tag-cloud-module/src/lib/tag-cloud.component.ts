@@ -37,6 +37,7 @@ const DEFAULT_STEP = 1;
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
   styleUrls: ['./tag-cloud.component.css'],
+  standalone: true,
 })
 export class TagCloudComponent
   implements OnChanges, AfterContentInit, AfterContentChecked
