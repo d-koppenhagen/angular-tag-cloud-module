@@ -185,7 +185,7 @@ describe('TagCloudComponent', () => {
 
     hostFixture.detectChanges();
 
-    expect(tagCloudEl.childElementCount).toBe(10);
+    expect(tagCloudEl.childElementCount).toBe(6);
     expect(tagCloudEl.getElementsByTagName('a').length).toBe(3);
     // TODO: check for externals if 'target' attr has been set
   });

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
@@ -47,7 +47,7 @@ export class CloudConfiguratorComponent implements OnInit {
     data: JSON.stringify(this.data, null, 2),
   };
 
-  constructor(private fb: UntypedFormBuilder, private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.cloudDataForm = this.fb.group({
