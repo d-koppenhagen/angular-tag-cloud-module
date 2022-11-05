@@ -1,5 +1,5 @@
-import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
@@ -19,8 +19,8 @@ import { Observable, of } from 'rxjs';
 export class CloudConfiguratorComponent implements OnInit {
   @ViewChild(TagCloudComponent, { static: true })
   tagCloudComponent!: TagCloudComponent;
-  cloudDataForm!: UntypedFormGroup;
-  cloudConfigForm!: UntypedFormGroup;
+  cloudDataForm!: FormGroup;
+  cloudConfigForm!: FormGroup;
   data: CloudData[] = [];
 
   defaultCloudOptions: CloudOptions = {
