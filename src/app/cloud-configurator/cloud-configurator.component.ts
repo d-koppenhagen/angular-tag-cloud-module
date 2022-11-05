@@ -1,5 +1,5 @@
 import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
@@ -19,8 +19,8 @@ import { Observable, of } from 'rxjs';
 export class CloudConfiguratorComponent implements OnInit {
   @ViewChild(TagCloudComponent, { static: true })
   tagCloudComponent!: TagCloudComponent;
-  cloudDataForm!: FormGroup;
-  cloudConfigForm!: FormGroup;
+  cloudDataForm!: UntypedFormGroup;
+  cloudConfigForm!: UntypedFormGroup;
   data: CloudData[] = [];
 
   defaultCloudOptions: CloudOptions = {
@@ -47,7 +47,7 @@ export class CloudConfiguratorComponent implements OnInit {
     data: JSON.stringify(this.data, null, 2),
   };
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
+  constructor(private fb: UntypedFormBuilder, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.cloudDataForm = this.fb.group({
