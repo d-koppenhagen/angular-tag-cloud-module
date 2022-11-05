@@ -26,13 +26,12 @@ describe('TagCloudComponent', () => {
   let hostFixture: ComponentFixture<TestHostComponent>;
   let tagCloudEl: HTMLElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TestHostComponent, TagCloudComponent],
-      }).compileComponents();
-    }),
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TestHostComponent],
+      imports: [TagCloudComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     hostFixture = TestBed.createComponent(TestHostComponent);
@@ -46,7 +45,7 @@ describe('TagCloudComponent', () => {
   });
 
   it('should render CloudData', () => {
-    testHostComponent.data = [{ text: 'A' }, { text: 'B' }];
+    testHostComponent.data = [{ text: 'A' }, { text: 'B' }] as CloudData[];
 
     hostFixture.detectChanges();
 
@@ -182,7 +181,7 @@ describe('TagCloudComponent', () => {
       { text: 'E', link: '' },
       { text: 'I', link: '', external: false },
       { text: 'J', link: '', external: true },
-    ];
+    ] as CloudData[];
 
     hostFixture.detectChanges();
 

@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ColorPickerModule } from 'ngx-color-picker';
 
-import { TagCloudModule } from '../../projects/angular-tag-cloud-module/src/public-api';
+import { TagCloudComponent } from '../../projects/angular-tag-cloud-module/src/public-api';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
@@ -21,7 +21,7 @@ import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configura
     MaterialModule,
     FlexLayoutModule,
     ColorPickerModule,
-    TagCloudModule,
+    TagCloudComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
