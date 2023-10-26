@@ -1,3 +1,8 @@
+## 15.0.0
+
+### BREAKING CHANGES
+- dropped support for Angular < 15.x.x. You need to have a peer dependency of Angular 15.0.0 or greater.
+
 ## 14.0.0
 ### Refactoring
 * mark `TagCloudComponent` as `standalone: true`

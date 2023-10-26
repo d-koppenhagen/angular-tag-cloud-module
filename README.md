@@ -39,6 +39,7 @@ https://d-koppenhagen.github.io/angular-tag-cloud-module/
 | `6.0.0` and greater  | `^12.0.0` and greater         |
 | `13.0.0` and greater | `^13.0.0` and greater         |
 | `14.0.0` and greater | `^14.0.0` and greater         |
+| `15.0.0` and greater | `^15.0.0` and greater         |
 
 # Install
 
