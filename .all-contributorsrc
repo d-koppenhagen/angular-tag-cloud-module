@@ -94,6 +94,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "sheikalthaf",
+      "name": "Sheik Althaf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22526247?v=4",
+      "profile": "https://sheikalthaf.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -101,5 +110,7 @@
   "projectOwner": "d-koppenhagen",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }
