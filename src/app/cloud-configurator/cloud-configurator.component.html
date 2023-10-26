@@ -13,13 +13,12 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
-      <form [formGroup]="cloudDataForm" class="flex flex-col">
+    <mat-card-content class="h-full">
+      <form [formGroup]="cloudDataForm" class="flex flex-col h-full">
         <h2>Example Data Options</h2>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col">
           <mat-form-field class="flex-1">
+            <mat-label>Quantity of random data</mat-label>
             <input
               matInput
               type="number"
@@ -40,7 +39,7 @@
         </div>
 
         <h2>Clouddata</h2>
-        <div class="input-row flex">
+        <div class="input-row flex h-full">
           <textarea
             class="json-input flex-1"
             matInput
@@ -78,10 +77,9 @@
     <mat-card-content>
       <form [formGroup]="cloudConfigForm" class="flex flex-col">
         <h2>Proportions</h2>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col">
           <mat-form-field class="flex-1">
+            <mat-label>Width</mat-label>
             <input
               matInput
               type="number"
@@ -94,6 +92,7 @@
           </mat-form-field>
 
           <mat-form-field class="flex-1 xs:flex-col">
+            <mat-label>Height</mat-label>
             <input
               matInput
               type="number"
@@ -115,9 +114,7 @@
         </div>
 
         <h2>General options</h2>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col">
           <mat-slide-toggle class="flex-1" formControlName="overflow"
             >Overflow</mat-slide-toggle
           >
@@ -125,9 +122,7 @@
             >Strict</mat-slide-toggle
           >
         </div>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col">
           <mat-slide-toggle class="flex-1" formControlName="realignOnResize"
             >Realign on resize</mat-slide-toggle
           >
@@ -137,6 +132,7 @@
         </div>
         <div class="input-row flex gap-5 xs:flex-col pt-5">
           <mat-form-field class="flex-1">
+            <mat-label>Delay in ms for each word (e.g. 300)</mat-label>
             <input
               matInput
               type="number"
@@ -184,54 +180,60 @@
                 min="1"
                 max="2"
                 step="0.01"
+                ngDefaultControl
+                color="accent"
                 formControlName="scale"
-              ></mat-slider>
+              >
+                <input matSliderThumb />
+              </mat-slider>
             </div>
           </div>
 
-          <div
-            class="input-row flex gap-5 xs:flex-col"
-          >
+          <div class="input-row flex gap-5 xs:flex-col">
             <div class="w-1/2 xs:w-full">
               <mat-label class="label-text">Time</mat-label>
-              <!-- <mat-slider
+              <mat-slider
                 min="0"
                 max="2"
                 step="0.1"
+                color="accent"
+                ngDefaultControl
                 formControlName="transitionTime"
-              ></mat-slider> -->
+              >
+                <input matSliderThumb />
+              </mat-slider>
             </div>
             <div class="w-1/2 xs:w-full">
               <mat-label class="label-text">Delay</mat-label>
-              <!-- <mat-slider
+              <mat-slider
                 min="0"
                 max="2"
                 step="0.1"
+                color="accent"
+                ngDefaultControl
                 formControlName="delay"
-              ></mat-slider> -->
+              >
+                <input matSliderThumb />
+              </mat-slider>
             </div>
           </div>
         </div>
 
         <h2>Style</h2>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
-          <mat-slide-toggle class="flex-1" formControlName="customStyle"
-            >Use custom Stylesheet</mat-slide-toggle
-          >
+        <div class="input-row flex gap-5 xs:flex-col">
+          <mat-slide-toggle class="flex-1" formControlName="customStyle">
+            Use custom Stylesheet
+          </mat-slide-toggle>
         </div>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col mt-4">
           <mat-form-field class="flex-1">
+            <mat-label>Font</mat-label>
             <input matInput formControlName="font" placeholder="Font" />
           </mat-form-field>
         </div>
-        <div
-          class="input-row flex gap-5 xs:flex-col"
-        >
+        <div class="input-row flex gap-5 xs:flex-col">
           <mat-form-field class="flex-1">
+            <mat-label>Background</mat-label>
             <input
               matInput
               formControlName="background"
