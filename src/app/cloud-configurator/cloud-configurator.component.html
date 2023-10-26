@@ -1,10 +1,5 @@
-<div
-  fxLayout="row"
-  fxLayout.xs="column"
-  fxLayout.sm="column"
-  fxLayoutGap="15px"
->
-  <mat-card fxFlex>
+<div class="flex xs:flex-col gap-4">
+  <mat-card class="flex-1">
     <mat-card-header>
       <div mat-card-avatar class="card-image image-data"></div>
       <mat-card-title>Cloud Data</mat-card-title>
@@ -19,15 +14,12 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="cloudDataForm" fxLayout="column">
+      <form [formGroup]="cloudDataForm" class="flex flex-col">
         <h2>Example Data Options</h2>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-form-field fxFlex>
+          <mat-form-field class="flex-1">
             <input
               matInput
               type="number"
@@ -40,20 +32,17 @@
           </mat-form-field>
 
           <mat-slide-toggle
-            fxFlex
-            class="adjust-top"
+            class="adjust-top flex-1 xs:flex-col"
             formControlName="rotate"
-            fxLayout.xs="column"
           >
             Rotate some entries randomly
           </mat-slide-toggle>
         </div>
 
         <h2>Clouddata</h2>
-        <div class="input-row" fxLayout="row">
+        <div class="input-row flex">
           <textarea
-            fxFlex
-            class="json-input"
+            class="json-input flex-1"
             matInput
             rows="20"
             formControlName="data"
@@ -72,7 +61,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card fxFlex>
+  <mat-card class="flex-1">
     <mat-card-header>
       <div mat-card-avatar class="card-image image-options"></div>
       <mat-card-title>Options</mat-card-title>
@@ -87,15 +76,12 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="cloudConfigForm" fxLayout="column">
+      <form [formGroup]="cloudConfigForm" class="flex flex-col">
         <h2>Proportions</h2>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-form-field fxFlex>
+          <mat-form-field class="flex-1">
             <input
               matInput
               type="number"
@@ -107,7 +93,7 @@
             />
           </mat-form-field>
 
-          <mat-form-field fxFlex fxLayout.xs="column">
+          <mat-form-field class="flex-1 xs:flex-col">
             <input
               matInput
               type="number"
@@ -120,7 +106,7 @@
           </mat-form-field>
         </div>
 
-        <div class="input-row" fxLayout="row" fxLayoutGap="20px">
+        <div class="input-row" class="flex gap-5">
           <mat-label
             >Please note that a width > 1 causes an absolute width in pixels
             (e.g. 20 means 20 pixels). A width <= 1 means a relative width (e.g.
@@ -130,39 +116,27 @@
 
         <h2>General options</h2>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-slide-toggle fxFlex formControlName="overflow"
+          <mat-slide-toggle class="flex-1" formControlName="overflow"
             >Overflow</mat-slide-toggle
           >
-          <mat-slide-toggle fxFlex formControlName="strict"
+          <mat-slide-toggle class="flex-1" formControlName="strict"
             >Strict</mat-slide-toggle
           >
         </div>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-slide-toggle fxFlex formControlName="realignOnResize"
+          <mat-slide-toggle class="flex-1" formControlName="realignOnResize"
             >Realign on resize</mat-slide-toggle
           >
-          <mat-slide-toggle fxFlex formControlName="randomizeAngle"
+          <mat-slide-toggle class="flex-1" formControlName="randomizeAngle"
             >Randomize angle</mat-slide-toggle
           >
         </div>
-        <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
-          style="padding-top: 20px"
-        >
-          <mat-form-field fxFlex>
+        <div class="input-row flex gap-5 xs:flex-col pt-5">
+          <mat-form-field class="flex-1">
             <input
               matInput
               type="number"
@@ -176,15 +150,10 @@
 
         <h2>Zoom on hover options</h2>
         <div formGroupName="zoomOnHover">
-          <div
-            class="input-row"
-            fxLayout="row"
-            fxLayout.xs="column"
-            fxLayoutGap="20px"
-          >
-            <div fxFlex="50%" fxFlex.xs="100%">
-              <div fxLayout="row" fxLayoutGap="10px">
-                <mat-form-field fxFlex="80%">
+          <div class="input-row flex gap-5 xs:flex-col">
+            <div class="w-1/2 xs:w-full">
+              <div class="flex gap-2.5">
+                <mat-form-field class="w-4/5">
                   <mat-label>Color</mat-label>
                   <input
                     matInput
@@ -201,8 +170,7 @@
                   />
                 </mat-form-field>
                 <div
-                  fxFlex="20%"
-                  class="color-box"
+                  class="color-box w-1/5"
                   [style.background]="
                     cloudConfigForm.get('zoomOnHover')?.get('color')?.value
                   "
@@ -210,75 +178,60 @@
               </div>
             </div>
 
-            <div fxFlex="50%" fxFlex.xs="100%">
+            <div class="w-1/2 xs:w-full">
               <mat-label class="label-text">Scale</mat-label>
               <mat-slider
                 min="1"
                 max="2"
                 step="0.01"
                 formControlName="scale"
-                [thumbLabel]="true"
               ></mat-slider>
             </div>
           </div>
 
           <div
-            class="input-row"
-            fxLayout="row"
-            fxLayout.xs="column"
-            fxLayoutGap="20px"
+            class="input-row flex gap-5 xs:flex-col"
           >
-            <div fxFlex="50%" fxFlex.xs="100%">
+            <div class="w-1/2 xs:w-full">
               <mat-label class="label-text">Time</mat-label>
-              <mat-slider
+              <!-- <mat-slider
                 min="0"
                 max="2"
                 step="0.1"
                 formControlName="transitionTime"
-                [thumbLabel]="true"
-              ></mat-slider>
+              ></mat-slider> -->
             </div>
-            <div fxFlex="50%" fxFlex.xs="100%">
+            <div class="w-1/2 xs:w-full">
               <mat-label class="label-text">Delay</mat-label>
-              <mat-slider
+              <!-- <mat-slider
                 min="0"
                 max="2"
                 step="0.1"
                 formControlName="delay"
-                [thumbLabel]="true"
-              ></mat-slider>
+              ></mat-slider> -->
             </div>
           </div>
         </div>
 
         <h2>Style</h2>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-slide-toggle fxFlex formControlName="customStyle"
+          <mat-slide-toggle class="flex-1" formControlName="customStyle"
             >Use custom Stylesheet</mat-slide-toggle
           >
         </div>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-form-field fxFlex>
+          <mat-form-field class="flex-1">
             <input matInput formControlName="font" placeholder="Font" />
           </mat-form-field>
         </div>
         <div
-          class="input-row"
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.xs="column"
+          class="input-row flex gap-5 xs:flex-col"
         >
-          <mat-form-field fxFlex>
+          <mat-form-field class="flex-1">
             <input
               matInput
               formControlName="background"
@@ -288,7 +241,7 @@
         </div>
       </form>
     </mat-card-content>
-    <mat-card-actions class="pull-bottom">
+    <mat-card-actions class="">
       <button mat-raised-button color="basic" (click)="reDraw()">
         Redraw from Observable
       </button>

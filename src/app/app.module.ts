@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { TagCloudComponent } from '../../projects/angular-tag-cloud-module/src/public-api';
@@ -19,7 +18,6 @@ import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configura
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    FlexLayoutModule,
     ColorPickerModule,
     TagCloudComponent,
   ],

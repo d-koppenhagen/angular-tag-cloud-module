@@ -36,7 +36,7 @@ const DEFAULT_STEP = 1;
 @Component({
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
   template: '',
-  styleUrls: ['./tag-cloud.component.css'],
+  styleUrls: ['./tag-cloud.component.scss'],
   standalone: true,
 })
 export class TagCloudComponent
@@ -515,7 +515,7 @@ export class TagCloudComponent
     // delayed appearance
     if (this.options.delay) {
       wordStyle.animation = 'fadeIn 0.5s';
-      wordStyle.opacity = '0';
+      // wordStyle.opacity = '0';
       wordStyle.animationFillMode = 'forwards';
       wordStyle.animationDelay = `${this.options.delay * index}ms`;
     }
