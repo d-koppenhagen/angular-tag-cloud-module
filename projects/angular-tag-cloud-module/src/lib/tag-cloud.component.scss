@@ -9,6 +9,14 @@
   display: block;
 }
 
+.tag-animation-delay {
+  --tag-animation-delay: 0.5s;
+  animation: fadeIn 0.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-delay: var(--tag-animation-delay);
+}
+
 span {
   padding: 0;
 }

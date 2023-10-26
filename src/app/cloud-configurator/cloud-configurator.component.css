@@ -127,6 +127,7 @@ angular-tag-cloud.custom-css {
 }
 
 mat-label.label-text {
+  display: block;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.54);
 }
