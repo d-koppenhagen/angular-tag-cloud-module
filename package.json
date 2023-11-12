@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
-    "angular-tag-cloud-module": ">=16.0.0",
+    "angular-tag-cloud-module": ">=17.0.0",
     "ngx-color-picker": "^15.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.3.0",
