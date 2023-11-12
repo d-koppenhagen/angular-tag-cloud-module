@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-tag-cloud-module-demo:build:production"
+              "buildTarget": "angular-tag-cloud-module-demo:build:production"
             },
             "development": {
-              "browserTarget": "angular-tag-cloud-module-demo:build:development"
+              "buildTarget": "angular-tag-cloud-module-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-tag-cloud-module-demo:build"
+            "buildTarget": "angular-tag-cloud-module-demo:build"
           }
         },
         "test": {
