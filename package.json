@@ -13,7 +13,7 @@
     "build-prod": "ng build angular-tag-cloud-module --configuration production",
     "copy": "copyfiles -f README.md CHANGELOG.md LICENSE dist/angular-tag-cloud-module",
     "package": "npm run build-prod && npm run copy",
-    "publish-gh-pages": "ng build --configuration production --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module/ && npx ngh --dir=dist/angular-tag-cloud-module-demo",
+    "publish-gh-pages": "ng build --configuration production --base-href=https://d-koppenhagen.github.io/angular-tag-cloud-module/ && npx ngh --dir=dist/angular-tag-cloud-module-demo/browser",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"

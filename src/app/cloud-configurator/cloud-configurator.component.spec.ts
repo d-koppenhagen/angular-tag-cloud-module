@@ -9,8 +9,8 @@ describe('CloudConfiguratorComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [CloudConfiguratorComponent],
-      }).compileComponents();
+    imports: [CloudConfiguratorComponent],
+}).compileComponents();
     }),
   );
 

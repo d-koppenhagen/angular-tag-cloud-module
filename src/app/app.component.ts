@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.css'],
+    standalone: true,
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        CloudConfiguratorComponent,
+    ],
 })
 export class AppComponent {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
