@@ -1,3 +1,8 @@
+## 17.0.0
+
+### BREAKING CHANGES
+- dropped support for Angular < 17.x.x. You need to have a peer dependency of Angular 17.0.0 or greater.
+
 ## 16.0.0
 
 ### BREAKING CHANGES
