@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {
@@ -10,11 +10,31 @@ import {
 
 import { randomData } from '../helpers';
 import { Observable, of } from 'rxjs';
+import { TagCloudComponent as TagCloudComponent_1 } from '../../../projects/angular-tag-cloud-module/src/lib/tag-cloud.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-cloud-configurator',
   templateUrl: './cloud-configurator.component.html',
   styleUrls: ['./cloud-configurator.component.css'],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    ColorPickerModule,
+    MatSliderModule,
+    TagCloudComponent_1,
+  ],
 })
 export class CloudConfiguratorComponent implements OnInit {
   @ViewChild(TagCloudComponent, { static: true })

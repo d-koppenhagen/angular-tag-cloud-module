@@ -6,14 +6,16 @@ import { TagCloudComponent } from './tag-cloud.component';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
 @Component({
-  selector: 'tag-cloud-dummy',
-  template: `
+    selector: 'tag-cloud-dummy',
+    template: `
     <angular-tag-cloud
       [data]="data"
       [strict]="options.strict"
       [config]="configObject"
     ></angular-tag-cloud>
   `,
+    standalone: true,
+    imports: [TagCloudComponent],
 })
 class TestHostComponent {
   options: CloudOptions = {};
@@ -28,9 +30,8 @@ describe('TagCloudComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TestHostComponent],
-      imports: [TagCloudComponent],
-    }).compileComponents();
+    imports: [TagCloudComponent, TestHostComponent],
+}).compileComponents();
   }));
 
   beforeEach(() => {
