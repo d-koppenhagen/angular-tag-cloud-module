@@ -1,3 +1,8 @@
+## 17.0.1
+
+### Performance
+- improve rendering performance (#82), closes #81
+
 ## 17.0.0
 
 ### BREAKING CHANGES
