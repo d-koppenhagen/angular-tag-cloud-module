@@ -282,12 +282,12 @@ export class TagCloudComponent
 
   /**
    * Helper function to test if an element overlaps others
-   * @param testEl the HTML Element to be tested
+   * @param rect the DOM rectangle that represents the element's bounds
    */
-  private hitTest(testEl: HTMLElement): boolean {
+  private hitTest(rect: DOMRect): boolean {
     // Check elements for overlap one by one, stop and return false as soon as an overlap is found
     for (const item of this.cloudDataHtmlElements) {
-      if (this.overlapping(testEl, item)) {
+      if (this.overlapping(rect, item)) {
         return true;
       }
     }
@@ -296,18 +296,19 @@ export class TagCloudComponent
 
   /**
    * Pairwise overlap detection
-   * @param e1 the first element for overlap detection
+   * @param rect the DOM rectangle that represents the element's bounds
    * @param e2 the second element for overlap detection
    */
-  private overlapping(e1: HTMLElement, e2: HTMLElement) {
-    const rect1 = e1.getBoundingClientRect();
-    const rect2 = e2.getBoundingClientRect();
+  private overlapping(rect: DOMRect, e2: HTMLElement) {
+    const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = e2;
+    const offsetRight = offsetLeft + offsetWidth;
+    const offsetBottom = offsetTop + offsetHeight;
 
     const overlap = !(
-      rect1.right < rect2.left ||
-      rect1.left > rect2.right ||
-      rect1.bottom < rect2.top ||
-      rect1.top > rect2.bottom
+      rect.right < offsetLeft ||
+      rect.left > offsetRight ||
+      rect.bottom < offsetTop ||
+      rect.top > offsetBottom
     );
     return overlap;
   }
@@ -327,7 +328,7 @@ export class TagCloudComponent
             ((word.weight - this.dataArr[this.dataArr.length - 1].weight) /
               (this.dataArr[0].weight -
                 this.dataArr[this.dataArr.length - 1].weight)) *
-              9.0,
+            9.0,
           ) + 1;
       } else {
         // use given value for weigth directly
@@ -538,7 +539,7 @@ export class TagCloudComponent
           this.options.height &&
           wordSpan.offsetHeight &&
           wordSpan.offsetWidth &&
-          this.hitTest(wordSpan)
+          this.hitTest(new DOMRect(left, top, wordSpan.offsetWidth, wordSpan.offsetHeight))
         ) {
           radius += this.options.step || DEFAULT_STEP;
           angle +=
@@ -549,10 +550,10 @@ export class TagCloudComponent
             width / 2.0 +
             radius * Math.cos(angle) * this.options.aspectRatio;
           top = this.options.center.y + radius * Math.sin(angle) - height / 2.0;
-
-          wordStyle.left = left + 'px';
-          wordStyle.top = top + 'px';
         }
+
+        wordStyle.left = left + 'px';
+        wordStyle.top = top + 'px';
       }
     }
 
