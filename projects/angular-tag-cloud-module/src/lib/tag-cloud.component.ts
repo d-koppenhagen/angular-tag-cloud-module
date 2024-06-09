@@ -1,15 +1,15 @@
 import {
   Component,
-  OnChanges,
-  AfterContentInit,
-  AfterContentChecked,
-  Input,
-  Output,
-  EventEmitter,
   ElementRef,
   Renderer2,
-  SimpleChanges,
   HostListener,
+  input,
+  output,
+  effect,
+  inject,
+  model,
+  computed,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -34,33 +34,56 @@ const DEFAULT_WIDTH = 1;
 const DEFAULT_STEP = 1;
 
 @Component({
+  standalone: true,
   selector: 'angular-tag-cloud, ng-tag-cloud, ngtc',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '',
   styleUrls: ['./tag-cloud.component.scss'],
-  standalone: true,
 })
-export class TagCloudComponent
-  implements OnChanges, AfterContentInit, AfterContentChecked
-{
-  @Input() data: CloudData[] = [];
-  @Input() width?: number;
-  @Input() height?: number;
-  @Input() step?: number;
-  @Input() overflow?: boolean;
-  @Input() strict?: boolean;
-  @Input() zoomOnHover?: ZoomOnHoverOptions;
-  @Input() realignOnResize?: boolean;
-  @Input() randomizeAngle?: boolean;
-  @Input() background?: string;
-  @Input() font?: string;
-  @Input() delay?: number;
-  @Input() config: CloudOptions = {};
-  @Input() log?: 'warn' | 'debug' | false;
+export class TagCloudComponent {
+  data = input<CloudData[]>([]);
+  width = input<number>();
+  height = input<number>();
+  step = input<number>();
+  overflow = input<boolean>();
+  strict = input<boolean>();
+  zoomOnHover = input<ZoomOnHoverOptions>();
+  realignOnResize = input<boolean>();
+  randomizeAngle = input<boolean>();
+  background = input<string>();
+  font = input<string>();
+  delay = input<number>();
+  config = input<CloudOptions>({});
+  log = input<'warn' | 'debug' | false>();
 
-  @Output() clicked: EventEmitter<CloudData> = new EventEmitter();
-  @Output() dataChanges: EventEmitter<SimpleChanges> = new EventEmitter();
-  @Output() afterInit: EventEmitter<void> = new EventEmitter();
-  @Output() afterChecked: EventEmitter<void> = new EventEmitter();
+  clicked = output<CloudData>();
+  // dataChanges = output<SimpleChanges>();
+  afterInit = output<void>();
+  afterChecked = output<void>();
+
+  private localConfig = computed(() => {
+    const config = this.config()
+    const localConfig: CloudOptions = {
+      ...config, // override default width params in config object
+      width: this.width() || config.width || 500,
+      height: this.height() || config.height || 300,
+      overflow: this.overflow() ?? (config.overflow || true),
+      strict: this.strict() ?? (config.strict || false),
+      zoomOnHover: this.zoomOnHover() || config.zoomOnHover || {
+        transitionTime: 0,
+        scale: 1,
+        delay: 0,
+      },
+      realignOnResize: this.realignOnResize() ?? (config.realignOnResize || false),
+      randomizeAngle: this.randomizeAngle() ?? (config.randomizeAngle || false),
+      step: this.step() || config.step || 2.0,
+      log: this.log() || config.log || false,
+      delay: this.delay() || config.delay,
+      background: this.background() || config.background,
+      font: this.font() || config.font
+    };
+    return localConfig;
+  });
 
   public cloudDataHtmlElements: HTMLElement[] = [];
   private dataArr: CloudData[] = [];
@@ -69,7 +92,7 @@ export class TagCloudComponent
   private timeoutId: number | undefined;
 
   get calculatedWidth(): number {
-    let width = this.config.width || this.width || DEFAULT_WIDTH;
+    let width = this.localConfig().width || this.width() || DEFAULT_WIDTH;
     if (
       this.el.nativeElement.parentNode.offsetWidth > 0 &&
       width <= 1 &&
@@ -81,7 +104,7 @@ export class TagCloudComponent
   }
 
   get calculatedHeight(): number {
-    let height = this.config.height || this.height || DEFAULT_HEIGHT;
+    let height = this.localConfig().height || this.height() || DEFAULT_HEIGHT;
     if (
       this.el.nativeElement.parentNode.offsetHeight > 0 &&
       height <= 1 &&
@@ -92,7 +115,8 @@ export class TagCloudComponent
     return height;
   }
 
-  constructor(private el: ElementRef, private r2: Renderer2) {}
+  private el = inject(ElementRef);
+  private r2 = inject(Renderer2);
 
   @HostListener('window:resize', ['$event']) onResize(event: any) {
     this.logMessage('debug', 'rezisze triggered');
@@ -104,105 +128,49 @@ export class TagCloudComponent
     }, 200);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.logMessage('debug', 'ngOnChanges fired', changes);
-    // set default values
-    this.config = {
-      width: 500,
-      height: 300,
-      overflow: true,
-      strict: false,
-      zoomOnHover: {
-        transitionTime: 0,
-        scale: 1,
-        delay: 0,
-      },
-      realignOnResize: false,
-      randomizeAngle: false,
-      step: 2.0,
-      log: false,
-      ...this.config, // override default width params in config object
-    };
+  constructor() {
+    const el = this.el.nativeElement;
+    effect(() => {
+      // this.logMessage('debug', 'ngOnChanges fired', changes);
+      // set default values
+      const config = this.localConfig();
+      this.logMessage('warn', 'cloud configuration', config);
 
-    // override properties if explicitly set
-    if (this.width) {
-      this.config.width = this.width;
-    }
-    if (this.height) {
-      this.config.height = this.height;
-    }
-    if (typeof this.overflow === 'boolean') {
-      this.config.overflow = this.overflow;
-    }
-    if (typeof this.strict === 'boolean') {
-      this.config.strict = this.strict;
-    }
-    if (typeof this.realignOnResize === 'boolean') {
-      this.config.realignOnResize = this.realignOnResize;
-    }
-    if (typeof this.randomizeAngle === 'boolean') {
-      this.config.randomizeAngle = this.randomizeAngle;
-    }
-    if (typeof this.background === 'string') {
-      this.config.background = this.background;
-    }
-    if (typeof this.font === 'string') {
-      this.config.font = this.font;
-    }
-    if (this.zoomOnHover) {
-      this.config.zoomOnHover = this.zoomOnHover;
-    }
-    if (this.step) {
-      this.config.step = this.step;
-    }
-    if (this.log) {
-      this.config.log = this.log;
-    }
-    if (this.delay) {
-      this.config.delay = this.delay;
-    }
+      // set the basic font style if property is provided
+      if (config.font) {
+        this.r2.setStyle(el, 'font', config.font);
+      }
 
-    this.logMessage('warn', 'cloud configuration', this.config);
-
-    // set the basic font style if property is provided
-    if (this.config.font) {
-      this.r2.setStyle(this.el.nativeElement, 'font', this.config.font);
-    }
-
-    // set a background image if property is provided
-    if (this.config.background) {
-      this.r2.setStyle(
-        this.el.nativeElement,
-        'background',
-        this.config.background,
-      );
-    }
-
-    this.reDraw(changes);
+      // set a background image if property is provided
+      if (config.background) {
+        this.r2.setStyle(el, 'background', config.background);
+      }
+      this.reDraw();
+    });
   }
 
-  ngAfterContentInit() {
-    this.afterInit?.emit();
-    this.logMessage('debug', 'afterInit emitted');
-  }
+  // ngAfterContentInit() {
+  //   this.afterInit?.emit();
+  //   this.logMessage('debug', 'afterInit emitted');
+  // }
 
-  ngAfterContentChecked() {
-    this.afterChecked?.emit();
-    this.logMessage('debug', 'afterChecked emitted');
-  }
+  // ngAfterContentChecked() {
+  //   this.afterChecked?.emit();
+  //   this.logMessage('debug', 'afterChecked emitted');
+  // }
 
   /**
    * re-draw the word cloud
    * @param changes the change set
    */
-  reDraw(changes?: SimpleChanges) {
-    this.dataChanges?.emit(changes);
+  reDraw() {
+    // this.dataChanges?.emit(changes);
     this.afterChecked?.emit();
     this.logMessage('debug', 'dataChanges emitted');
     this.cloudDataHtmlElements = [];
 
     // check if data is not null or empty
-    if (!this.data) {
+    if (!this.data()) {
       console.error(
         'angular-tag-cloud: No data passed. Please pass an Array of CloudData',
       );
@@ -213,13 +181,13 @@ export class TagCloudComponent
     this.el.nativeElement.innerHTML = '';
 
     // set value changes
-    if (changes && changes.data) {
-      this.dataArr = changes.data.currentValue;
+    if (this.data()) {
+      this.dataArr = this.data();
     }
 
     // set options
     this.options = {
-      ...this.config,
+      ...this.localConfig(),
       aspectRatio: this.calculatedWidth / this.calculatedHeight,
       width: this.calculatedWidth,
       height: this.calculatedHeight,
@@ -647,12 +615,12 @@ export class TagCloudComponent
    * @param args extra args to be logged
    */
   private logMessage(level: 'warn' | 'debug' | false, ...args: any) {
-    if (!this.config) {
+    if (!this.localConfig()) {
       return;
     }
-    if (this.config.log === 'debug') {
+    if (this.localConfig().log === 'debug') {
       console.log(`[AngularTagCloudModule ${level}]`, ...args);
-    } else if (this.config.log === 'warn' && level === 'warn') {
+    } else if (this.localConfig().log === 'warn' && level === 'warn') {
       console.warn(`[AngularTagCloudModule ${level}]`, ...args);
     }
   }
