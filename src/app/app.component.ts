@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CloudConfiguratorComponent } from './cloud-configurator/cloud-configurator.component';
@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatToolbarModule,
         MatButtonModule,
