@@ -14,8 +14,7 @@ import { CloudData, CloudOptions } from './tag-cloud.interfaces';
       [config]="configObject"
     ></angular-tag-cloud>
   `,
-    standalone: true,
-    imports: [TagCloudComponent],
+    imports: [TagCloudComponent]
 })
 class TestHostComponent {
   options: CloudOptions = {};

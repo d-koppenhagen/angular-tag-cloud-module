@@ -20,22 +20,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-cloud-configurator',
-  templateUrl: './cloud-configurator.component.html',
-  styleUrls: ['./cloud-configurator.component.css'],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    ColorPickerModule,
-    MatSliderModule,
-    TagCloudComponent_1,
-  ],
+    selector: 'app-cloud-configurator',
+    templateUrl: './cloud-configurator.component.html',
+    styleUrls: ['./cloud-configurator.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSlideToggleModule,
+        MatButtonModule,
+        ColorPickerModule,
+        MatSliderModule,
+        TagCloudComponent_1,
+    ]
 })
 export class CloudConfiguratorComponent implements OnInit {
   @ViewChild(TagCloudComponent, { static: true })

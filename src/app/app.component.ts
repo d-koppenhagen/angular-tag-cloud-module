@@ -9,14 +9,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatToolbarModule,
         MatButtonModule,
         MatIconModule,
         CloudConfiguratorComponent,
-    ],
+    ]
 })
 export class AppComponent {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
