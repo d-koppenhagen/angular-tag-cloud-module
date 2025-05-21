@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module-demo",
-  "version": "16.0.1",
+  "version": "19.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^19.2.11",
     "@angular/platform-browser-dynamic": "^19.2.11",
     "@angular/router": "^19.2.11",
-    "angular-tag-cloud-module": ">=17.0.1",
+    "angular-tag-cloud-module": ">=19.0.0",
     "ngx-color-picker": "^15.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.3.0",
