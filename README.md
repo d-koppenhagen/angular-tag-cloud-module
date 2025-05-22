@@ -1,6 +1,6 @@
 # angular-tag-cloud-module
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <a href="https://www.buymeacoffee.com/dkoppenhagen" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
@@ -433,6 +433,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lkirby1266"><img src="https://avatars0.githubusercontent.com/u/27423468?v=4?s=100" width="100px;" alt="lkirby1266"/><br /><sub><b>lkirby1266</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=lkirby1266" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hqjb91"><img src="https://avatars.githubusercontent.com/u/73111160?v=4?s=100" width="100px;" alt="hqjb91"/><br /><sub><b>hqjb91</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=hqjb91" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://sheikalthaf.com"><img src="https://avatars.githubusercontent.com/u/22526247?v=4?s=100" width="100px;" alt="Sheik Althaf"/><br /><sub><b>Sheik Althaf</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=sheikalthaf" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucascollegenet"><img src="https://avatars.githubusercontent.com/u/163458769?v=4?s=100" width="100px;" alt="lucascollegenet"/><br /><sub><b>lucascollegenet</b></sub></a><br /><a href="https://github.com/d-koppenhagen/angular-tag-cloud-module/commits?author=lucascollegenet" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
