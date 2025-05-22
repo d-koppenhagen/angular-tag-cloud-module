@@ -1,3 +1,13 @@
+## 19.0.0
+
+### BREAKING CHANGES
+- dropped support for Angular < 19.x.x. You need to have a peer dependency of Angular 19.0.0 or greater.
+
+## 19.0.0
+
+### BREAKING CHANGES
+- dropped support for Angular < 18.x.x. You need to have a peer dependency of Angular 18.0.0 or greater.
+
 ## 17.0.1
 
 ### Performance
