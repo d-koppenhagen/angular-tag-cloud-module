@@ -1,6 +1,6 @@
 {
   "name": "angular-tag-cloud-module-demo",
-  "version": "16.0.1",
+  "version": "19.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,27 +21,27 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.0.2",
-    "@angular/cdk": "^18.0.2",
-    "@angular/common": "^18.0.2",
-    "@angular/compiler": "^18.0.2",
-    "@angular/core": "^18.0.2",
-    "@angular/forms": "^18.0.2",
-    "@angular/material": "^18.0.2",
-    "@angular/platform-browser": "^18.0.2",
-    "@angular/platform-browser-dynamic": "^18.0.2",
-    "@angular/router": "^18.0.2",
-    "angular-tag-cloud-module": ">=17.0.1",
+    "@angular/animations": "^19.2.11",
+    "@angular/cdk": "^19.2.16",
+    "@angular/common": "^19.2.11",
+    "@angular/compiler": "^19.2.11",
+    "@angular/core": "^19.2.11",
+    "@angular/forms": "^19.2.11",
+    "@angular/material": "^19.2.16",
+    "@angular/platform-browser": "^19.2.11",
+    "@angular/platform-browser-dynamic": "^19.2.11",
+    "@angular/router": "^19.2.11",
+    "angular-tag-cloud-module": ">=19.0.0",
     "ngx-color-picker": "^15.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.4"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.3",
-    "@angular/cli": "^18.0.3",
-    "@angular/compiler-cli": "^18.0.2",
-    "@angular/language-service": "^18.0.2",
+    "@angular-devkit/build-angular": "^19.2.12",
+    "@angular/cli": "^19.2.12",
+    "@angular/compiler-cli": "^19.2.11",
+    "@angular/language-service": "^19.2.11",
     "@compodoc/compodoc": "^1.1.23",
     "@cypress/schematic": "^2.5.1",
     "@types/jasmine": "~5.1.4",
@@ -56,11 +56,11 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~4.0.2",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "ng-packagr": "^18.0.0",
+    "ng-packagr": "^19.2.2",
     "postcss": "^8.4.35",
     "rimraf": "^5.0.5",
     "tailwindcss": "^3.4.1",
     "ts-loader": "9.5.1",
-    "typescript": "~5.4.5"
+    "typescript": "~5.8.3"
   }
 }

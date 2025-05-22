@@ -28,6 +28,8 @@
     ],
     "useDefineForClassFields": false
   },
+  "exclude": ["cypress.config.ts"],
+  "files": ["cypress.config.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
