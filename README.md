@@ -406,7 +406,7 @@ child.redraw();
 ```
 
 # Development
-For development see [README.dev.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/main/README.dev.md)
+For development see [CONTRIBUTING.md](https://github.com/d-koppenhagen/angular-tag-cloud-module/tree/main/CONTRIBUTING.md)
 
 [logo]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/main/assets/tag-cloud.png "TagCloud"
 [logo2]: https://github.com/d-koppenhagen/angular-tag-cloud-module/raw/main/assets/tag-cloud2.png "TagCloud with custom Style"
