@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CloudConfiguratorComponent } from './cloud-configurator.component';
 
@@ -6,13 +6,11 @@ describe('CloudConfiguratorComponent', () => {
   let component: CloudConfiguratorComponent;
   let fixture: ComponentFixture<CloudConfiguratorComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-    imports: [CloudConfiguratorComponent],
-}).compileComponents();
-    }),
-  );
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [CloudConfiguratorComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CloudConfiguratorComponent);

@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagCloudComponent } from './tag-cloud.component';
 import { CloudData, CloudOptions } from './tag-cloud.interfaces';
 
 @Component({
-    selector: 'tag-cloud-dummy',
-    template: `
+  selector: 'tag-cloud-dummy',
+  template: `
     <angular-tag-cloud
       [data]="data"
       [strict]="options.strict"
       [config]="configObject"
     ></angular-tag-cloud>
   `,
-    imports: [TagCloudComponent]
+  imports: [TagCloudComponent],
 })
 class TestHostComponent {
   options: CloudOptions = {};
@@ -27,20 +27,20 @@ describe('TagCloudComponent', () => {
   let hostFixture: ComponentFixture<TestHostComponent>;
   let tagCloudEl: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [TagCloudComponent, TestHostComponent],
-}).compileComponents();
-  }));
+      imports: [TagCloudComponent, TestHostComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     hostFixture = TestBed.createComponent(TestHostComponent);
     testHostComponent = hostFixture.componentInstance;
     tagCloudEl = hostFixture.nativeElement.querySelector('angular-tag-cloud');
-    hostFixture.detectChanges();
   });
 
   it('should create', () => {
+    hostFixture.detectChanges();
     expect(testHostComponent).toBeTruthy();
   });
 
@@ -51,8 +51,8 @@ describe('TagCloudComponent', () => {
 
     expect(tagCloudEl.textContent).toContain('A');
     expect(tagCloudEl.textContent).toContain('B');
-    expect(tagCloudEl.childElementCount).toBe(2);
-    expect(tagCloudEl.getElementsByClassName('w5').length).toBe(2);
+    expect(tagCloudEl.childElementCount).toEqual(2);
+    expect(tagCloudEl.getElementsByClassName('w5').length).toEqual(2);
   });
 
   it('should correctly assign the weight property', () => {
@@ -82,18 +82,18 @@ describe('TagCloudComponent', () => {
     expect(tagCloudEl.textContent).toContain('I');
     expect(tagCloudEl.textContent).toContain('J');
 
-    expect(tagCloudEl.childElementCount).toBe(10);
+    expect(tagCloudEl.childElementCount).toEqual(10);
 
-    expect(tagCloudEl.getElementsByClassName('w1').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w2').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w3').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w4').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w5').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w6').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w7').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w8').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w9').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w10').length).toBe(1);
+    expect(tagCloudEl.getElementsByClassName('w1').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w2').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w3').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w4').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w5').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w6').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w7').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w8').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w9').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w10').length).toEqual(1);
   });
 
   it('should correctly calculate the weight if scale raange is smaller than 10', () => {
@@ -116,11 +116,11 @@ describe('TagCloudComponent', () => {
     expect(tagCloudEl.textContent).toContain('D');
     expect(tagCloudEl.textContent).toContain('E');
 
-    expect(tagCloudEl.childElementCount).toBe(5);
+    expect(tagCloudEl.childElementCount).toEqual(5);
 
-    expect(tagCloudEl.getElementsByClassName('w1').length).toBe(2);
-    expect(tagCloudEl.getElementsByClassName('w8').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w10').length).toBe(2);
+    expect(tagCloudEl.getElementsByClassName('w1').length).toEqual(2);
+    expect(tagCloudEl.getElementsByClassName('w8').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w10').length).toEqual(2);
   });
 
   it('should not calculate the weight if strict property has been set', () => {
@@ -143,11 +143,11 @@ describe('TagCloudComponent', () => {
     expect(tagCloudEl.textContent).toContain('D');
     expect(tagCloudEl.textContent).toContain('E');
 
-    expect(tagCloudEl.childElementCount).toBe(5);
+    expect(tagCloudEl.childElementCount).toEqual(5);
 
-    expect(tagCloudEl.getElementsByClassName('w3').length).toBe(2);
-    expect(tagCloudEl.getElementsByClassName('w6').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w7').length).toBe(2);
+    expect(tagCloudEl.getElementsByClassName('w3').length).toEqual(2);
+    expect(tagCloudEl.getElementsByClassName('w6').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w7').length).toEqual(2);
   });
 
   it('should correctly calculate the weight if it is out of scale 1-10', () => {
@@ -165,12 +165,12 @@ describe('TagCloudComponent', () => {
     expect(tagCloudEl.textContent).toContain('C');
     expect(tagCloudEl.textContent).toContain('D');
 
-    expect(tagCloudEl.childElementCount).toBe(4);
+    expect(tagCloudEl.childElementCount).toEqual(4);
 
-    expect(tagCloudEl.getElementsByClassName('w1').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w3').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w5').length).toBe(1);
-    expect(tagCloudEl.getElementsByClassName('w10').length).toBe(1);
+    expect(tagCloudEl.getElementsByClassName('w1').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w3').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w5').length).toEqual(1);
+    expect(tagCloudEl.getElementsByClassName('w10').length).toEqual(1);
   });
 
   it('should add hyperlinked words', () => {
@@ -186,7 +186,7 @@ describe('TagCloudComponent', () => {
     hostFixture.detectChanges();
 
     expect(tagCloudEl.childElementCount).toBe(6);
-    expect(tagCloudEl.getElementsByTagName('a').length).toBe(3);
+    expect(tagCloudEl.getElementsByTagName('a').length).toEqual(3);
     // TODO: check for externals if 'target' attr has been set
   });
 });
