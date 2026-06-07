@@ -12,7 +12,7 @@ import { randomData } from '../helpers';
 import { Observable, of } from 'rxjs';
 import { TagCloudComponent as TagCloudComponent_1 } from '../../../projects/angular-tag-cloud-module/src/lib/tag-cloud.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerDirective } from 'ngx-color-picker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
@@ -31,7 +31,7 @@ import { MatCardModule } from '@angular/material/card';
         MatInputModule,
         MatSlideToggleModule,
         MatButtonModule,
-        ColorPickerModule,
+        ColorPickerDirective,
         MatSliderModule,
         TagCloudComponent_1,
     ]

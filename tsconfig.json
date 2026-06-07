@@ -4,11 +4,10 @@
   "compilerOptions": {
     "paths": {
       "angular-tag-cloud-module": [
-        "dist/angular-tag-cloud-module/angular-tag-cloud-module",
-        "dist/angular-tag-cloud-module"
+        "./dist/angular-tag-cloud-module/angular-tag-cloud-module",
+        "./dist/angular-tag-cloud-module"
       ]
     },
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

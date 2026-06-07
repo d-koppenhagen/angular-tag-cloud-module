@@ -1,4 +1,9 @@
-## 20.0.0
+## 22.0.0
+
+### BREAKING CHANGES
+- dropped support for Angular < 22.x.x. You need to have a peer dependency of Angular 22.0.0 or greater.
+
+## 21.0.0
 
 ### BREAKING CHANGES
 - dropped support for Angular < 21.x.x. You need to have a peer dependency of Angular 21.0.0 or greater.
